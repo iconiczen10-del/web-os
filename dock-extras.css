@@ -1,0 +1,26 @@
+/* === FILE: dock-extras.css === */
+/* Dock Separator, Reorder Ghost, and Trash Full Styling */
+.dock-separator {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 4px;
+  align-self: center;
+}
+
+.dock-icon.dock-dragging {
+  opacity: 0.3;
+  transform: scale(0.9);
+}
+
+.dock-icon.drag-ghost {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10001;
+  opacity: 0.85;
+  transform: scale(1.15);
+}
+
+.dock-icon.trash-full .icon-emoji {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}

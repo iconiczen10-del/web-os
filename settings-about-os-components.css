@@ -1,0 +1,101 @@
+/* === FILE: settings-about-os-components.css === */
+/**
+ * WebOS v0.6.2 About OS Section Cards, License & Footer Styling
+ */
+.about-os-info-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about-os-info-label {
+  color: #999999;
+  font-size: 12px;
+}
+
+.about-os-info-value {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.about-os-credit-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.about-os-credit-icon {
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.about-os-credit-info {
+  flex: 1;
+}
+
+.about-os-credit-title {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.about-os-credit-name {
+  color: #bbbbbb;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.about-os-credit-sub {
+  color: #888888;
+  font-size: 11px;
+}
+
+.about-os-license-block {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 14px;
+  font-family: 'SF Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: #aaaaaa;
+  max-height: 140px;
+  overflow-y: auto;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.about-os-footer {
+  text-align: center;
+  padding: 16px 0 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 20px;
+}
+
+.about-os-footer-copy {
+  color: #666666;
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.about-os-footer-made {
+  color: #777777;
+  font-size: 11px;
+}

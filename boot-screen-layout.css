@@ -1,0 +1,126 @@
+/* === FILE: boot-screen-layout.css === */
+/**
+ * WebOS v0.6.3 Boot Screen Layout & Components
+ */
+#boot-screen {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: none;
+  transition: opacity 0.4s ease;
+  user-select: none;
+  pointer-events: all;
+}
+
+#boot-screen.fading {
+  opacity: 0;
+}
+
+.boot-logo-window {
+  width: 160px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 40px rgba(100, 150, 255, 0.2);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+}
+
+.boot-traffic-lights {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  display: flex;
+  gap: 7px;
+}
+
+.boot-traffic-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.boot-dot-red { background: #ff5f57; }
+.boot-dot-amber { background: #febc2e; }
+.boot-dot-green { background: #28c840; }
+
+.boot-logo-text {
+  font-size: 18px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #007aff, #af52de);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 6px;
+  letter-spacing: 1px;
+}
+
+.boot-starting-text {
+  color: #cccccc;
+  font-size: 13px;
+  font-family: system-ui, -apple-system, sans-serif;
+  margin-top: 40px;
+  transition: opacity 0.2s ease;
+}
+
+.boot-progress-container {
+  width: 200px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  margin-top: 20px;
+  overflow: hidden;
+  position: relative;
+  transition: opacity 0.2s ease;
+}
+
+.boot-progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #007aff, #af52de);
+  width: 0%;
+  transition: width 0.1s linear;
+  position: relative;
+}
+
+.boot-progress-percent {
+  color: #ffffff;
+  font-size: 12px;
+  font-family: system-ui, -apple-system, sans-serif;
+  margin-top: 6px;
+  transition: opacity 0.2s ease;
+}
+
+.boot-messages {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  font-family: 'SF Mono', 'Courier New', monospace;
+  font-size: 10px;
+  color: #555555;
+  max-height: 50px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.boot-message {
+  transition: opacity 0.3s ease;
+  color: #666666;
+}
+
+.boot-message.fading-out {
+  opacity: 0;
+}

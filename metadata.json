@@ -1,0 +1,6 @@
+{
+  "name": "WebOS",
+  "description": "macOS-style WebOS in the browser v0.1",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,42 @@
+/* === FILE: snap-zone.css === */
+/* Styling for Window Drag Snap Zone Overlays */
+.snap-zone {
+  position: fixed;
+  z-index: 9000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.snap-zone.visible {
+  opacity: 1;
+}
+
+.snap-zone-left {
+  top: 28px;
+  left: 0;
+  width: 50vw;
+  height: calc(100vh - 28px - 70px);
+  background: rgba(0, 122, 255, 0.15);
+  border-right: 2px solid rgba(0, 122, 255, 0.4);
+}
+
+.snap-zone-right {
+  top: 28px;
+  right: 0;
+  width: 50vw;
+  height: calc(100vh - 28px - 70px);
+  background: rgba(0, 122, 255, 0.15);
+  border-left: 2px solid rgba(0, 122, 255, 0.4);
+}
+
+.snap-zone-top {
+  top: 28px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 28px - 70px);
+  background: rgba(0, 122, 255, 0.1);
+  border-bottom: 2px solid rgba(0, 122, 255, 0.3);
+}

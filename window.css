@@ -1,0 +1,93 @@
+/* === FILE: window.css === */
+/* Window Container with macOS Glassmorphism */
+.window-container {
+  position: absolute;
+  min-width: 320px;
+  min-height: 240px;
+  background: rgba(30, 30, 40, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.window-container.dragging {
+  opacity: 0.9;
+  transition: none;
+}
+
+.window-container.snapped {
+  transition: top 0.2s ease, left 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+/* Window Titlebar Header */
+.window-titlebar {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: grab;
+  user-select: none;
+}
+
+.window-titlebar:active {
+  cursor: grabbing;
+}
+
+/* Traffic Light Control Buttons */
+.window-traffic-lights {
+  display: flex;
+  gap: 8px;
+  margin-right: 12px;
+}
+
+.traffic-light {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.traffic-light:hover {
+  filter: brightness(1.15);
+}
+
+.tl-close {
+  background: #ff5f57;
+}
+
+.tl-minimize {
+  background: #febc2e;
+}
+
+.tl-maximize {
+  background: #28c840;
+}
+
+/* Window Header Title */
+.window-title {
+  color: #dddddd;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  flex: 1;
+  text-align: center;
+  margin-right: 50px; /* Offset traffic lights for true centering */
+}
+
+/* Window Inner Content Area */
+.window-content {
+  padding: 16px;
+  color: #cccccc;
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 180px;
+  flex: 1;
+  overflow-y: auto;
+}

@@ -1,0 +1,115 @@
+/* === FILE: app-settings-about.css === */
+/* Settings General & About Pages styling */
+
+/* General Settings Section */
+.settings-general-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.setting-label {
+  font-size: 13px;
+  color: #ccc;
+}
+
+.setting-toggle {
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.setting-toggle.on {
+  background: #007aff;
+}
+
+.setting-toggle-knob {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: left 0.2s;
+}
+
+.setting-toggle.on .setting-toggle-knob {
+  left: 22px;
+}
+
+/* About PC Specs */
+.about-pc-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+}
+
+.spec-label {
+  font-size: 13px;
+  color: #999;
+}
+
+.spec-value {
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* About OS Branding & Credits */
+.about-os-logo {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.about-os-name {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.about-os-version {
+  font-size: 13px;
+  text-align: center;
+  color: #888888;
+  margin-bottom: 16px;
+}
+
+.about-os-tagline {
+  font-size: 12px;
+  text-align: center;
+  color: #aaaaaa;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.about-os-footer {
+  text-align: center;
+  font-size: 11px;
+  color: #777777;
+  margin-top: 20px;
+}

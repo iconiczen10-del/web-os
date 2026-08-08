@@ -1,0 +1,52 @@
+/* === FILE: topbar.css === */
+/* Top Menu Bar Layout and Visual Styling */
+#topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 9999;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  user-select: none;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar-apple {
+  font-size: 16px;
+  cursor: default;
+  line-height: 1;
+}
+
+.topbar-app-name {
+  font-weight: 600;
+  color: #dddddd;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar-clock {
+  color: #dddddd;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}

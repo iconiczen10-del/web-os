@@ -1,0 +1,138 @@
+/* === FILE: settings-about-os-layout.css === */
+/**
+ * WebOS v0.6.2 About OS Section Hero & Layout Styling
+ */
+.about-os-hero {
+  text-align: center;
+  padding: 10px 0 20px;
+}
+
+.about-os-logo-window {
+  width: 140px;
+  height: 90px;
+  margin: 0 auto 16px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.about-os-logo-window:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.4);
+}
+
+.about-os-logo-window.spinning {
+  animation: logo-spin 1s ease forwards;
+  box-shadow: 0 0 30px rgba(0, 122, 255, 0.6), 0 0 60px rgba(175, 82, 222, 0.4);
+}
+
+@keyframes logo-spin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.about-os-traffic-lights {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  display: flex;
+  gap: 6px;
+}
+
+.about-os-traffic-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.about-os-dot-red { background: #ff5f57; }
+.about-os-dot-amber { background: #febc2e; }
+.about-os-dot-green { background: #28c840; }
+
+.about-os-logo-text {
+  font-size: 16px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #007aff, #af52de);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 8px;
+  letter-spacing: 1px;
+}
+
+.about-os-version-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  color: #cccccc;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.about-os-tagline {
+  color: #aaaaaa;
+  font-size: 13px;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.about-os-stars {
+  color: #ff9f0a;
+  font-size: 14px;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.about-os-stars span {
+  color: #888888;
+  font-size: 11px;
+  letter-spacing: 0;
+  margin-left: 6px;
+}
+
+.about-os-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.about-os-ghost-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: #cccccc;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: system-ui, -apple-system, sans-serif;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.about-os-ghost-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.about-os-divider {
+  text-align: center;
+  color: #888888;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 24px 0 14px;
+}
