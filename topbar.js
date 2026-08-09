@@ -1,6 +1,6 @@
 /* === FILE: topbar.js === */
 /**
- * WebOS v0.4 Top Menu Bar Manager
+ * WebOS v0.6.5 Top Menu Bar Manager
  * Manages top bar element, live clock, and active application title display.
  */
 (function () {

@@ -1,6 +1,6 @@
 /* === FILE: settings-changelog.js === */
 /**
- * WebOS v0.6.2 Changelog Data Export
+ * WebOS v0.7 Changelog Data Export
  */
 (function () {
   if (window.CHANGELOG_DATA) {

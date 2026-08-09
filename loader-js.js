@@ -1,0 +1,72 @@
+/* === FILE: loader-js.js === */
+/**
+ * WebOS v0.7 JS Dynamic Loader & DOM Injector
+ */
+(function () {
+  function injectHTML() {
+    const desktop = document.getElementById("desktop");
+    if (desktop && !desktop.querySelector(".desktop-shortcuts")) {
+      const shortcutsDiv = document.createElement("div");
+      shortcutsDiv.className = "desktop-shortcuts";
+      shortcutsDiv.innerHTML = `<div class="shortcut"><div class="shortcut-icon">📁</div><span class="os-label">Documents</span></div>`;
+      desktop.insertBefore(shortcutsDiv, desktop.firstChild);
+    }
+
+    const dock = document.getElementById("dock");
+    if (dock && dock.children.length === 0) {
+      dock.innerHTML = `
+        <div class="dock-icon" data-app="finder"><span class="icon-emoji">📁</span><span class="os-label">Finder</span><div class="dock-dot"></div></div>
+        <div class="dock-icon" data-app="notes"><span class="icon-emoji">📝</span><span class="os-label">Notes</span><div class="dock-dot"></div></div>
+        <div class="dock-icon" data-app="calculator"><span class="icon-emoji">🧮</span><span class="os-label">Calculator</span><div class="dock-dot"></div></div>
+        <div class="dock-icon" data-app="settings"><span class="icon-emoji">⚙️</span><span class="os-label">Settings</span><div class="dock-dot"></div></div>
+        <div class="dock-icon" data-app="monitor"><span class="icon-emoji">📊</span><span class="os-label">Monitor</span><div class="dock-dot"></div></div>
+        <div class="dock-icon" data-app="store"><span class="icon-emoji">🛒</span><span class="os-label">Store</span><div class="dock-dot"></div></div>
+        <div class="dock-icon" data-app="browser"><span class="icon-emoji">🌐</span><span class="os-label">Browser</span><div class="dock-dot"></div></div>
+        <div class="dock-separator"></div>
+        <div class="dock-icon" data-app="trash"><span class="icon-emoji">🗑️</span><span class="os-label">Trash</span><div class="dock-dot"></div></div>
+      `;
+    }
+  }
+
+  function startLoading() {
+    injectHTML();
+
+    const jsFiles = [
+      "uninstall-dialog.js", "window-drag.js", "window-minimize.js", "window-maximize.js",
+      "window-resize.js", "window-snap.js", "dock-reorder.js", "trash.js",
+      "desktop-shortcuts-drag.js", "desktop-shortcuts.js", "desktop-app-shortcuts.js", "desktop-shortcuts-context.js",
+      "topbar.js", "context-menu.js", "app-dispatcher.js", "window.js",
+      "app-finder.js", "app-notes.js", "app-calculator-logic.js", "app-calculator.js",
+      "settings-general.js", "settings-about-pc.js", "settings-changelog-data.js", "settings-changelog.js",
+      "settings-version-history.js", "settings-about-os-hero.js", "settings-about-os-sections.js", "settings-about-os.js",
+      "app-settings.js", "settings-apps.js", "monitor-cpu.js", "monitor-memory.js",
+      "monitor-system.js", "monitor-process.js", "monitor-graphs.js", "monitor-alerts.js",
+      "monitor-tab-overview.js", "monitor-tab-overview-actions.js", "monitor-tab-cpu.js",
+      "monitor-tab-memory.js", "monitor-tab-gpu.js", "monitor-refresh.js", "app-monitor.js", "store-data.js", "store-wallet.js",
+      "store-detail.js", "store-purchase.js", "store-download.js", "store-install.js",
+      "app-store.js", "app-weather.js", "app-terminal-commands.js", "app-terminal.js",
+      "app-music.js", "app-paint.js", "app-clock.js", "browser-bookmarks.js",
+      "browser-search-data.js", "browser-search.js", "browser-mbank.js", "browser-buynet.js",
+      "browser-navigation.js", "browser-renderer.js", "app-browser.js", "app-calendar.js",
+      "app-gamecenter.js", "app-videoeditor.js", "wallpapers-data.js", "wallpapers-login.js",
+      "wallpapers-subscription.js", "wallpapers-modal.js", "wallpapers-render.js", "app-wallpapers.js",
+      "browser-papersforpc-pages.js", "browser-papersforpc.js", "boot-screen-progress.js", "boot-screen.js",
+      "desktop.js"
+    ];
+
+    const targetContainer = document.body || document.head;
+    jsFiles.forEach((file) => {
+      const script = document.createElement("script");
+      script.src = file;
+      script.defer = true;
+      script.async = false;
+      targetContainer.appendChild(script);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startLoading);
+  } else {
+    startLoading();
+  }
+})();

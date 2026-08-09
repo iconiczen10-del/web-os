@@ -1,69 +1,60 @@
 /* === FILE: store-install.js === */
 /**
- * WebOS v0.6 App Installation & Dock/Desktop Sync Engine
+ * WebOS v0.7 App Installation & Dock/Desktop Sync Engine
+ * In-memory app installation state. Wiped on refresh.
  */
 (function () {
-  const STORAGE_KEY = "webos-installed-apps";
+  let installedAppIds = [];
 
   function getInstalledAppIds() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved) return ["mbank"]; // Mbank preinstalled
-    try {
-      const parsed = JSON.parse(saved);
-      if (!parsed.includes("mbank")) parsed.push("mbank");
-      return parsed;
-    } catch (e) {
-      return ["mbank"];
-    }
+    return installedAppIds;
   }
 
-  function saveInstalledAppIds(ids) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(ids));
-  }
-
-  function installApp(appId) {
+  function performActualInstall(appId) {
     if (window.storeApps) {
       const app = window.storeApps.find(a => a.id === appId);
       if (app) app.isInstalled = true;
     }
 
-    const ids = getInstalledAppIds();
-    if (!ids.includes(appId)) {
-      ids.push(appId);
-      saveInstalledAppIds(ids);
+    if (!installedAppIds.includes(appId)) {
+      installedAppIds.push(appId);
     }
 
     addAppToDock(appId);
     addAppToDesktop(appId);
 
-    // Refresh store grid cards if store app is currently open
     if (typeof window.refreshStoreGrid === "function") {
       window.refreshStoreGrid();
     }
   }
 
-  function uninstallApp(appId) {
-    if (appId === "mbank") return; // Protection for Mbank system app
+  function installApp(appId, skipDownload = false) {
+    const appData = window.storeApps ? window.storeApps.find(a => a.id === appId) : null;
+    if (!skipDownload && window.storeDownload && appData) {
+      window.storeDownload.startDownload(appData, () => {
+        performActualInstall(appId);
+      });
+    } else {
+      performActualInstall(appId);
+    }
+  }
 
-    // Close open window if app is currently open
+  function uninstallApp(appId) {
+    if (appId === "browser") return;
+
     if (window.windowManager && Array.isArray(window.windowManager.openWindows)) {
       const openWin = window.windowManager.openWindows.find(w => w.getAttribute("data-app") === appId);
-      if (openWin) {
-        window.windowManager.closeWindow(openWin);
-      }
+      if (openWin) window.windowManager.closeWindow(openWin);
     }
 
-    // Set isInstalled = false
     if (window.storeApps) {
       const app = window.storeApps.find(a => a.id === appId);
       if (app) app.isInstalled = false;
     }
 
-    // Remove dock icon
     const dockIcon = document.querySelector(`#dock .dock-icon[data-app="${appId}"]`);
     if (dockIcon) dockIcon.remove();
 
-    // Remove desktop shortcut
     if (typeof window.removeAppShortcut === "function") {
       window.removeAppShortcut(appId);
     } else {
@@ -71,11 +62,8 @@
       if (shortcut) shortcut.remove();
     }
 
-    // Update localStorage
-    const remainingIds = getInstalledAppIds().filter(id => id !== appId);
-    saveInstalledAppIds(remainingIds);
+    installedAppIds = installedAppIds.filter(id => id !== appId);
 
-    // Refresh store grid cards if open
     if (typeof window.refreshStoreGrid === "function") {
       window.refreshStoreGrid();
     }
@@ -118,13 +106,14 @@
   }
 
   function loadInstalledApps() {
-    const installedIds = getInstalledAppIds();
     if (window.storeApps) {
       window.storeApps.forEach(app => {
-        if (installedIds.includes(app.id)) {
+        if (installedAppIds.includes(app.id)) {
           app.isInstalled = true;
           addAppToDock(app.id);
           addAppToDesktop(app.id);
+        } else {
+          app.isInstalled = false;
         }
       });
     }

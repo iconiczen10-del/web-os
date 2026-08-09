@@ -1,24 +1,21 @@
 /* === FILE: app-calendar.js === */
 /**
- * WebOS v0.6 Monthly Calendar App
+ * WebOS v0.7 Monthly Calendar App
+ * In-memory calendar events. Starts empty on boot.
  */
 (function () {
-  const STORAGE_KEY = "webos-calendar-events";
+  let sessionEvents = {};
 
   function getEvents() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved) return {};
-    try { return JSON.parse(saved); } catch (e) { return {}; }
+    return sessionEvents;
   }
 
   function saveEvent(dateStr, text) {
-    const events = getEvents();
     if (!text.trim()) {
-      delete events[dateStr];
+      delete sessionEvents[dateStr];
     } else {
-      events[dateStr] = text.trim();
+      sessionEvents[dateStr] = text.trim();
     }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(events));
   }
 
   function initCalendar(windowEl) {

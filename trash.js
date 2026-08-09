@@ -1,27 +1,10 @@
 /* === FILE: trash.js === */
 /**
- * WebOS v0.5 Trash Dock Icon Manager
+ * WebOS v0.7 Trash Dock Icon Manager
+ * In-memory trash state. Starts empty on boot.
  */
 (function () {
-  const STORAGE_KEY = "webos-trash-items";
   let trashItems = [];
-
-  function loadTrashState() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      try {
-        trashItems = JSON.parse(saved);
-      } catch (e) {
-        trashItems = [];
-      }
-    }
-    updateTrashVisual();
-  }
-
-  function saveTrashState() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(trashItems));
-    updateTrashVisual();
-  }
 
   function updateTrashVisual() {
     const trashEl = document.querySelector('.dock-icon[data-app="trash"]');
@@ -41,7 +24,7 @@
       window.deleteShortcut(shortcut.id);
     }
     trashItems.push(shortcut);
-    saveTrashState();
+    updateTrashVisual();
     console.log(`Moved '${shortcut.name}' to Trash`);
   }
 
@@ -53,13 +36,13 @@
 
     if (confirm(`Empty Trash? (${trashItems.length} item${trashItems.length > 1 ? "s" : ""})`)) {
       trashItems = [];
-      saveTrashState();
+      updateTrashVisual();
       console.log("Trash emptied");
     }
   }
 
   function initTrash() {
-    loadTrashState();
+    updateTrashVisual();
 
     const trashEl = document.querySelector('.dock-icon[data-app="trash"]');
     if (!trashEl) return;

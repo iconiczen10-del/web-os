@@ -1,6 +1,6 @@
 /* === FILE: monitor-system.js === */
 /**
- * WebOS v0.6.4 System Monitor - GPU, Storage, Network & Uptime Hardware Specs
+ * WebOS v0.6.5 System Monitor - GPU, Storage, Network & Uptime Hardware Specs
  */
 (function () {
   const startTime = Date.now();

@@ -1,42 +1,21 @@
 /* === FILE: dock-reorder.js === */
 /**
- * WebOS v0.5 Dock Icon Reordering & Storage
+ * WebOS v0.7 Dock Icon Reordering
+ * In-memory dock order for session. Always starts with default order.
  */
 (function () {
-  const STORAGE_KEY = "webos-dock-order";
+  let sessionDockOrder = [];
 
   function saveDockOrder() {
     const dock = document.getElementById("dock");
     if (!dock) return;
     const icons = Array.from(dock.querySelectorAll(".dock-icon[data-app]"))
       .filter(icon => icon.getAttribute("data-app") !== "trash");
-    const order = icons.map(icon => icon.getAttribute("data-app"));
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(order));
+    sessionDockOrder = icons.map(icon => icon.getAttribute("data-app"));
   }
 
   function loadDockOrder() {
-    const dock = document.getElementById("dock");
-    if (!dock) return;
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved) return;
-    try {
-      const order = JSON.parse(saved);
-      if (!Array.isArray(order)) return;
-
-      const separator = dock.querySelector(".dock-separator");
-      const trash = dock.querySelector('.dock-icon[data-app="trash"]');
-
-      order.forEach(appName => {
-        const icon = dock.querySelector(`.dock-icon[data-app="${appName}"]`);
-        if (icon) {
-          if (separator) dock.insertBefore(icon, separator);
-          else if (trash) dock.insertBefore(icon, trash);
-          else dock.appendChild(icon);
-        }
-      });
-    } catch (e) {
-      console.error("Failed loading dock order", e);
-    }
+    // Default dock order on fresh boot
   }
 
   function initDockReorder() {

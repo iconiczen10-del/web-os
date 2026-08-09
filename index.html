@@ -1,138 +1,16 @@
-<!-- === FILE: index.html === -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WebOS</title>
-    <link rel="stylesheet" href="boot-screen-layout.css" />
-    <link rel="stylesheet" href="boot-screen-animations.css" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="window.css" />
-    <link rel="stylesheet" href="window-states.css" />
-    <link rel="stylesheet" href="app-finder.css" />
-    <link rel="stylesheet" href="app-calculator.css" />
-    <link rel="stylesheet" href="app-settings-layout.css" />
-    <link rel="stylesheet" href="app-settings-about.css" />
-    <link rel="stylesheet" href="app-settings-changelog.css" />
-    <link rel="stylesheet" href="settings-about-os-layout.css" />
-    <link rel="stylesheet" href="settings-about-os-components.css" />
-    <link rel="stylesheet" href="app-monitor.css" />
-    <link rel="stylesheet" href="snap-zone.css" />
-    <link rel="stylesheet" href="desktop-shortcut.css" />
-    <link rel="stylesheet" href="dock-extras.css" />
-    <link rel="stylesheet" href="topbar.css" />
-    <link rel="stylesheet" href="context-menu.css" />
-    <link rel="stylesheet" href="app-store.css" />
-    <link rel="stylesheet" href="store-detail.css" />
-    <link rel="stylesheet" href="app-mbank.css" />
-    <link rel="stylesheet" href="uninstall-dialog.css" />
-
-    <script src="uninstall-dialog.js" defer></script>
-    <script src="window-drag.js" defer></script>
-    <script src="window-minimize.js" defer></script>
-    <script src="window-maximize.js" defer></script>
-    <script src="window-resize.js" defer></script>
-    <script src="window-snap.js" defer></script>
-    <script src="dock-reorder.js" defer></script>
-    <script src="trash.js" defer></script>
-    <script src="desktop-shortcuts-drag.js" defer></script>
-    <script src="desktop-shortcuts.js" defer></script>
-    <script src="desktop-app-shortcuts.js" defer></script>
-    <script src="desktop-shortcuts-context.js" defer></script>
-    <script src="topbar.js" defer></script>
-    <script src="context-menu.js" defer></script>
-    <script src="app-dispatcher.js" defer></script>
-    <script src="window.js" defer></script>
-    <script src="app-finder.js" defer></script>
-    <script src="app-notes.js" defer></script>
-    <script src="app-calculator-logic.js" defer></script>
-    <script src="app-calculator.js" defer></script>
-    <script src="settings-general.js" defer></script>
-    <script src="settings-about-pc.js" defer></script>
-    <script src="settings-changelog-data.js" defer></script>
-    <script src="settings-changelog.js" defer></script>
-    <script src="settings-version-history.js" defer></script>
-    <script src="settings-about-os-hero.js" defer></script>
-    <script src="settings-about-os-sections.js" defer></script>
-    <script src="settings-about-os.js" defer></script>
-    <script src="app-settings.js" defer></script>
-    <script src="settings-apps.js" defer></script>
-    <script src="monitor-cpu.js" defer></script>
-    <script src="monitor-memory.js" defer></script>
-    <script src="monitor-system.js" defer></script>
-    <script src="app-monitor.js" defer></script>
-    <script src="store-data.js" defer></script>
-    <script src="store-wallet.js" defer></script>
-    <script src="store-detail.js" defer></script>
-    <script src="store-purchase.js" defer></script>
-    <script src="store-install.js" defer></script>
-    <script src="app-store.js" defer></script>
-    <script src="app-weather.js" defer></script>
-    <script src="app-terminal-commands.js" defer></script>
-    <script src="app-terminal.js" defer></script>
-    <script src="app-music.js" defer></script>
-    <script src="app-paint.js" defer></script>
-    <script src="app-clock.js" defer></script>
-    <script src="app-browser.js" defer></script>
-    <script src="app-calendar.js" defer></script>
-    <script src="app-mbank.js" defer></script>
-    <script src="app-gamecenter.js" defer></script>
-    <script src="app-videoeditor.js" defer></script>
-    <script src="boot-screen-progress.js" defer></script>
-    <script src="boot-screen.js" defer></script>
-    <script src="desktop.js" defer></script>
+    <link rel="stylesheet" href="boot-screen-layout.css" />
+    <script src="loader-css.js" defer></script>
+    <script src="loader-js.js" defer></script>
   </head>
   <body>
-    <!-- Desktop Canvas -->
-    <div id="desktop">
-      <!-- Desktop Shortcuts container -->
-      <div class="desktop-shortcuts">
-        <div class="shortcut">
-          <div class="shortcut-icon">📁</div>
-          <span class="os-label">Documents</span>
-        </div>
-      </div>
-
-      <!-- Dock Area -->
-      <div id="dock" class="backdrop-glass">
-        <div class="dock-icon" data-app="finder">
-          <span class="icon-emoji">📁</span>
-          <span class="os-label">Finder</span>
-          <div class="dock-dot"></div>
-        </div>
-        <div class="dock-icon" data-app="notes">
-          <span class="icon-emoji">📝</span>
-          <span class="os-label">Notes</span>
-          <div class="dock-dot"></div>
-        </div>
-        <div class="dock-icon" data-app="calculator">
-          <span class="icon-emoji">🧮</span>
-          <span class="os-label">Calculator</span>
-          <div class="dock-dot"></div>
-        </div>
-        <div class="dock-icon" data-app="settings">
-          <span class="icon-emoji">⚙️</span>
-          <span class="os-label">Settings</span>
-          <div class="dock-dot"></div>
-        </div>
-        <div class="dock-icon" data-app="monitor">
-          <span class="icon-emoji">📊</span>
-          <span class="os-label">Monitor</span>
-          <div class="dock-dot"></div>
-        </div>
-        <div class="dock-icon" data-app="store">
-          <span class="icon-emoji">🛒</span>
-          <span class="os-label">Store</span>
-          <div class="dock-dot"></div>
-        </div>
-        <div class="dock-separator"></div>
-        <div class="dock-icon" data-app="trash">
-          <span class="icon-emoji">🗑️</span>
-          <span class="os-label">Trash</span>
-          <div class="dock-dot"></div>
-        </div>
-      </div>
-    </div>
+    <div id="desktop"></div>
+    <div id="dock"></div>
   </body>
 </html>

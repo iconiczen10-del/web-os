@@ -1,10 +1,10 @@
 /* === FILE: app-notes.js === */
 /**
- * WebOS v0.3 Notes Application
- * Full-window note editor with debounced localStorage auto-save persistence.
+ * WebOS v0.7 Notes Application
+ * In-memory note editor. Starts fresh on boot.
  */
 (function () {
-  const STORAGE_KEY = "webos-notes-content";
+  let sessionNotes = "";
 
   window.initNotes = function (windowEl) {
     const contentEl = windowEl.querySelector(".window-content");
@@ -28,20 +28,10 @@
     textarea.style.height = "100%";
     textarea.style.boxSizing = "border-box";
     textarea.placeholder = "Type your notes here...";
+    textarea.value = sessionNotes;
 
-    // Restore saved notes from localStorage
-    const savedNotes = localStorage.getItem(STORAGE_KEY);
-    if (savedNotes !== null) {
-      textarea.value = savedNotes;
-    }
-
-    // Debounced auto-save (300ms)
-    let saveTimeout = null;
     textarea.addEventListener("input", () => {
-      clearTimeout(saveTimeout);
-      saveTimeout = setTimeout(() => {
-        localStorage.setItem(STORAGE_KEY, textarea.value);
-      }, 300);
+      sessionNotes = textarea.value;
     });
 
     contentEl.innerHTML = "";

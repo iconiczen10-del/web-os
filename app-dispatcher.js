@@ -17,9 +17,9 @@
     clock: "initClock",
     browser: "initBrowser",
     calendar: "initCalendar",
-    mbank: "initMbank",
     gamecenter: "initGameCenter",
-    videoeditor: "initVideoEditor"
+    videoeditor: "initVideoEditor",
+    wallpapers: "initWallpapers"
   };
 
   function dispatchAppInit(appName, winContainer) {

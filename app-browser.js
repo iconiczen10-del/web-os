@@ -1,37 +1,8 @@
 /* === FILE: app-browser.js === */
 /**
- * WebOS v0.6 Web Browser
+ * WebOS v0.7 System Browser Application
  */
 (function () {
-  const PAGES = {
-    "webos://home": `
-      <div style="text-align: center; padding: 40px 20px;">
-        <div style="font-size: 48px; margin-bottom: 12px;">🌐</div>
-        <div style="font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 8px;">WebOS Search</div>
-        <div style="font-size: 13px; color: #888; margin-bottom: 20px;">Explore the virtual web inside your browser.</div>
-        <input type="text" placeholder="Search the web or type a URL..." style="width: 100%; max-width: 320px; padding: 10px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); color: #fff; font-size: 13px; outline: none;" />
-        <div style="display: flex; justify-content: center; gap: 16px; margin-top: 24px; font-size: 13px;">
-          <a href="#" class="browser-link" data-url="webos://about" style="color: #007aff; text-decoration: none;">About WebOS</a>
-          <a href="#" class="browser-link" data-url="webos://news" style="color: #007aff; text-decoration: none;">Latest Tech News</a>
-        </div>
-      </div>
-    `,
-    "webos://about": `
-      <div style="padding: 24px; color: #ddd; line-height: 1.6;">
-        <h2 style="color: #fff; margin-top: 0;">About WebOS</h2>
-        <p>WebOS v0.6 is a web-based desktop environment operating in your browser. Built entirely with modular vanilla JavaScript, CSS, and HTML.</p>
-        <p>Features include window management, live hardware monitoring, desktop shortcuts, dock reordering, and a built-in virtual App Store with Mbank payment gateway.</p>
-      </div>
-    `,
-    "webos://news": `
-      <div style="padding: 24px; color: #ddd; line-height: 1.6;">
-        <h2 style="color: #fff; margin-top: 0;">WebOS v0.6 Released!</h2>
-        <div style="font-size: 11px; color: #888; margin-bottom: 12px;">Published August 2026 • Tech Chronicle</div>
-        <p>Today marks the official release of WebOS v0.6 featuring the all-new App Store and Mbank virtual payment suite. Users can now purchase and install apps seamlessly.</p>
-      </div>
-    `
-  };
-
   function initBrowser(windowEl) {
     const contentEl = windowEl.querySelector(".window-content");
     if (!contentEl) return;
@@ -41,58 +12,100 @@
     contentEl.style.flexDirection = "column";
     contentEl.style.background = "#18181f";
 
-    let historyStack = ["webos://home"];
-    let historyIdx = 0;
+    contentEl.innerHTML = `
+      <div style="padding: 6px 10px; background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; gap: 8px;">
+        <button id="br-back" style="background: none; border: none; color: #555; cursor: pointer; font-size: 13px;" title="Back">◀</button>
+        <button id="br-forward" style="background: none; border: none; color: #555; cursor: pointer; font-size: 13px;" title="Forward">▶</button>
+        <button id="br-refresh" style="background: none; border: none; color: #fff; cursor: pointer; font-size: 13px;" title="Refresh">🔄</button>
+        <input type="text" id="br-url" style="flex: 1; padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.12); background: rgba(0,0,0,0.3); color: #fff; font-size: 12px; outline: none;" />
+        <button id="br-go" style="background: #0a84ff; border: none; color: #fff; border-radius: 6px; padding: 5px 10px; font-weight: 600; cursor: pointer; font-size: 12px;">Go</button>
+      </div>
+      <div id="br-bookmarks-container"></div>
+      <div style="flex: 1; overflow-y: auto;" id="br-viewport"></div>
+      <div id="br-statusbar" style="padding: 4px 12px; background: rgba(0,0,0,0.4); border-top: 1px solid rgba(255,255,255,0.06); font-size: 11px; color: #8e8e93; display: flex; justify-content: space-between; align-items: center;">
+        <span id="br-sb-plan">ISP: BUYNET Starter (10 Mbps)</span>
+        <span id="br-sb-status" style="color: #30d158;">🟢 Connected</span>
+      </div>
+    `;
 
-    function render() {
-      const currentUrl = historyStack[historyIdx] || "webos://home";
-      const pageHtml = PAGES[currentUrl] || `<div style="padding: 30px; text-align: center; color: #ff453a;">404 Page Not Found: ${currentUrl}</div>`;
+    const backBtn = contentEl.querySelector("#br-back");
+    const forwardBtn = contentEl.querySelector("#br-forward");
+    const refreshBtn = contentEl.querySelector("#br-refresh");
+    const urlInput = contentEl.querySelector("#br-url");
+    const goBtn = contentEl.querySelector("#br-go");
+    const bmContainer = contentEl.querySelector("#br-bookmarks-container");
+    const viewportEl = contentEl.querySelector("#br-viewport");
+    const planSb = contentEl.querySelector("#br-sb-plan");
 
-      contentEl.innerHTML = `
-        <div style="padding: 8px 12px; background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; gap: 8px;">
-          <button id="br-back" style="background: none; border: none; color: ${historyIdx > 0 ? '#fff' : '#555'}; cursor: pointer; font-size: 14px;">◀</button>
-          <button id="br-forward" style="background: none; border: none; color: ${historyIdx < historyStack.length - 1 ? '#fff' : '#555'}; cursor: pointer; font-size: 14px;">▶</button>
-          <button id="br-refresh" style="background: none; border: none; color: #fff; cursor: pointer; font-size: 14px;">🔄</button>
-          <input type="text" id="br-url" value="${currentUrl}" style="flex: 1; padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); color: #fff; font-size: 12px; outline: none;" />
-        </div>
-        <div style="flex: 1; overflow-y: auto;" id="br-viewport">
-          ${pageHtml}
-        </div>
-      `;
+    function updateStatusBar() {
+      if (!planSb) return;
+      const speed = window.buynetManager ? window.buynetManager.getInternetSpeed() : 10;
+      const activePlan = window.buynetManager ? window.buynetManager.getActivePlan() : null;
+      const planName = activePlan ? activePlan.name : "Free Starter";
+      planSb.textContent = `ISP: BUYNET ${planName} (${speed >= 1000 ? (speed/1000) + ' Gbps' : speed + ' Mbps'})`;
+    }
 
-      contentEl.querySelector("#br-back").addEventListener("click", () => {
-        if (historyIdx > 0) { historyIdx--; render(); }
-      });
-      contentEl.querySelector("#br-forward").addEventListener("click", () => {
-        if (historyIdx < historyStack.length - 1) { historyIdx++; render(); }
-      });
-      contentEl.querySelector("#br-refresh").addEventListener("click", render);
+    function navigateTo(rawUrl) {
+      const nav = window.browserNavigation;
+      const url = nav ? nav.navigate(rawUrl) : rawUrl;
 
-      const urlInput = contentEl.querySelector("#br-url");
-      urlInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          let val = urlInput.value.trim();
-          if (!val.startsWith("webos://")) val = "webos://" + val;
-          historyStack = historyStack.slice(0, historyIdx + 1);
-          historyStack.push(val);
-          historyIdx++;
-          render();
+      if (urlInput) urlInput.value = url;
+
+      if (backBtn && nav) backBtn.style.color = nav.canGoBack() ? "#ffffff" : "#555555";
+      if (forwardBtn && nav) forwardBtn.style.color = nav.canGoForward() ? "#ffffff" : "#555555";
+
+      if (window.browserRenderer) {
+        window.browserRenderer.renderPage(viewportEl, url, navigateTo);
+      }
+      updateStatusBar();
+    }
+
+    if (window.browserBookmarks && bmContainer) {
+      window.browserBookmarks.renderBookmarksBar(bmContainer, navigateTo);
+    }
+
+    if (backBtn) {
+      backBtn.addEventListener("click", () => {
+        if (window.browserNavigation) {
+          const prev = window.browserNavigation.goBack();
+          if (prev) navigateTo(prev);
         }
-      });
-
-      contentEl.querySelectorAll(".browser-link").forEach(link => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          const targetUrl = link.getAttribute("data-url");
-          historyStack = historyStack.slice(0, historyIdx + 1);
-          historyStack.push(targetUrl);
-          historyIdx++;
-          render();
-        });
       });
     }
 
-    render();
+    if (forwardBtn) {
+      forwardBtn.addEventListener("click", () => {
+        if (window.browserNavigation) {
+          const next = window.browserNavigation.goForward();
+          if (next) navigateTo(next);
+        }
+      });
+    }
+
+    if (refreshBtn) {
+      refreshBtn.addEventListener("click", () => {
+        const cur = window.browserNavigation ? window.browserNavigation.getCurrentUrl() : "webos://home";
+        navigateTo(cur);
+      });
+    }
+
+    function handleUrlSubmit() {
+      if (urlInput) navigateTo(urlInput.value);
+    }
+
+    if (goBtn) goBtn.addEventListener("click", handleUrlSubmit);
+    if (urlInput) {
+      urlInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") handleUrlSubmit();
+      });
+    }
+
+    const initialUrl = window.browserNavigation ? window.browserNavigation.getCurrentUrl() : "webos://home";
+    navigateTo(initialUrl);
+
+    // Status bar interval
+    if (windowEl._browserSbInterval) clearInterval(windowEl._browserSbInterval);
+    windowEl._browserSbInterval = setInterval(updateStatusBar, 3000);
   }
 
   window.initBrowser = initBrowser;

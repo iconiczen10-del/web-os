@@ -1,0 +1,120 @@
+/* === FILE: app-monitor-tabs.css === */
+.monitor-tab-bar {
+  display: flex;
+  background: #141414;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 8px;
+}
+
+.mon-tab-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #888888;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mon-tab-btn:hover {
+  color: #dddddd;
+}
+
+.mon-tab-btn.active {
+  color: #ffffff;
+  border-bottom-color: #007aff;
+}
+
+.mon-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.monitor-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.monitor-table th {
+  text-align: left;
+  padding: 6px 8px;
+  color: #888888;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.monitor-table td {
+  padding: 6px 8px;
+  color: #cccccc;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.monitor-table.mini td, .monitor-table.mini th {
+  padding: 4px 6px;
+}
+
+.mon-proc-row {
+  cursor: pointer;
+}
+
+.mon-proc-row:hover td {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mon-proc-row.row-warning td {
+  color: #ffcc00;
+  background: rgba(255, 159, 10, 0.12);
+}
+
+.mon-proc-row.row-danger td {
+  color: #ff6b6b;
+  background: rgba(255, 69, 58, 0.18);
+}
+
+.mon-btn-danger {
+  background: rgba(255, 69, 58, 0.2);
+  color: #ff453a;
+  border: 1px solid rgba(255, 69, 58, 0.4);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mon-btn-danger:hover {
+  background: rgba(255, 69, 58, 0.4);
+}
+
+.mon-detail-panel {
+  background: rgba(0, 0, 0, 0.4);
+  border-left: 3px solid #007aff;
+  padding: 8px 12px;
+  margin: 4px 0;
+  border-radius: 4px;
+  font-size: 11px;
+  color: #aaaaaa;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mon-btn-small {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #cccccc;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 10px;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.mon-btn-small:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

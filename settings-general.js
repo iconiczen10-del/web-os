@@ -1,12 +1,19 @@
 /* === FILE: settings-general.js === */
 /**
- * WebOS v0.5.1 Settings - General Toggles Section
+ * WebOS v0.7 Settings - General Toggles Section
+ * In-memory toggles state. Defaults to OFF on boot.
  */
 (function () {
+  const toggleStates = {
+    darkmode: false,
+    sound: false,
+    notifications: false
+  };
+
   const SETTINGS = [
-    { id: "darkmode", key: "webos-setting-darkmode", label: "Dark Mode", default: false },
-    { id: "sound", key: "webos-setting-sound", label: "Sound Effects", default: true },
-    { id: "notifications", key: "webos-setting-notifications", label: "Notifications", default: true }
+    { id: "darkmode", label: "Dark Mode" },
+    { id: "sound", label: "Sound Effects" },
+    { id: "notifications", label: "Notifications" }
   ];
 
   function applySettingEffect(settingId, isEnabled) {
@@ -19,9 +26,8 @@
     }
   }
 
-  // Restore dark mode setting on initial script load
-  const initialDarkMode = localStorage.getItem("webos-setting-darkmode") === "true";
-  applySettingEffect("darkmode", initialDarkMode);
+  // Ensure default off on boot
+  applySettingEffect("darkmode", false);
 
   function renderGeneralSection(containerEl) {
     if (!containerEl) return;
@@ -36,14 +42,13 @@
     generalSection.className = "settings-general-section";
 
     SETTINGS.forEach(setting => {
-      const savedVal = localStorage.getItem(setting.key);
-      const isActive = savedVal !== null ? savedVal === "true" : setting.default;
+      const isActive = toggleStates[setting.id] || false;
 
       const row = document.createElement("div");
       row.className = "setting-row";
       row.innerHTML = `
         <span class="setting-label">${setting.label}</span>
-        <div class="setting-toggle ${isActive ? 'on' : ''}" data-id="${setting.id}" data-key="${setting.key}">
+        <div class="setting-toggle ${isActive ? 'on' : ''}" data-id="${setting.id}">
           <div class="setting-toggle-knob"></div>
         </div>
       `;
@@ -51,7 +56,7 @@
       const toggleEl = row.querySelector(".setting-toggle");
       toggleEl.addEventListener("click", () => {
         const isOn = toggleEl.classList.toggle("on");
-        localStorage.setItem(setting.key, isOn ? "true" : "false");
+        toggleStates[setting.id] = isOn;
         applySettingEffect(setting.id, isOn);
       });
 

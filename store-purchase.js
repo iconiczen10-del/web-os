@@ -109,7 +109,10 @@
     overlay.querySelector("#fail-mbank-btn").addEventListener("click", () => {
       overlay.remove();
       if (window.windowManager) {
-        window.windowManager.openWindow("mbank");
+        window.windowManager.openWindow("browser");
+        if (window.browserNavigation) {
+          window.browserNavigation.navigate("www.mbank.webos");
+        }
       }
     });
   }

@@ -1,6 +1,6 @@
 /* === FILE: app-terminal-commands.js === */
 /**
- * WebOS v0.6.4 Terminal Command Handler
+ * WebOS v0.7 Terminal Command Handler
  */
 (function () {
   function handleCommand(cmdStr) {
@@ -58,7 +58,7 @@
   ╚█████╔╝███████╗██████╔╝╚██████╔╝███████║
    ╚════╝ ╚══════╝╚═════╝  ╚═════╝ ╚══════╝
 
-  OS: WebOS v0.6.4 (64-bit Browser Runtime)
+  OS: WebOS v0.7.1.1 (64-bit Browser Runtime)
   Host: Bolt B350-M
   Kernel: WebOS Kernel 1.0
   CPU: Cyclone 1st Gen X9 (2C/4T) @ 2.7 GHz

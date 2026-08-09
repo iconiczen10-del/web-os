@@ -1,6 +1,6 @@
 /* === FILE: settings-apps.js === */
 /**
- * WebOS v0.6.1 Settings - Apps Management Section
+ * WebOS v0.6.5 Settings - Apps Management Section
  */
 (function () {
   function renderAppsList(containerEl) {

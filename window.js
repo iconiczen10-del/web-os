@@ -88,6 +88,17 @@ class WindowManager {
     this.openWindows = this.openWindows.filter(w => w !== winEl);
   }
 
+  forceCloseWindow(winEl) {
+    if (winEl._monitorInterval) {
+      clearInterval(winEl._monitorInterval);
+      winEl._monitorInterval = null;
+    }
+    const appName = winEl.getAttribute("data-app");
+    if (typeof window.hideDockDot === "function") window.hideDockDot(appName);
+    winEl.remove();
+    this.openWindows = this.openWindows.filter(w => w !== winEl);
+  }
+
   bringToFront(winEl) {
     this.highestZIndex++;
     winEl.style.zIndex = this.highestZIndex;

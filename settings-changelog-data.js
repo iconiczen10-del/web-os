@@ -5,135 +5,90 @@
 (function () {
   const changelog = [
     {
-      version: "v0.6.4",
+      version: "v0.7.1.1",
       date: "August 2026",
       features: [
-        "Custom hardware branding across OS",
-        "Cyclone 1st Gen X9 CPU (2C/4T @ 2.7 GHz)",
-        "Star R Pro GPU (2GB GDDR5, Star Kepler)",
-        "Black U5000 RAM (8GB DDR4 @ 5000 MHz)",
-        "Bolt NV-256 Storage (256GB NVMe M.2 SSD)",
-        "Bolt B350-M Motherboard & Volt 450W PSU",
-        "Updated System Monitor, About PC, Terminal neofetch, and Boot Messages"
+        "System Monitor redesigned with 4 tabs: Overview, CPU, Memory, GPU",
+        "Live CPU graph with per-core breakdown for Cyclone X9",
+        "Live RAM graph with used/cached/free breakdown",
+        "Live GPU graph with VRAM, temperature, and fan speed",
+        "Real-time resource tracking — opening apps increases CPU/RAM/GPU",
+        "Process table with End Process, Force Quit, and detail panel",
+        "End All Processes button to close all windows",
+        "Resource alerts for high CPU, memory, and GPU usage",
+        "Process details panel showing PID, threads, uptime",
+        "All graphs animate live every 500ms as OS is used",
+        "Global version sync to v0.7.1.1"
       ]
     },
     {
-      version: "v0.6.3",
+      version: "v0.7.1",
       date: "August 2026",
       features: [
-        "Realistic boot screen on page load with 3.2 second sequence",
-        "CSS-drawn WebOS window logo with pulsing glow",
-        "Animated progress bar with non-linear timing and shimmer effect",
-        "Boot message log showing system initialization steps",
-        "Fade transition from boot screen to desktop",
-        "Input blocking during boot sequence"
+        "Global version number sync across entire OS",
+        "Updated version strings in boot screen, About OS, About PC, Terminal, System Monitor, Browser, and desktop",
+        "Consistent branding everywhere"
       ]
     },
-
     {
-      version: "v0.6.2",
+      version: "v0.7",
       date: "August 2026",
       features: [
-        "Redesigned About OS with CSS-drawn window logo",
-        "Detailed system information table with live uptime",
-        "Credit cards with roles and descriptions",
-        "MIT License display in scrollable block",
-        "Version History extracted to its own Settings tab",
-        "Easter egg: click logo 5 times for surprise"
+        "Complete data wipe on every page refresh — true fresh start",
+        "Mbank balance resets to $50.00 on every boot",
+        "No persistence: all localStorage removed for user data",
+        "Default internet speed: 200 KB/s (1.6 Mbps) with no BUYNET plan",
+        "BUYNET plans now provide speed upgrades (6x to 625x)",
+        "Version History re-locks every time you leave the tab",
+        "Clean desktop with no shortcuts on every boot",
+        "System apps only in dock on fresh boot",
+        "All settings reset to defaults on refresh"
       ]
     },
     {
-      version: "v0.6.1",
+      version: "v0.6.6.3",
       date: "August 2026",
       features: [
-        "App uninstall system via App Store, desktop right-click, and Settings",
-        "Custom styled confirmation dialog",
-        "Mbank protection from uninstallation",
-        "Paid app uninstall note (no refunds)",
-        "Version history updated"
+        "Password-protected Version History tab in Settings",
+        "Hardcoded password lock (9610) on changelog access",
+        "Shake animation on incorrect password attempt",
+        "Smooth fade transition on successful unlock"
       ]
     },
     {
-      version: "v0.6",
+      version: "v0.6.6.2",
       date: "August 2026",
       features: [
-        "App Store with 10 virtual web applications",
-        "Mbank Virtual Wallet payment gateway & balance tracking",
-        "App installation engine syncing Dock and Desktop",
-        "Web applications: Weather, Terminal, Music, Paint, Clock, Browser, Calendar, Game Center, Video Editor"
+        "Split index.html into 3 files to prevent 150-line cap breach",
+        "loader-css.js dynamically loads all CSS files in correct cascade order",
+        "loader-js.js dynamically loads all JS files in dependency order"
       ]
     },
     {
-      version: "v0.5.1",
+      version: "v0.6.6.1",
       date: "August 2026",
       features: [
-        "Settings sidebar navigation",
-        "About PC section with live hardware specs",
-        "About OS section with branding",
-        "Full version changelog"
+        "Wallpapers PCS app with 10 wallpapers (38MB–100MB each)",
+        "Papers For PC Inc. company website (www.papersforpc.webos)"
       ]
     },
     {
-      version: "v0.5",
-      date: "July 2026",
+      version: "v0.6.5",
+      date: "August 2026",
       features: [
-        "Window edge snapping to half/full screen",
-        "Snap zone overlays while dragging",
-        "Dock icon drag-to-reorder with smooth animations",
-        "Desktop shortcuts with grid snapping",
-        "Trash dock icon with drag-to-delete",
-        "Spring-like dock animations"
+        "Browser system app transformation & pre-installed dock item",
+        "Mbank migrated to online web service (www.mbank.webos)",
+        "BUYNET high-speed ISP service & subscription tiers (www.buynet.webos)"
       ]
     },
     {
-      version: "v0.4.1",
-      date: "July 2026",
+      version: "v0.6.4 - v0.1",
+      date: "May - August 2026",
       features: [
-        "System Monitor app with live CPU/RAM/GPU/Storage/Network metrics",
-        "Real-time CPU bar chart",
-        "Process table showing open apps",
-        "Simulated performance data with visual indicators"
-      ]
-    },
-    {
-      version: "v0.4",
-      date: "June 2026",
-      features: [
-        "Top menu bar with live clock and active app name",
-        "Window minimize/maximize with animations",
-        "Desktop right-click context menu",
-        "Window focus visual states",
-        "Window resize handles"
-      ]
-    },
-    {
-      version: "v0.3",
-      date: "June 2026",
-      features: [
-        "Finder app with sidebar and file browsing",
-        "Notes app with localStorage persistence",
-        "Calculator app with full arithmetic",
-        "Settings app with toggle switches"
-      ]
-    },
-    {
-      version: "v0.2",
-      date: "June 2026",
-      features: [
-        "Window system with title bar and traffic lights",
-        "Window dragging and z-index stacking",
-        "Multiple app windows",
-        "Glassmorphism window styling"
-      ]
-    },
-    {
-      version: "v0.1",
-      date: "May 2026",
-      features: [
-        "Desktop with gradient wallpaper",
-        "Bottom dock with app icons",
-        "Dock hover animations",
-        "Core project structure"
+        "Cyclone X9 CPU & Star R GPU branding",
+        "Boot screen sequence & About OS branding",
+        "App Store with 10 virtual web applications & Mbank wallet",
+        "Window manager, snapping, dock, top bar, and desktop shortcuts"
       ]
     }
   ];

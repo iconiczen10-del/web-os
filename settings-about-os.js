@@ -1,6 +1,6 @@
 /* === FILE: settings-about-os.js === */
 /**
- * WebOS v0.6.2 About OS Main Section Orchestrator
+ * WebOS v0.7 About OS Main Section Orchestrator
  */
 (function () {
   function renderAboutOS(containerEl) {

@@ -1,6 +1,6 @@
 /* === FILE: settings-about-os-sections.js === */
 /**
- * WebOS v0.6.2 About OS System Info, Credits, License & Footer Sections
+ * WebOS v0.7 About OS System Info, Credits, License & Footer Sections
  */
 (function () {
   if (!window._webosBootTime) {
@@ -41,14 +41,14 @@
     }
 
     const rows = [
-      { label: "Software Version", value: "v0.6.2 (Beta)" },
+      { label: "Software Version", value: "v0.7.1.1 (Beta)" },
       { label: "Build Number", value: buildNum },
       { label: "Kernel", value: "WebOS Kernel 1.0" },
       { label: "Architecture", value: "x64 Browser Runtime" },
       { label: "Boot Time", value: window._webosBootTime },
       { label: "Uptime", value: formatUptime(), isUptime: true },
       { label: "Process ID", value: window._webosPid },
-      { label: "User Agent", value: "WebOS/0.6.2" },
+      { label: "User Agent", value: "WebOS/0.7.1.1" },
       { label: "Render Engine", value: engines.render },
       { label: "JavaScript Engine", value: engines.js },
       { label: "Color Depth", value: `${screen.colorDepth}-bit` },

@@ -1,0 +1,98 @@
+/* === FILE: app-monitor-details.css === */
+.mon-context-menu {
+  position: fixed;
+  z-index: 10000;
+  background: #282828;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  padding: 4px 0;
+  width: 160px;
+}
+
+.mon-menu-item {
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #dddddd;
+  cursor: pointer;
+}
+
+.mon-menu-item:hover {
+  background: #007aff;
+  color: #ffffff;
+}
+
+.mon-menu-item.danger:hover {
+  background: #ff453a;
+}
+
+.monitor-alert-banner {
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  border-radius: 6px;
+  text-align: center;
+  animation: pulseAlert 1.5s infinite alternate;
+}
+
+.mon-alert-warning {
+  background: #d97706;
+}
+
+.mon-alert-critical {
+  background: #dc2626;
+}
+
+@keyframes pulseAlert {
+  0% { opacity: 0.85; }
+  100% { opacity: 1; }
+}
+
+.mon-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.mon-core-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.mon-core-label { width: 100px; color: #888888; }
+.mon-core-val { width: 35px; text-align: right; color: #ffffff; font-weight: 600; }
+
+.mon-mem-breakdown {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.mon-mem-box {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.mon-mem-lbl { font-size: 10px; color: #888888; }
+.mon-mem-val { font-size: 14px; font-weight: 600; color: #ffffff; margin-top: 2px; }
+
+.mon-telemetry-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mon-telemetry-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.mon-tel-label { font-size: 11px; color: #888888; }
+.mon-tel-val { font-size: 12px; font-weight: 600; color: #ffffff; }

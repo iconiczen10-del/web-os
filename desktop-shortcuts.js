@@ -1,24 +1,17 @@
 /* === FILE: desktop-shortcuts.js === */
 /**
- * WebOS v0.5 Desktop Shortcuts Manager
+ * WebOS v0.7 Desktop Shortcuts Manager
+ * In-memory shortcuts state. Clean desktop on boot.
  */
 (function () {
-  const STORAGE_KEY = "webos-desktop-shortcuts";
   let desktopShortcuts = [];
 
   function loadShortcuts() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      try {
-        desktopShortcuts = JSON.parse(saved);
-      } catch (e) {
-        desktopShortcuts = [];
-      }
-    }
+    desktopShortcuts = [];
   }
 
   function saveShortcuts() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(desktopShortcuts));
+    // Session-only in memory
   }
 
   function renderShortcut(shortcut) {

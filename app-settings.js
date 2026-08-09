@@ -1,6 +1,6 @@
 /* === FILE: app-settings.js === */
 /**
- * WebOS v0.6.2 Settings Application Manager
+ * WebOS v0.7 Settings Application Manager
  * Sidebar Navigation & Section Manager
  */
 (function () {

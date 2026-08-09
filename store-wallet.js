@@ -1,26 +1,20 @@
 /* === FILE: store-wallet.js === */
 /**
- * WebOS v0.6 Mbank Virtual Wallet Engine
+ * WebOS v0.7 Mbank Virtual Wallet Engine
+ * Fully in-memory state. Resets on boot ($50.00 default).
  */
 (function () {
-  const BALANCE_KEY = "webos-mbank-balance";
-  const TX_KEY = "webos-mbank-transactions";
   const DEFAULT_BALANCE = 50.00;
+  let balance = DEFAULT_BALANCE;
+  let transactions = [];
 
   function getBalance() {
-    const val = localStorage.getItem(BALANCE_KEY);
-    if (val === null) {
-      setBalance(DEFAULT_BALANCE);
-      return DEFAULT_BALANCE;
-    }
-    const num = parseFloat(val);
-    return isNaN(num) ? DEFAULT_BALANCE : num;
+    return balance;
   }
 
   function setBalance(amount) {
-    const rounded = Math.max(0, Math.round(amount * 100) / 100);
-    localStorage.setItem(BALANCE_KEY, rounded.toFixed(2));
-    return rounded;
+    balance = Math.max(0, Math.round(amount * 100) / 100);
+    return balance;
   }
 
   function canAfford(amount) {
@@ -28,17 +22,10 @@
   }
 
   function getTransactions() {
-    const saved = localStorage.getItem(TX_KEY);
-    if (!saved) return [];
-    try {
-      return JSON.parse(saved);
-    } catch (e) {
-      return [];
-    }
+    return transactions;
   }
 
   function addTransaction(type, amount, description) {
-    const txs = getTransactions();
     const newTx = {
       id: "MB-" + Date.now().toString(36).toUpperCase(),
       type,
@@ -47,9 +34,8 @@
       date: new Date().toISOString(),
       formattedDate: new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
-    txs.unshift(newTx);
-    if (txs.length > 50) txs.pop();
-    localStorage.setItem(TX_KEY, JSON.stringify(txs));
+    transactions.unshift(newTx);
+    if (transactions.length > 50) transactions.pop();
     return newTx;
   }
 

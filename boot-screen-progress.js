@@ -1,6 +1,6 @@
 /* === FILE: boot-screen-progress.js === */
 /**
- * WebOS v0.6.4 Boot Screen Progress & Hardware Detection Messages
+ * WebOS v0.7.1.1 Boot Screen Progress & Hardware Detection Messages
  */
 (function () {
   const BOOT_MESSAGES = [

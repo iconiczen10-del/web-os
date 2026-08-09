@@ -1,11 +1,23 @@
 /* === FILE: desktop.js === */
 /**
- * WebOS v0.6.3 Desktop Interactivity Shell
+ * WebOS v0.7 Desktop Interactivity Shell
  */
+
+const DEFAULT_WALLPAPER = "linear-gradient(135deg, #0a0a2e 0%, #1a0a2e 50%, #0d1b3e 100%)";
+
+function applyDesktopWallpaper(gradientStr) {
+  const desktop = document.getElementById("desktop");
+  if (desktop && gradientStr) {
+    desktop.style.background = gradientStr;
+  }
+}
+window.applyDesktopWallpaper = applyDesktopWallpaper;
 
 function initDesktop() {
   if (window._desktopInitialized) return;
   window._desktopInitialized = true;
+
+  console.log("WebOS v0.7.1.1 booted — Fresh start");
 
   // Initialize Top Bar and Context Menu
   if (window.topbarManager && typeof window.topbarManager.initTopbar === "function") {
@@ -32,6 +44,9 @@ function initDesktop() {
     window.loadInstalledApps();
   }
 
+  // Always apply default Sequoia wallpaper on fresh boot
+  applyDesktopWallpaper(DEFAULT_WALLPAPER);
+
   // Dock icon click triggers window manager / restore
   const dock = document.getElementById("dock");
   if (dock) {
@@ -57,7 +72,7 @@ function initDesktop() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function startDesktopApp() {
   const fallbackTimer = setTimeout(() => {
     if (!window._desktopInitialized) {
       console.warn("Boot screen timeout, force-initializing desktop");
@@ -74,5 +89,11 @@ document.addEventListener("DOMContentLoaded", () => {
     clearTimeout(fallbackTimer);
     initDesktop();
   }
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startDesktopApp);
+} else {
+  startDesktopApp();
+}
 

@@ -1,6 +1,6 @@
 /* === FILE: settings-about-os-hero.js === */
 /**
- * WebOS v0.6.2 About OS Branding Hero & Easter Egg Component
+ * WebOS v0.7.1.1 About OS Branding Hero & Easter Egg Component
  */
 (function () {
   let clickCount = 0;
@@ -38,7 +38,7 @@
         </div>
         <div class="about-os-logo-text">WEB OS</div>
       </div>
-      <div class="about-os-version-badge">v0.6.2</div>
+      <div class="about-os-version-badge">v0.7.1.1</div>
       <div class="about-os-tagline">Designed in the Browser. Built with Vanilla HTML, CSS & JavaScript.</div>
       <div class="about-os-stars">★★★★★<span>5.0 • 1 Review</span></div>
       <div class="about-os-buttons">

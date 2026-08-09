@@ -1,6 +1,6 @@
 /* === FILE: app-store.js === */
 /**
- * WebOS v0.6 App Store Manager
+ * WebOS v0.7 App Store Manager
  */
 (function () {
   let activeCategory = "All";
