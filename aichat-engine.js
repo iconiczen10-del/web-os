@@ -1,37 +1,12 @@
 /* === FILE: aichat-engine.js === */
 /**
- * AI Chat Core Response Engine
+ * AI Chat Core Response Engine & Orchestrator
  */
 (function () {
   let sessionMessageCount = 0;
 
-  const TIER_LIMITS = {
-    free: 5,
-    plus: 50,
-    pro: Infinity
-  };
-
-  const TIER_DELAYS = {
-    free: 1500,
-    plus: 500,
-    pro: 0
-  };
-
-  const FALLBACKS = {
-    free: [
-      "I'm not sure about that in my Free Knowledge Base. Try asking about WebOS or basic math!",
-      "I don't have an answer for that yet. Upgrade to Plus or Pro for expanded knowledge!",
-      "Hmm, I couldn't find that in my database. Ask me 'what is webos' or 'tell me a joke'!"
-    ],
-    plus: [
-      "That query didn't match my Plus Knowledge index. Try asking about CPU specs or coding tips!",
-      "I don't have specific data on that yet. Upgrade to Pro Tier for full AI coverage!"
-    ],
-    pro: [
-      "Fascinating topic! While my current knowledge index doesn't have a direct hit for that query, feel free to ask about code generation, quantum computing, or WebOS history!",
-      "That's a unique question! My Pro Knowledge engine is ready for coding algorithms, scientific concepts, or custom math calculations."
-    ]
-  };
+  const TIER_LIMITS = { free: 5, plus: 50, pro: Infinity };
+  const TIER_DELAYS = { free: 1500, plus: 500, pro: 0 };
 
   function getMessageCount() { return sessionMessageCount; }
   function getMessageLimit(tier) { return TIER_LIMITS[tier] || 5; }
@@ -39,7 +14,7 @@
   function resetSessionCount() { sessionMessageCount = 0; }
 
   function hasTimeQuery(input) {
-    return /(what time|current time|what day|what date|today's date|what month|clock)/i.test(input);
+    return /(what time|current time|what day|what date|today's date|clock)/i.test(input);
   }
 
   function getTimeResponse() {
@@ -50,22 +25,19 @@
   function findKnowledgeMatch(input, currentTier) {
     const knowledge = window.aiKnowledge || [];
     const cleanInput = input.toLowerCase();
-
     const allowedTiers = currentTier === "pro" ? ["free", "plus", "pro"] : (currentTier === "plus" ? ["free", "plus"] : ["free"]);
 
     let bestMatch = null;
-    let maxKeywordHits = 0;
+    let maxHits = 0;
 
     for (const entry of knowledge) {
       if (!allowedTiers.includes(entry.tier)) continue;
       let hits = 0;
       for (const kw of entry.keywords) {
-        if (cleanInput.includes(kw.toLowerCase())) {
-          hits++;
-        }
+        if (cleanInput.includes(kw.toLowerCase())) hits++;
       }
-      if (hits > maxKeywordHits) {
-        maxKeywordHits = hits;
+      if (hits > maxHits) {
+        maxHits = hits;
         bestMatch = entry;
       }
     }
@@ -89,20 +61,36 @@
     }
 
     sessionMessageCount++;
-
+    const cleanInput = (userInput || "").toLowerCase().trim();
     let responseText = "";
 
-    if (window.aiMath && window.aiMath.isMathExpression(userInput)) {
+    if (cleanInput === "help") {
+      responseText = window.aiFallback ? window.aiFallback.getHelpText(tier) : "Type 'topics' to browse!";
+    } else if (cleanInput === "topics") {
+      responseText = window.aiCommands ? window.aiCommands.getTopicsText(tier) : "Categories: WebOS, Hardware, Jokes, Coding, General";
+    } else if (cleanInput === "examples") {
+      responseText = window.aiCommands ? window.aiCommands.getExamplesText(tier) : "Try asking: What is WebOS?";
+    } else if (cleanInput.startsWith("category")) {
+      const cat = cleanInput.replace("category", "").trim();
+      responseText = window.aiCommands ? window.aiCommands.getCategoryText(cat, tier) : window.aiFallback.getHelpText(tier);
+    } else if (window.aiMath && window.aiMath.isMathExpression(userInput)) {
       responseText = window.aiMath.solveMath(userInput, tier);
     } else if (hasTimeQuery(userInput)) {
       responseText = getTimeResponse();
     } else {
-      const match = findKnowledgeMatch(userInput, tier);
-      if (match) {
-        responseText = match;
+      const exactMatch = findKnowledgeMatch(userInput, tier);
+      if (exactMatch) {
+        responseText = exactMatch;
+      } else if (window.aiMatching) {
+        const matches = window.aiMatching.findWordMatches(userInput, tier);
+        const formatted = window.aiMatching.formatMatchResponse(matches, tier);
+        if (formatted) {
+          responseText = formatted;
+        } else {
+          responseText = window.aiFallback ? window.aiFallback.getHelpText(tier) : "Ask me anything!";
+        }
       } else {
-        const fallbackList = FALLBACKS[tier] || FALLBACKS.free;
-        responseText = fallbackList[Math.floor(Math.random() * fallbackList.length)];
+        responseText = window.aiFallback ? window.aiFallback.getHelpText(tier) : "Ask me anything!";
       }
     }
 
@@ -115,10 +103,7 @@
       await new Promise(resolve => setTimeout(resolve, delay));
     }
 
-    return {
-      text: responseText,
-      isLimit: false
-    };
+    return { text: responseText, isLimit: false };
   }
 
   window.aiEngine = {

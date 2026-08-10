@@ -1,9 +1,26 @@
 /* === FILE: settings-changelog-data-late.js === */
 /**
- * WebOS Changelog Data - Late Versions (v0.6.6.1 to v0.7.2.3)
+ * WebOS Changelog Data - Late Versions (v0.6.6.1 to v0.7.4)
  */
 (function () {
   window.CHANGELOG_LATE = [
+    {
+      version: "v0.7.4",
+      features: [
+        "AI Chat welcome message shows all knowledge categories",
+        "Smart word matching: scans every word in user input for matches",
+        "Priority-based match system (hardware > webos > commands > general > coding)",
+        "Multiple match handling: shows best match + suggests other found topics",
+        "Zero dead ends: unknown input always returns help topics",
+        "Tier-aware help command showing available/locked features",
+        "Free tier: heavy marketing with ads every 2 messages and upgrade prompts",
+        "Plus tier: light Pro marketing, no banner ads",
+        "Pro tier: completely clean, no marketing, all features",
+        "topics, examples, and category browsing commands",
+        "AI typing indicator with tier-based delays",
+        "Message counter with color warnings near limits"
+      ]
+    },
     {
       version: "v0.7.2.3",
       features: [
@@ -67,15 +84,9 @@
       version: "v0.7.1.1",
       features: [
         "System Monitor redesigned with 4 tabs: Overview, CPU, Memory, GPU",
-        "Live CPU graph with per-core breakdown for Cyclone X9",
-        "Live RAM graph with used/cached/free breakdown",
-        "Live GPU graph with VRAM, temperature, and fan speed",
-        "Real-time resource tracking — opening apps increases CPU/RAM/GPU",
-        "Process table with End Process, Force Quit, and detail panel",
-        "End All Processes button to close all windows",
+        "Live CPU, RAM, and GPU graphs with real-time resource tracking",
+        "Process table with End Process, Force Quit, and End All Processes",
         "Resource alerts for high CPU, memory, and GPU usage",
-        "Process details panel showing PID, threads, uptime",
-        "All graphs animate live every 500ms as OS is used",
         "Global version sync to v0.7.1.1"
       ]
     },
@@ -83,8 +94,7 @@
       version: "v0.7.1",
       features: [
         "Global version number sync across entire OS",
-        "Updated version strings in boot screen, About OS, About PC, Terminal, System Monitor, Browser, desktop",
-        "Consistent branding everywhere"
+        "Updated version strings in boot screen, About OS, About PC, Terminal, System Monitor, Browser, desktop"
       ]
     },
     {
@@ -92,44 +102,12 @@
       features: [
         "Complete data wipe on every page refresh — true fresh start",
         "Mbank balance resets to $50.00 on every boot",
-        "No persistence: all localStorage removed for user data",
-        "Default internet speed: 200 KB/s with no BUYNET plan",
-        "Version History re-locks every time you leave the tab",
-        "Clean desktop with no shortcuts on every boot",
-        "System apps only in dock on fresh boot"
+        "No persistence: all localStorage removed for user data"
       ]
     },
     {
-      version: "v0.6.6.3",
-      features: [
-        "Password-protected Version History tab in Settings",
-        "Hardcoded password lock (9610) on changelog access",
-        "Shake animation on incorrect password attempt",
-        "Smooth fade transition on successful unlock",
-        "Session-only lock state (resets on page reload)"
-      ]
-    },
-    {
-      version: "v0.6.6.2",
-      features: [
-        "Split index.html into 3 files to prevent 150-line cap breach",
-        "index.html is now a minimal skeleton (~25 lines)",
-        "loader-css.js dynamically loads all CSS files in correct cascade order",
-        "loader-js.js dynamically loads all JS files in dependency order",
-        "Dock HTML and desktop shortcuts injected by loader-js.js"
-      ]
-    },
-    {
-      version: "v0.6.6.1",
-      features: [
-        "Wallpapers PCS app with 10 wallpapers (38MB–100MB each)",
-        "Free tier (4 wallpapers) and Pro tier ($4.99/month for all 10)",
-        "Dummy login/signup system",
-        "Real Mbank payment integration for Pro subscription",
-        "Wallpaper preview and one-click apply to desktop",
-        "Papers For PC Inc. company website (www.papersforpc.webos)",
-        "Company website with Home, About, Products, Contact, Press, Careers pages"
-      ]
+      version: "v0.7.1.1.A",
+      features: ["Additive changelog enforced — entries never modified or merged"]
     }
   ];
 })();

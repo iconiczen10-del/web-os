@@ -38,6 +38,8 @@
     "browser-papersforpc-components.css",
     "app-aichat-layout.css",
     "app-aichat-components.css",
+    "app-aichat-marketing.css",
+    "app-aichat-topics.css",
     "browser-aitalks.css",
     "browser-news-layout.css",
     "browser-news-cards.css",

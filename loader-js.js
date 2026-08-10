@@ -55,8 +55,8 @@
       "wallpapers-subscription.js", "wallpapers-modal.js", "wallpapers-render.js", "app-wallpapers.js",
       "browser-papersforpc-pages.js", "browser-papersforpc.js",
       "aichat-knowledge-free.js", "aichat-knowledge-plus.js", "aichat-knowledge-pro.js", "aichat-knowledge.js",
-      "aichat-math.js", "aichat-personality.js", "aichat-engine.js", "aichat-subscription.js", "aichat-payment.js",
-      "aichat-login.js", "aichat-subscription-ui.js", "app-aichat-ui.js", "app-aichat.js",
+      "aichat-math.js", "aichat-personality.js", "aichat-fallback.js", "aichat-commands.js", "aichat-matching.js", "aichat-marketing.js", "aichat-engine.js", "aichat-subscription.js", "aichat-payment.js",
+      "aichat-login.js", "aichat-subscription-ui.js", "aichat-topics-view.js", "app-aichat-ui.js", "app-aichat.js",
       "browser-aitalks-pages.js", "browser-aitalks-pages-2.js", "browser-aitalks.js",
       "boot-screen-progress.js", "boot-screen.js",
       "desktop.js"
