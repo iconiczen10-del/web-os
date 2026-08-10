@@ -1,0 +1,132 @@
+/* === FILE: settings-developer-components.css === */
+/* Developer Tab Metrics Cards, File Groups, & Tables */
+
+.dev-section {
+  margin-bottom: 24px;
+}
+
+.dev-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.dev-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.dev-metric-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.dev-metric-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.dev-metric-label {
+  font-size: 10px;
+  color: #888;
+  text-transform: uppercase;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+}
+
+/* Groups List */
+.dev-group-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+}
+
+.dev-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 13px;
+  color: #fff;
+  font-weight: 500;
+  user-select: none;
+}
+
+.dev-group-count {
+  font-size: 11px;
+  color: #888;
+}
+
+.dev-group-files {
+  display: none;
+  padding-top: 8px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dev-group-files.expanded {
+  display: block;
+}
+
+.dev-file-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  font-size: 11px;
+  color: #aaa;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* Table */
+.dev-file-table-wrapper {
+  max-height: 280px;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.dev-file-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.dev-file-table th {
+  text-align: left;
+  padding: 8px 10px;
+  color: #888;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  background: #1e1e1e;
+  z-index: 2;
+}
+
+.dev-file-table td {
+  padding: 6px 10px;
+  color: #ccc;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.dev-type-badge {
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-html { background: rgba(255, 149, 0, 0.2); color: #ff9500; }
+.badge-css { background: rgba(0, 122, 255, 0.2); color: #007aff; }
+.badge-js { background: rgba(255, 204, 0, 0.2); color: #ffcc00; }

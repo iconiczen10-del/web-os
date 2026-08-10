@@ -1,9 +1,55 @@
 /* === FILE: settings-changelog-data-early.js === */
 /**
- * WebOS Changelog Data - Early Versions (v0.1 to v0.5.1)
+ * WebOS Changelog Data - Early Versions (v0.1 to v0.6.5)
  */
 (function () {
   window.CHANGELOG_EARLY = [
+    {
+      version: "v0.6.5",
+      features: [
+        "Browser upgraded to built-in system app",
+        "Mbank moved to browser as website (www.mbank.webos)",
+        "BUYNET internet plans website with 5 subscription tiers",
+        "Browser address bar with URL navigation and routing",
+        "Browser bookmarks bar with quick links",
+        "Browser search engine with results page",
+        "Browser history with back/forward navigation",
+        "Realistic App Store download system with progress bars",
+        "Download speeds based on active BUYNET plan",
+        "App sizes updated to realistic values (45MB–2.1GB)"
+      ]
+    },
+    {
+      version: "v0.6.4",
+      features: [
+        "Custom hardware branding across entire OS",
+        "Cyclone 1st Gen X9 CPU (2C/4T @ 2.7 GHz)",
+        "Star R Pro GPU (2GB GDDR5, Star Kepler architecture)",
+        "Black U5000 RAM (8GB DDR4 @ 5000 MHz)",
+        "Bolt NV-256 Storage (256GB NVMe M.2 SSD)",
+        "Updated System Monitor, About PC, Terminal neofetch, boot messages"
+      ]
+    },
+    {
+      version: "v0.6.3",
+      features: [
+        "Realistic boot screen with logo, progress bar, and boot messages",
+        "CSS-drawn WebOS window logo with pulsing glow",
+        "Animated progress bar with shimmer effect",
+        "Input blocking during boot sequence"
+      ]
+    },
+    {
+      version: "v0.6.2",
+      features: [
+        "Redesigned About OS with CSS-drawn window logo",
+        "Detailed system information table with live uptime",
+        "Credit cards with roles and descriptions",
+        "MIT License display in scrollable block",
+        "Version History extracted to its own Settings tab",
+        "Easter egg: click logo 5 times for surprise"
+      ]
+    },
     {
       version: "v0.6.1",
       features: [

@@ -13,6 +13,8 @@
     "app-settings-about.css",
     "app-settings-changelog.css",
     "settings-lock.css",
+    "settings-developer-layout.css",
+    "settings-developer-components.css",
     "settings-about-os-layout.css",
     "settings-about-os-components.css",
     "app-monitor.css",
@@ -37,6 +39,9 @@
     "app-aichat-layout.css",
     "app-aichat-components.css",
     "browser-aitalks.css",
+    "browser-news-layout.css",
+    "browser-news-cards.css",
+    "browser-news-modal.css",
     "uninstall-dialog.css"
   ];
 

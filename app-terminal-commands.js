@@ -58,7 +58,7 @@
   ╚█████╔╝███████╗██████╔╝╚██████╔╝███████║
    ╚════╝ ╚══════╝╚═════╝  ╚═════╝ ╚══════╝
 
-  OS: WebOS v0.7.2 (64-bit Browser Runtime)
+  OS: WebOS v0.7.2.3 (64-bit Browser Runtime)
   Host: Bolt B350-M
   Kernel: WebOS Kernel 1.0
   CPU: Cyclone 1st Gen X9 (2C/4T) @ 2.7 GHz

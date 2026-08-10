@@ -16,7 +16,7 @@
           <div class="settings-nav-item" data-section="about-pc">About PC</div>
           <div class="settings-nav-item" data-section="about-os">About OS</div>
           <div class="settings-nav-item" data-section="apps">Apps</div>
-          <div class="settings-nav-item" data-section="version-history">Version History</div>
+          <div class="settings-nav-item" data-section="developer">🔒 For Developers</div>
         </div>
         <div class="settings-content"></div>
       </div>
@@ -37,8 +37,8 @@
         window.renderAboutOS(mainContent);
       } else if (sectionName === "apps" && typeof window.renderAppsList === "function") {
         window.renderAppsList(mainContent);
-      } else if (sectionName === "version-history" && typeof window.renderVersionHistory === "function") {
-        window.renderVersionHistory(mainContent);
+      } else if (sectionName === "developer" && typeof window.renderDeveloperTab === "function") {
+        window.renderDeveloperTab(mainContent);
       }
     }
 

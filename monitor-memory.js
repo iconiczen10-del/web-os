@@ -1,6 +1,6 @@
 /* === FILE: monitor-memory.js === */
 /**
- * WebOS v0.6.4 System Monitor - Memory Management & Black U5000 Specs
+ * WebOS v0.7.2.2 System Monitor - Memory Management & Black U5000 Specs
  */
 (function () {
   function formatBytes(bytes) {
@@ -25,14 +25,14 @@
 
   function getRAMUsage() {
     const totalMB = 8192; // 8 GB
-    let usedMB = 3200; // ~3.2 GB default
+    let usedMB = 3500; // default idle
 
     if (performance && performance.memory) {
       const heapUsedMB = Math.round(performance.memory.usedJSHeapSize / (1024 * 1024));
-      usedMB = Math.min(1200 + heapUsedMB * 2, totalMB - 500);
+      usedMB = Math.min(1500 + heapUsedMB * 2, totalMB - 500);
     } else {
       const windowCount = document.querySelectorAll(".window-container").length;
-      usedMB = 3200 + (windowCount * 65) + Math.floor(Math.random() * 20);
+      usedMB = 1500 + (windowCount * 180) + Math.floor(Math.random() * 30);
     }
 
     const usedGBStr = (usedMB / 1024).toFixed(1) + " GB";

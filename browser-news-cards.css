@@ -1,0 +1,129 @@
+/* === FILE: browser-news-cards.css === */
+/* Tech Chronicle Featured Card & Grid Cards */
+
+.news-featured-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.news-featured-card:hover {
+  transform: translateY(-2px);
+  border-color: #3b82f6;
+}
+
+.news-feat-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.news-feat-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 10px 0;
+  line-height: 1.3;
+}
+
+.news-feat-summary {
+  font-size: 13px;
+  color: #cbd5e1;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.news-feat-meta {
+  font-size: 11px;
+  color: #64748b;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.news-read-time {
+  color: #38bdf8;
+}
+
+/* Cards Grid */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.news-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.news-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.news-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.news-card-cat {
+  font-size: 10px;
+  font-weight: 600;
+  color: #38bdf8;
+  text-transform: uppercase;
+}
+
+.news-card-time {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.news-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.news-card-summary {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.4;
+  margin-bottom: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-card-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #64748b;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding-top: 10px;
+}

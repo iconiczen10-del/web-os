@@ -6,7 +6,7 @@
   function refreshActiveTab(contentEl, activeTab) {
     if (!contentEl) return;
     const totals = window.monitorProcess ? window.monitorProcess.getTotals() : {
-      cpu: 5, ram: 1200, gpu: 5, vramGB: 0.3, procs: []
+      cpu: 5, ram: 1500, gpu: 5, vramGB: 0.3, procs: []
     };
 
     // Check alerts

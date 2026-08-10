@@ -63,21 +63,18 @@
     containerEl.innerHTML = `
       <div style="padding: 28px; max-width: 600px; margin: 0 auto; color: #ddd; line-height: 1.6;">
         <h2 style="color: #fff; margin-top: 0;">About WebOS Internet Ecosystem</h2>
-        <p>WebOS v0.7.2 introduces a complete simulated internet ecosystem featuring AI Chat, online banking (Mbank), ISP subscription manager (BUYNET), and custom web browsing.</p>
+        <p>WebOS v0.7.2.2 introduces an enhanced simulated internet ecosystem featuring Developer Settings, AI Chat, online banking (Mbank), ISP subscription manager (BUYNET), and custom web browsing.</p>
         <p>Operating entirely in client-side runtime without remote API servers, WebOS ensures full offline capability and privacy.</p>
       </div>
     `;
   }
 
   function renderNewsPage(containerEl) {
-    containerEl.innerHTML = `
-      <div style="padding: 28px; max-width: 600px; margin: 0 auto; color: #ddd; line-height: 1.6;">
-        <h2 style="color: #fff; margin-top: 0;">Tech Chronicle: WebOS v0.7.2 Released!</h2>
-        <div style="font-size: 11px; color: #888; margin-bottom: 16px;">Published August 2026 • Tech Chronicle</div>
-        <p>Today WebOS announces AI Chat with local response engine, AI Talks Inc. website, and 3 subscription tiers powered by Mbank.</p>
-        <p>Users can now manage high-speed bandwidth, purchase plans with virtual currency, and chat with local AI.</p>
-      </div>
-    `;
+    if (typeof window.renderNewsPage === "function" && window.renderNewsPage !== renderNewsPage) {
+      window.renderNewsPage(containerEl);
+      return;
+    }
+    containerEl.innerHTML = `<div style="padding: 28px; color: #fff;">Loading Tech Chronicle News...</div>`;
   }
 
   function renderStoreInfoPage(containerEl) {

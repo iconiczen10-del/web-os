@@ -1,9 +1,48 @@
 /* === FILE: settings-changelog-data-late.js === */
 /**
- * WebOS Changelog Data - Late Versions (v0.6 to v0.7.1.1.A)
+ * WebOS Changelog Data - Late Versions (v0.6.6.1 to v0.7.2.3)
  */
 (function () {
   window.CHANGELOG_LATE = [
+    {
+      version: "v0.7.2.3",
+      features: [
+        "Tech Chronicle News Portal with 20 realistic WebOS news articles",
+        "Category filtering (OS Release, Hardware, App Store, Security, AI, Fintech, Dev, Design)",
+        "Real-time news article search across titles, categories, and summaries",
+        "Featured Lead Story spotlight card with badge and reading time",
+        "Full Article Reader Modal view with rich multi-paragraph realistic coverage",
+        "Ecosystem coverage: Cyclone X9 CPU, Mbank, BUYNET Fiber, AI Talks Inc., Papers For PC Inc.",
+        "Modular architecture: split into data, render, modal, and CSS sub-modules"
+      ]
+    },
+    {
+      version: "v0.7.2.2",
+      features: [
+        "New For Developers tab in Settings (password 9610)",
+        "Developer tab with two sub-tabs: Version History and System Metrics",
+        "Version History moved into Developer tab (no longer standalone)",
+        "System Metrics shows total files (138), code lines (12,042), file types",
+        "File groups with expandable file lists (13 groups)",
+        "Full file list table with per-file line counts and type badges",
+        "Settings sidebar cleaned up — 5 items instead of 6",
+        "Developer tab re-locks every visit"
+      ]
+    },
+    {
+      version: "v0.7.2.1",
+      features: [
+        "Increased RAM consumption across all 17 apps",
+        "Base system RAM increased from 1.2 GB to 1.5 GB",
+        "Video Editor now uses 450-750 MB (was 200-350 MB)",
+        "Game Center now uses 350-550 MB (was 150-250 MB)",
+        "Browser now uses 200-400 MB (was 80-150 MB)",
+        "AI Chat now uses 150-300 MB (was 50-85 MB)",
+        "All apps RAM increased by 1.5x to 3x",
+        "8 GB RAM limit now realistically reachable with multiple apps",
+        "System feels heavier — closing apps frees noticeable RAM"
+      ]
+    },
     {
       version: "v0.7.2",
       features: [
@@ -90,52 +129,6 @@
         "Wallpaper preview and one-click apply to desktop",
         "Papers For PC Inc. company website (www.papersforpc.webos)",
         "Company website with Home, About, Products, Contact, Press, Careers pages"
-      ]
-    },
-    {
-      version: "v0.6.5",
-      features: [
-        "Browser upgraded to built-in system app",
-        "Mbank moved to browser as website (www.mbank.webos)",
-        "BUYNET internet plans website with 5 subscription tiers",
-        "Browser address bar with URL navigation and routing",
-        "Browser bookmarks bar with quick links",
-        "Browser search engine with results page",
-        "Browser history with back/forward navigation",
-        "Realistic App Store download system with progress bars",
-        "Download speeds based on active BUYNET plan",
-        "App sizes updated to realistic values (45MB–2.1GB)"
-      ]
-    },
-    {
-      version: "v0.6.4",
-      features: [
-        "Custom hardware branding across entire OS",
-        "Cyclone 1st Gen X9 CPU (2C/4T @ 2.7 GHz)",
-        "Star R Pro GPU (2GB GDDR5, Star Kepler architecture)",
-        "Black U5000 RAM (8GB DDR4 @ 5000 MHz)",
-        "Bolt NV-256 Storage (256GB NVMe M.2 SSD)",
-        "Updated System Monitor, About PC, Terminal neofetch, boot messages"
-      ]
-    },
-    {
-      version: "v0.6.3",
-      features: [
-        "Realistic boot screen with logo, progress bar, and boot messages",
-        "CSS-drawn WebOS window logo with pulsing glow",
-        "Animated progress bar with shimmer effect",
-        "Input blocking during boot sequence"
-      ]
-    },
-    {
-      version: "v0.6.2",
-      features: [
-        "Redesigned About OS with CSS-drawn window logo",
-        "Detailed system information table with live uptime",
-        "Credit cards with roles and descriptions",
-        "MIT License display in scrollable block",
-        "Version History extracted to its own Settings tab",
-        "Easter egg: click logo 5 times for surprise"
       ]
     }
   ];

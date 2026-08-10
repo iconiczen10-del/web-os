@@ -1,9 +1,9 @@
 /* === FILE: monitor-tab-memory.js === */
 /**
- * WebOS v0.7.1.1 Monitor Tab - Memory
+ * WebOS v0.7.2.2 Monitor Tab - Memory
  */
 (function () {
-  let ramHistory = Array.from({ length: 60 }, () => 1.2 + Math.random() * 0.3);
+  let ramHistory = Array.from({ length: 60 }, () => 1.5 + Math.random() * 0.3);
 
   function renderMemoryTab(containerEl) {
     containerEl.innerHTML = `
@@ -30,11 +30,11 @@
             </div>
             <div class="mon-mem-box">
               <div class="mon-mem-lbl">System Cache</div>
-              <div class="mon-mem-val" id="ram-cached-val">1.2 GB</div>
+              <div class="mon-mem-val" id="ram-cached-val">1.5 GB</div>
             </div>
             <div class="mon-mem-box">
               <div class="mon-mem-lbl">Free Memory</div>
-              <div class="mon-mem-val" id="ram-free-val">5.6 GB</div>
+              <div class="mon-mem-val" id="ram-free-val">5.1 GB</div>
             </div>
           </div>
         </div>

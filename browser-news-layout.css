@@ -1,0 +1,91 @@
+/* === FILE: browser-news-layout.css === */
+/* Tech Chronicle News Portal Container, Header & Categories */
+
+.news-portal-container {
+  padding: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  color: #e2e8f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.news-portal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 16px;
+}
+
+.news-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.news-brand-icon {
+  font-size: 32px;
+}
+
+.news-brand-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.news-brand-sub {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.news-search-input {
+  width: 220px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 12px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.news-search-input:focus {
+  border-color: #3b82f6;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Categories Bar */
+.news-cat-bar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.news-cat-btn {
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.news-cat-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.news-cat-btn.active {
+  background: #2563eb;
+  color: #fff;
+  border-color: #3b82f6;
+}
