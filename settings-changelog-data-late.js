@@ -5,6 +5,18 @@
 (function () {
   window.CHANGELOG_LATE = [
     {
+      version: "v0.7.2",
+      features: [
+        "AI Chat system app with 106+ knowledge base entries across Free, Plus, and Pro tiers",
+        "Tier-gated math expression engine (+/- for Free, +/*/% for Plus, scientific functions for Pro)",
+        "Pro Tier custom AI personalities: Friendly 😊, Professional 💼, and Sarcastic 🙄",
+        "Mbank 3-step payment flow ($100 Plus, $300 Pro) with wallet validation",
+        "In-memory user authentication system (Sign Up, Sign In, Sign Out)",
+        "AI Talks Inc. official company website (www.aitalks.webos) with 300-word company profile",
+        "Global OS version sync to v0.7.2"
+      ]
+    },
+    {
       version: "v0.7.1.1.A",
       features: [
         "Version history rebuilt — every version as individual entry, no merged versions",
@@ -124,24 +136,6 @@
         "MIT License display in scrollable block",
         "Version History extracted to its own Settings tab",
         "Easter egg: click logo 5 times for surprise"
-      ]
-    },
-    {
-      version: "v0.6.1",
-      features: [
-        "App uninstall system via App Store, desktop right-click, and Settings",
-        "Custom styled confirmation dialog",
-        "Mbank system app protection",
-        "Paid app uninstall warning (no refunds)"
-      ]
-    },
-    {
-      version: "v0.6",
-      features: [
-        "App Store with 10 apps (7 free, 2 paid, Mbank)",
-        "Realistic purchase flow with processing and success screens",
-        "Mbank virtual banking app with card UI",
-        "Installed apps appear on desktop and dock"
       ]
     }
   ];

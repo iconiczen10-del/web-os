@@ -51,6 +51,18 @@
       url: "www.store.webos#wallpapers",
       description: "Beautiful wallpapers for your desktop. Browse 10 stunning gradient designs with free and pro tiers.",
       keywords: ["wallpapers", "backgrounds", "desktop wallpaper", "desktop", "images", "pcs", "free", "pro"]
+    },
+    {
+      title: "AI Talks Inc. — Intelligent Conversation",
+      url: "www.aitalks.webos",
+      description: "Official company website of AI Talks Inc., creators of AI Chat for WebOS.",
+      keywords: ["ai", "chat", "assistant", "aitalks", "artificial intelligence", "talks", "bot", "company"]
+    },
+    {
+      title: "AI Chat Application",
+      url: "www.store.webos#aichat",
+      description: "Your intelligent AI assistant for WebOS. Answers questions, tells jokes, writes code, and solves math problems.",
+      keywords: ["ai", "chat", "assistant", "bot", "coding", "math", "jokes", "aichat", "productivity"]
     }
   ];
 

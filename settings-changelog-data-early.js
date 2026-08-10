@@ -5,6 +5,24 @@
 (function () {
   window.CHANGELOG_EARLY = [
     {
+      version: "v0.6.1",
+      features: [
+        "App uninstall system via App Store, desktop right-click, and Settings",
+        "Custom styled confirmation dialog",
+        "Mbank system app protection",
+        "Paid app uninstall warning (no refunds)"
+      ]
+    },
+    {
+      version: "v0.6",
+      features: [
+        "App Store with 10 apps (7 free, 2 paid, Mbank)",
+        "Realistic purchase flow with processing and success screens",
+        "Mbank virtual banking app with card UI",
+        "Installed apps appear on desktop and dock"
+      ]
+    },
+    {
       version: "v0.5.1",
       features: [
         "Settings sidebar with About PC, About OS, and Version History sections"

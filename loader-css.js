@@ -34,6 +34,9 @@
     "app-wallpapers-modal.css",
     "browser-papersforpc.css",
     "browser-papersforpc-components.css",
+    "app-aichat-layout.css",
+    "app-aichat-components.css",
+    "browser-aitalks.css",
     "uninstall-dialog.css"
   ];
 

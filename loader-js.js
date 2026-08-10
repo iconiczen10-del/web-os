@@ -50,7 +50,12 @@
       "browser-navigation.js", "browser-renderer.js", "app-browser.js", "app-calendar.js",
       "app-gamecenter.js", "app-videoeditor.js", "wallpapers-data.js", "wallpapers-login.js",
       "wallpapers-subscription.js", "wallpapers-modal.js", "wallpapers-render.js", "app-wallpapers.js",
-      "browser-papersforpc-pages.js", "browser-papersforpc.js", "boot-screen-progress.js", "boot-screen.js",
+      "browser-papersforpc-pages.js", "browser-papersforpc.js",
+      "aichat-knowledge-free.js", "aichat-knowledge-plus.js", "aichat-knowledge-pro.js", "aichat-knowledge.js",
+      "aichat-math.js", "aichat-personality.js", "aichat-engine.js", "aichat-subscription.js", "aichat-payment.js",
+      "aichat-login.js", "aichat-subscription-ui.js", "app-aichat-ui.js", "app-aichat.js",
+      "browser-aitalks-pages.js", "browser-aitalks-pages-2.js", "browser-aitalks.js",
+      "boot-screen-progress.js", "boot-screen.js",
       "desktop.js"
     ];
 

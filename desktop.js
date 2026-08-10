@@ -17,7 +17,7 @@ function initDesktop() {
   if (window._desktopInitialized) return;
   window._desktopInitialized = true;
 
-  console.log("WebOS v0.7.1.1.A booted — Fresh start");
+  console.log("WebOS v0.7.2 booted — Fresh start");
 
   // Initialize Top Bar and Context Menu
   if (window.topbarManager && typeof window.topbarManager.initTopbar === "function") {

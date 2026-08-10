@@ -19,7 +19,8 @@
     calendar: "initCalendar",
     gamecenter: "initGameCenter",
     videoeditor: "initVideoEditor",
-    wallpapers: "initWallpapers"
+    wallpapers: "initWallpapers",
+    aichat: "initAIChat"
   };
 
   function dispatchAppInit(appName, winContainer) {

@@ -41,14 +41,14 @@
     }
 
     const rows = [
-      { label: "Software Version", value: "v0.7.1.1.A (Beta)" },
+      { label: "Software Version", value: "v0.7.2 (Beta)" },
       { label: "Build Number", value: buildNum },
       { label: "Kernel", value: "WebOS Kernel 1.0" },
       { label: "Architecture", value: "x64 Browser Runtime" },
       { label: "Boot Time", value: window._webosBootTime },
       { label: "Uptime", value: formatUptime(), isUptime: true },
       { label: "Process ID", value: window._webosPid },
-      { label: "User Agent", value: "WebOS/0.7.1.1.A" },
+      { label: "User Agent", value: "WebOS/0.7.2" },
       { label: "Render Engine", value: engines.render },
       { label: "JavaScript Engine", value: engines.js },
       { label: "Color Depth", value: `${screen.colorDepth}-bit` },

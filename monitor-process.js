@@ -19,7 +19,8 @@
     calendar: { cpu: [1, 2], ram: [35, 50], gpu: [3, 5] },
     gamecenter: { cpu: [8, 15], ram: [150, 250], gpu: [15, 25] },
     videoeditor: { cpu: [10, 20], ram: [200, 350], gpu: [20, 35] },
-    wallpapers: { cpu: [2, 5], ram: [60, 100], gpu: [8, 12] }
+    wallpapers: { cpu: [2, 5], ram: [60, 100], gpu: [8, 12] },
+    aichat: { cpu: [2, 5], ram: [50, 85], gpu: [3, 6] }
   };
 
   const winMetaMap = new WeakMap();

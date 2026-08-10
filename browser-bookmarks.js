@@ -8,6 +8,7 @@
     { name: "Mbank", url: "www.mbank.webos", icon: "🏦" },
     { name: "BUYNET", url: "www.buynet.webos", icon: "📡" },
     { name: "Papers For PC", url: "www.papersforpc.webos", icon: "🖼️" },
+    { name: "AI Talks", url: "www.aitalks.webos", icon: "🤖" },
     { name: "Store", url: "www.store.webos", icon: "🛒" },
     { name: "Search", url: "webos://search", icon: "🔍" }
   ];
