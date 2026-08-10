@@ -27,10 +27,13 @@
     "store-detail.css",
     "store-download.css",
     "browser-mbank.css",
+    "browser-mbank-card.css",
     "browser-buynet.css",
+    "browser-buynet-cards.css",
     "app-wallpapers.css",
     "app-wallpapers-modal.css",
     "browser-papersforpc.css",
+    "browser-papersforpc-components.css",
     "uninstall-dialog.css"
   ];
 

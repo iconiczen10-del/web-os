@@ -37,7 +37,7 @@
       "desktop-shortcuts-drag.js", "desktop-shortcuts.js", "desktop-app-shortcuts.js", "desktop-shortcuts-context.js",
       "topbar.js", "context-menu.js", "app-dispatcher.js", "window.js",
       "app-finder.js", "app-notes.js", "app-calculator-logic.js", "app-calculator.js",
-      "settings-general.js", "settings-about-pc.js", "settings-changelog-data.js", "settings-changelog.js",
+      "settings-general.js", "settings-about-pc.js", "settings-changelog-data-early.js", "settings-changelog-data-late.js", "settings-changelog-data.js", "settings-changelog.js",
       "settings-version-history.js", "settings-about-os-hero.js", "settings-about-os-sections.js", "settings-about-os.js",
       "app-settings.js", "settings-apps.js", "monitor-cpu.js", "monitor-memory.js",
       "monitor-system.js", "monitor-process.js", "monitor-graphs.js", "monitor-alerts.js",

@@ -1,47 +1,97 @@
-# WebOS v0.6.5
+# ⚡ WebOS v0.7.1.1.A — Next-Gen In-Browser Desktop Operating System
 
-An in-browser desktop operating system built entirely with vanilla HTML, CSS, and modular JavaScript. WebOS operates completely offline without external libraries, frameworks, or remote API calls.
+[![WebOS Version](https://img.shields.io/badge/WebOS-v0.7.1.1.A-0a84ff?style=for-the-badge&logo=javascript)](https://webos.dev)
+[![Architecture](https://img.shields.io/badge/Architecture-HH1%20Vanilla%20JS-30d158?style=for-the-badge)](https://webos.dev)
+[![Offline First](https://img.shields.io/badge/Offline-100%25%20Client--Side-bf5af2?style=for-the-badge)](https://webos.dev)
+[![Codebase Stats](https://img.shields.io/badge/Files-128%20Files%20%7C%2010.6K%20LOC-ff9f0a?style=for-the-badge)](https://webos.dev)
 
----
+```
+   ██╗██╗██╗  ██╗███████╗██████╗ ███████╗ ██████╗  ██████╗  ██████╗
+  ████████╗██║  ██║██╔════╝██╔══██╗██╔════╝██╔═══██╗██╔════╝ ██╔════╝
+  ╚██████╔╝███████║█████╗  ██████╔╝███████╗██║   ██║███████╗ ███████╗
+  ████████╗██╔══██║██╔══╝  ██╔══██╗╚════██║██║   ██║╚════██║ ╚════██║
+  ╚██╔═██╔╝██║  ██║███████╗██████╔╝███████║╚██████╔╝███████║ ███████║
+   ╚═╝ ╚═╝ ╚═╝  ╚═╝╚══════╝╚═════╝ ╚══════╝ ╚═════╝ ╚══════╝ ╚══════╝
+```
 
-## 🌟 Key Features
-
-### 🌐 Browser System App & Internet Ecosystem (NEW in v0.6.5)
-- **Pre-installed Core System App**: Browser is now a permanent dock system app (cannot be uninstalled).
-- **Mbank Web Service (`www.mbank.webos`)**: Mbank has migrated from a standalone app to a full-featured online banking web service with balance management, card details, top-up options, and transaction logs.
-- **BUYNET Fiber Internet (`www.buynet.webos`)**: Integrated Internet Service Provider website featuring 5 bandwidth tiers (Starter 10 Mbps, Everyday 50 Mbps, Performance 100 Mbps, Pro 250 Mbps, and Ultimate 1 Gbps) payable via Mbank wallet.
-- **Enhanced Browser Navigation**: Universal address bar, bookmarks bar (Home, Mbank, BUYNET, Store, Search), back/forward history stack, and real-time ISP connection status bar.
-- **WebOS Search Engine (`webos://search`)**: Native ecosystem search engine indexing web services, banking tools, news, and system applications.
-- **Realistic App Store Downloads**: Dynamic download simulation displaying download speeds (MB/s), time remaining, animated progress bars, and installation toasts scaled to active BUYNET internet plan bandwidth.
-
-### ⚡ Custom Hardware Branding
-- **Cyclone 1st Gen X9 CPU**: 2 Cores, 4 Threads @ 2.1 - 2.7 GHz (14nm, 35W TDP).
-- **Star R Pro GPU**: 2GB GDDR5 VRAM with Star Kepler architecture (640 CUDA Cores @ 1,354 MHz).
-- **Black U5000 RAM**: 8GB DDR4 @ 5000 MHz (2×4GB Dual Channel, CL16-18-18-38).
-- **Bolt NV-256 Storage**: 256GB NVMe M.2 SSD (3,500 MB/s Read, 2,400 MB/s Write).
-- **System-Wide Telemetry Integration**: Branded specifications featured across System Monitor, About PC, Terminal `neofetch`, and Boot Screen hardware POST initialization.
-
-### 🚀 Boot Screen Sequence
-- **3.2-Second Boot Sequence**: Realistic boot overlay with CSS-drawn WebOS window logo, pulsing glow, and scale transitions.
-- **Non-Linear Progress Bar**: Smoothly animated progress indicator (0% → 100%) with shimmer effect.
-- **Hardware POST & Initialization Stream**: Live scrolling boot status messages covering motherboard POST, CPU/RAM/GPU detection, and app registry.
-
-### 🖥️ Desktop & Window Management
-- **Window Management**: Drag, minimize, maximize, resize, z-index depth layering, and traffic light controls (close, minimize, expand).
-- **Window Snapping**: Drag windows to screen edges or corners for split-screen layout snapping (half-screen left/right, top-half/bottom-half, full-screen).
-- **Desktop Shortcuts**: Drag and drop shortcuts with automated grid layout alignment, double-click execution, and context menus.
-- **Interactive Dock**: Dock icon hover magnification, active app indicators, reordering via drag-and-drop, and system trash.
+> **Experience a full-featured, zero-dependency desktop operating system running live inside your browser.** Built with raw HTML5, CSS3, and modular ES6+ JavaScript, WebOS delivers high-performance window management, simulated hardware telemetry, an online banking ecosystem, and a real-time system monitor.
 
 ---
 
-## 🛠️ Architecture & Tech Stack
+## 🚀 Key Highlights & Capabilities
 
-- **Frontend Core**: Vanilla HTML5, CSS3 (CSS Variables, Flexbox, Grid, Glassmorphism backdrop-blur), JavaScript (ES6+ Modules & IIFEs).
-- **HH1 Architecture**: Strict 150-line hard cap per file, single responsibility per file, offline-first execution, no inline script or style tags.
-- **Modular Component Design**: Every component, app, and utility is isolated in its own modular script file respecting strict single-responsibility boundaries.
+### 📊 Real-Time System Monitor & Telemetry
+* **4 Dedicated Telemetry Tabs**: Overview, CPU, Memory, and GPU dashboards with live animated charts updating every 500ms.
+* **Cyclone X9 Core Tracker**: Per-core frequency and load breakdown for the custom Cyclone 1st Gen X9 dual-core architecture.
+* **VRAM & Fan Metrics**: Real-time Star R Pro GPU thermal tracking, fan speed control, and memory allocation.
+* **Live Process Manager**: End processes, force-quit frozen windows, or trigger **End All Processes** to instant-clear workspace memory.
+* **Resource Alert Engine**: Automated visual popups and warning toasts for elevated CPU, RAM, or thermal spikes.
+
+### 🌐 Simulated Web & Banking Ecosystem
+* **System Browser (`webos://`)**: Native browser with full navigation history, search engine (`webos://search`), and custom websites.
+* **Mbank Virtual Banking (`www.mbank.webos`)**: Live balance tracking ($50 starting wallet), transaction history, debit card UI, and top-ups.
+* **BUYNET ISP Manager (`www.buynet.webos`)**: Choose from 5 fiber internet tiers (10 Mbps to 1 Gbps) that dynamically dictate App Store download speeds.
+* **Wallpapers PCS App**: Premium wallpaper gallery with Pro tier subscription ($4.99/mo) integrated directly with Mbank payment processing.
+
+### 🖥️ Window Manager & Desktop UX
+* **Edge & Corner Snapping**: Snap windows into split-screen left/right, top/bottom half, or full-screen zones with visual drop targets.
+* **Interactive Dock & Grid**: Hover icon magnification, active status badges, drag-to-reorder, and Trash drop target.
+* **Desktop Shortcuts**: Auto-aligning grid layout with drag-and-drop repositioning and right-click context menus.
+* **Boot POST Sequence**: 3.2-second boot overlay with CSS-drawn WebOS window logo, shimmer progress bar, and hardware detection logs.
+
+### 🔒 Security & Additive Version History
+* **Locked Changelog (PIN: 9610)**: Password-protected Settings → Version History tab with shake animations and smooth fade transitions.
+* **Pure Additive Changelog**: Every release from `v0.1` to `v0.7.1.1.A` is preserved in dedicated, unmerged sequence cards.
 
 ---
 
-## 📜 License
+## 🛠️ Hardware Specification Matrix
 
-Distributed under the **MIT License**. See Settings → About OS section for details.
+| Component | Hardware Specification | Runtime Telemetry |
+| :--- | :--- | :--- |
+| **Processor** | Cyclone 1st Gen X9 (2 Cores / 4 Threads @ 2.7 GHz) | Live Per-Core Load Breakdown |
+| **Graphics** | Star R Pro (2GB GDDR5 VRAM, Kepler Architecture) | VRAM, Temp & Fan Speed Metrics |
+| **Memory** | Black U5000 8GB DDR4 @ 5000 MHz | Live Used / Cached / Free Breakdown |
+| **Storage** | Bolt NV-256 256GB NVMe M.2 SSD | Read: 3,500 MB/s \| Write: 2,400 MB/s |
+
+---
+
+## ⚡ Architecture & HH1 Engineering Rules
+
+WebOS adheres strictly to **HH1 Modular Architecture Guidelines**:
+
+```
+ ┌────────────────────────────────────────────────────────┐
+ │                    INDEX.HTML                          │
+ │              (Minimal 25-line Skeleton)                │
+ └───────────┬────────────────────────────────┬───────────┘
+             │                                │
+ ┌───────────▼───────────┐        ┌───────────▼───────────┐
+ │     LOADER-CSS.JS     │        │     LOADER-JS.JS      │
+ │  (Cascading Styles)   │        │ (Dependency Ingestion)│
+ └───────────────────────┘        └───────────┬───────────┘
+                                              │
+                      ┌───────────────────────┴───────────────────────┐
+                      │  128 Modular Files (< 150 Lines Each)        │
+                      │  • Window Engine      • System Monitor        │
+                      │  • Browser & Mbank    • Settings & Security   │
+                      └───────────────────────────────────────────────┘
+```
+
+1. **150-Line Hard Cap**: Every single file across the 128-file codebase is capped at **≤ 150 lines** for maximum modularity and clarity.
+2. **Zero External Dependencies**: No React, Vue, jQuery, Tailwind, or external NPM libraries. 100% standard web technologies.
+3. **100% Offline Execution**: Zero `fetch()`, `axios`, or remote server dependencies.
+4. **Single Responsibility Principle**: One job per file (UI layout, graph helper, payment route, command parser).
+
+---
+
+## 📜 Codebase Overview
+
+* **Total Files**: `128 Files`
+* **Total Code Lines**: `10,605 Lines`
+* **Core Runtime**: `82 JavaScript Modules` + `34 CSS Modules`
+* **License**: **MIT License** — Open Source & Moddable
+
+---
+
+*Designed and engineered with passion for the browser environment.*

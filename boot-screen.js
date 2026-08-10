@@ -1,6 +1,6 @@
 /* === FILE: boot-screen.js === */
 /**
- * WebOS v0.7.1.1 Boot Screen Orchestrator
+ * WebOS v0.7.1.1.A Boot Screen Orchestrator
  */
 (function () {
   let isBooted = false;
@@ -77,7 +77,7 @@
           isBooted = true;
           overlay.remove();
           document.body.style.cursor = "";
-          console.log("WebOS v0.7.1.1 booted");
+          console.log("WebOS v0.7.1.1.A booted");
           if (typeof onComplete === "function") onComplete();
         }, 400);
       });
@@ -86,7 +86,7 @@
         isBooted = true;
         overlay.remove();
         document.body.style.cursor = "";
-        console.log("WebOS v0.7.1.1 booted (fallback)");
+        console.log("WebOS v0.7.1.1.A booted (fallback)");
         if (typeof onComplete === "function") onComplete();
       }, 3200);
     }

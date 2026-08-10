@@ -63,7 +63,7 @@
     containerEl.innerHTML = `
       <div style="padding: 28px; max-width: 600px; margin: 0 auto; color: #ddd; line-height: 1.6;">
         <h2 style="color: #fff; margin-top: 0;">About WebOS Internet Ecosystem</h2>
-        <p>WebOS v0.7.1.1 introduces a complete simulated internet ecosystem featuring online banking (Mbank), ISP subscription manager (BUYNET), and custom web browsing.</p>
+        <p>WebOS v0.7.1.1.A introduces a complete simulated internet ecosystem featuring online banking (Mbank), ISP subscription manager (BUYNET), and custom web browsing.</p>
         <p>Operating entirely in client-side runtime without remote API servers, WebOS ensures full offline capability and privacy.</p>
       </div>
     `;
@@ -72,7 +72,7 @@
   function renderNewsPage(containerEl) {
     containerEl.innerHTML = `
       <div style="padding: 28px; max-width: 600px; margin: 0 auto; color: #ddd; line-height: 1.6;">
-        <h2 style="color: #fff; margin-top: 0;">Tech Chronicle: WebOS v0.7.1.1 Released!</h2>
+        <h2 style="color: #fff; margin-top: 0;">Tech Chronicle: WebOS v0.7.1.1.A Released!</h2>
         <div style="font-size: 11px; color: #888; margin-bottom: 16px;">Published August 2026 • Tech Chronicle</div>
         <p>Today WebOS announces the transition of Browser into a core system application and the launch of Mbank Web Services and BUYNET Fiber Internet.</p>
         <p>Users can now manage high-speed bandwidth, purchase plans with virtual currency, and download apps with realistic progress indicators.</p>

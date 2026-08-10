@@ -101,21 +101,23 @@
       header.className = "changelog-version";
       header.textContent = entry.version;
 
-      const date = document.createElement("div");
-      date.className = "changelog-date";
-      date.textContent = `Released ${entry.date}`;
+      card.appendChild(header);
+      if (entry.date) {
+        const date = document.createElement("div");
+        date.className = "changelog-date";
+        date.textContent = `Released ${entry.date}`;
+        card.appendChild(date);
+      }
 
       const ul = document.createElement("ul");
       ul.className = "changelog-items";
 
-      entry.features.forEach((feat) => {
+      (entry.features || []).forEach((feat) => {
         const li = document.createElement("li");
         li.textContent = feat;
         ul.appendChild(li);
       });
 
-      card.appendChild(header);
-      card.appendChild(date);
       card.appendChild(ul);
       changelogList.appendChild(card);
     });

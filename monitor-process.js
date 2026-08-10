@@ -49,10 +49,10 @@
 
   function getProcessList() {
     const windows = Array.from(document.querySelectorAll(".window-container"));
-    return windows.map((winEl) => {
-      const rawName = winEl.getAttribute("data-app") || "process";
+    return windows.map((windowEl) => {
+      const rawName = windowEl.getAttribute("data-app") || "process";
       const name = rawName.charAt(0).toUpperCase() + rawName.slice(1);
-      const meta = getProcessMeta(winEl);
+      const meta = getProcessMeta(windowEl);
       const usage = getAppUsage(rawName);
       return {
         name,

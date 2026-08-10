@@ -23,7 +23,7 @@
       { label: "Display", value: `15.6" WebOS Retina — ${width}×${height} @ 220 PPI` },
       { label: "Audio", value: "Star Audio HD (24-bit / 192 kHz)" },
       { label: "Network", value: "BoltLink Wi-Fi 5 + Bluetooth 4.2" },
-      { label: "OS", value: "WebOS v0.7.1.1 (64-bit Browser Runtime)" }
+      { label: "OS", value: "WebOS v0.7.1.1.A (64-bit Browser Runtime)" }
     ];
   }
 
