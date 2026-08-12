@@ -87,6 +87,7 @@
         <div class="dev-subtabs">
           <div class="dev-subtab active" data-tab="history">Version History</div>
           <div class="dev-subtab" data-tab="metrics">System Metrics</div>
+          <div class="dev-subtab" data-tab="terminal">Dev Terminal</div>
         </div>
         <div class="dev-tab-content"></div>
       </div>
@@ -109,6 +110,8 @@
         window.renderDevVersionHistory(contentArea);
       } else if (tabName === "metrics" && typeof window.renderDevSystemMetrics === "function") {
         window.renderDevSystemMetrics(contentArea);
+      } else if (tabName === "terminal" && typeof window.renderDevTerminal === "function") {
+        window.renderDevTerminal(contentArea);
       }
     }
 

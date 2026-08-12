@@ -51,13 +51,41 @@
         "Instant 0ms responses",
         "Premium Pro badge & ad-free"
       ]
+    },
+    maxdb: {
+      id: "maxdb",
+      name: "Max AI Database",
+      price: 600,
+      messages: "Unlimited Raw DB",
+      delay: "1 Minute Timer",
+      features: [
+        "100% Raw Knowledge Database",
+        "All 90 topics, 463+ questions & answers",
+        "Requires 3 Security Gates",
+        "1-Minute Live Countdown Timer",
+        "3x Price escalation per purchase"
+      ]
     }
   };
 
   function getCurrentTier() { return activeTier; }
   function setTier(tier) { if (TIERS[tier]) activeTier = tier; }
-  function getTierInfo(tier) { return TIERS[tier] || TIERS.free; }
-  function getAllTiers() { return TIERS; }
+  function getTierInfo(tier) {
+    const t = TIERS[tier] || TIERS.free;
+    if (tier === "maxdb" && window.maxDB) {
+      const p = window.maxDB.getCurrentPrice();
+      return { ...t, price: p > 0 ? p : 600 };
+    }
+    return t;
+  }
+  function getAllTiers() {
+    const result = { ...TIERS };
+    if (window.maxDB) {
+      const p = window.maxDB.getCurrentPrice();
+      if (result.maxdb) result.maxdb = { ...result.maxdb, price: p > 0 ? p : 600 };
+    }
+    return result;
+  }
 
   window.aiSubscription = {
     getCurrentTier,

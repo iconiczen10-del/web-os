@@ -9,16 +9,26 @@
     const cleanPath = (path || "/").toLowerCase();
 
     let pageContent = "";
+    let visitedTab = "home";
     if (cleanPath === "/about" || cleanPath === "about") {
       pageContent = window.aiTalksPages ? window.aiTalksPages.getAboutPageHTML() : "";
+      visitedTab = "about";
     } else if (cleanPath === "/products" || cleanPath === "products") {
       pageContent = window.aiTalksPages ? window.aiTalksPages.getProductsPageHTML() : "";
+      visitedTab = "products";
     } else if (cleanPath === "/blog" || cleanPath === "blog") {
       pageContent = window.aiTalksPages ? window.aiTalksPages.getBlogPageHTML() : "";
+      visitedTab = "blog";
     } else if (cleanPath === "/contact" || cleanPath === "contact") {
       pageContent = window.aiTalksPages ? window.aiTalksPages.getContactPageHTML() : "";
+      visitedTab = "contact";
     } else {
       pageContent = window.aiTalksPages ? window.aiTalksPages.getHomePageHTML() : "";
+      visitedTab = "home";
+    }
+
+    if (window.aitalksTracker && typeof window.aitalksTracker.markTabVisited === "function") {
+      window.aitalksTracker.markTabVisited(visitedTab);
     }
 
     containerEl.innerHTML = `

@@ -1,0 +1,108 @@
+/* === FILE: aichat-maxdb.css === */
+.maxdb-gate-container, .maxdb-pay-wrap, .maxdb-expired-wrap {
+  padding: 16px;
+  height: 100%;
+  box-sizing: border-box;
+  background: #0d1117;
+  color: #c9d1d9;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.maxdb-gate-header { margin-bottom: 12px; }
+.maxdb-gate-header h3 { margin: 0 0 4px 0; font-size: 15px; color: #fff; }
+.maxdb-gate-header p { margin: 0; font-size: 11px; color: #8b949e; }
+
+.maxdb-gate-err {
+  background: rgba(255, 69, 58, 0.15);
+  border: 1px solid rgba(255, 69, 58, 0.4);
+  color: #ff7b72;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  margin-bottom: 10px;
+}
+
+.maxdb-gate-card {
+  background: rgba(22, 27, 34, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.maxdb-gate-card.passed { border-color: rgba(48, 209, 88, 0.4); }
+
+.maxdb-gate-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.maxdb-gate-status { font-size: 10px; font-weight: 800; }
+.maxdb-field-lbl { display: block; font-size: 10px; color: #8b949e; margin: 6px 0 2px 0; }
+
+.maxdb-input {
+  width: 100%;
+  background: #0d1117;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 6px 8px;
+  color: #fff;
+  font-size: 11px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.maxdb-gate-actions, .maxdb-pay-actions { display: flex; gap: 10px; margin-top: 10px; }
+
+.maxdb-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 11px;
+  border: none;
+  cursor: pointer;
+}
+
+.maxdb-btn.primary { background: #238636; color: #fff; }
+.maxdb-btn.secondary { background: #21262d; color: #c9d1d9; border: 1px solid rgba(255,255,255,0.1); }
+
+.maxdb-pay-card {
+  background: rgba(22, 27, 34, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  margin: auto;
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+}
+
+.maxdb-pay-amount { font-size: 28px; font-weight: 800; color: #58a6ff; margin: 8px 0; }
+.maxdb-pay-sub { font-size: 11px; color: #8b949e; margin-bottom: 12px; }
+
+.maxdb-pay-method {
+  background: rgba(255,255,255,0.03);
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  margin-bottom: 12px;
+}
+
+.maxdb-pay-row { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 6px; }
+
+.maxdb-pay-row.highlight {
+  font-weight: 700;
+  color: #38bdf8;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 6px;
+}
+
+.maxdb-pay-err { color: #ff7b72; font-size: 11px; margin-top: 8px; }

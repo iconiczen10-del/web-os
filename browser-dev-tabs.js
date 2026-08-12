@@ -70,7 +70,7 @@
         <h2>❓ Frequently Asked Questions</h2>
         <div class="dev-faq-item"><strong>Q: Is WebOS running on a remote server?</strong><p>A: No. WebOS runs entirely client-side in your browser's JS runtime engine.</p></div>
         <div class="dev-faq-item"><strong>Q: How do I unlock Developer Settings?</strong><p>A: Go to Settings → For Developers and enter passcode 9610.</p></div>
-        <div class="dev-faq-item"><strong>Q: What is the latest version?</strong><p>A: WebOS v0.7.4.1 (Developer Portal & Architecture Refinement).</p></div>
+        <div class="dev-faq-item"><strong>Q: What is the latest version?</strong><p>A: WebOS v0.7.4.3 (Developer Terminal v1).</p></div>
       </div>
     `;
   }
@@ -88,7 +88,7 @@
   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝
         </pre>
         <div class="dev-owner-stats">
-          <div>Version History: v0.1 → v0.7.4.1</div>
+          <div>Version History: v0.1 → v0.7.4.3</div>
           <div>24 Versions Built • 158 Total Files • 13,542 Lines of Code</div>
         </div>
         <p class="dev-owner-quote">"The best OS is the one you build yourself." — HANISH</p>

@@ -1,6 +1,6 @@
 /* === FILE: app-aichat.js === */
 /**
- * WebOS v0.7.4 AI Chat System Application Orchestrator
+ * WebOS v0.7.4.3 AI Chat System Application Orchestrator
  */
 (function () {
   function initAIChat(winContainer) {
@@ -17,9 +17,28 @@
       attachChatEvents();
     }
 
+    function openSubScreen() {
+      if (!window.aiSubscriptionUI) return;
+      window.aiSubscriptionUI.renderPlanSelection(content, (tier) => {
+        if (tier === "maxdb" && window.maxDBGates) {
+          window.maxDBGates.renderGateCheckScreen(content, () => {
+            if (window.maxDBPay) {
+              window.maxDBPay.startPaymentFlow(content, () => {
+                if (window.maxDBView) window.maxDBView.startDatabaseView(content, renderMainChat, renderMainChat);
+              }, openSubScreen);
+            }
+          }, openSubScreen);
+        } else {
+          window.aiSubscriptionUI.renderPaymentConfirm(content, tier, async () => {
+            const payRes = await window.aiPayment.processPayment(tier);
+            if (payRes.success) { userMsgCount = 0; renderMainChat(); }
+          }, openSubScreen);
+        }
+      }, renderMainChat);
+    }
+
     function attachChatEvents() {
-      const tabBtns = content.querySelectorAll(".aichat-tab-btn");
-      tabBtns.forEach(btn => {
+      content.querySelectorAll(".aichat-tab-btn").forEach(btn => {
         btn.addEventListener("click", () => {
           activeTab = btn.getAttribute("data-tab");
           renderMainChat();
@@ -28,8 +47,9 @@
 
       if (activeTab === "topics") {
         const topicsBody = content.querySelector("#aichat-view-body");
-        if (topicsBody && window.aiTopicsView) {
-          window.aiTopicsView.bindTopicsEvents(topicsBody, (promptText) => {
+        if (topicsBody && window.aiKnowledgeBrowser) {
+          const tier = window.aiSubscription ? window.aiSubscription.getCurrentTier() : "free";
+          window.aiKnowledgeBrowser.renderKnowledgeBrowser(topicsBody, tier, (promptText) => {
             activeTab = "chat";
             renderMainChat();
             const input = content.querySelector("#aichat-text-input");
@@ -38,7 +58,7 @@
               const sendBtn = content.querySelector("#aichat-send-btn");
               if (sendBtn) sendBtn.click();
             }
-          }, () => openSubScreen());
+          }, openSubScreen);
         }
       } else {
         const input = content.querySelector("#aichat-text-input");
@@ -52,10 +72,7 @@
         if (chipsBar) {
           chipsBar.addEventListener("click", (e) => {
             const chip = e.target.closest(".aichat-chip");
-            if (chip && input) {
-              input.value = chip.getAttribute("data-cmd") || "";
-              handleSend();
-            }
+            if (chip && input) { input.value = chip.getAttribute("data-cmd") || ""; handleSend(); }
           });
         }
 
@@ -71,13 +88,11 @@
         async function handleSend() {
           const val = input.value.trim();
           if (!val) return;
-
           input.value = "";
           appendBubble(val, "user");
           userMsgCount++;
 
           const tier = window.aiSubscription ? window.aiSubscription.getCurrentTier() : "free";
-
           const typingBubble = document.createElement("div");
           typingBubble.className = "aichat-bubble aichat-bubble-ai aichat-typing-bubble";
           typingBubble.innerHTML = `<span class="aichat-dots">AI is typing<span>.</span><span>.</span><span>.</span></span>`;
@@ -86,7 +101,6 @@
 
           const res = await window.aiEngine.getResponse(val, tier, selectedPersonality);
           typingBubble.remove();
-
           appendBubble(res.text, "ai");
 
           if (tier === "free" && userMsgCount % 2 === 0 && !res.isLimit) {
@@ -111,20 +125,6 @@
 
         if (sendBtn) sendBtn.addEventListener("click", handleSend);
         if (input) input.addEventListener("keydown", (e) => { if (e.key === "Enter") handleSend(); });
-      }
-
-      function openSubScreen() {
-        if (window.aiSubscriptionUI) {
-          window.aiSubscriptionUI.renderPlanSelection(content, (tier) => {
-            window.aiSubscriptionUI.renderPaymentConfirm(content, tier, async () => {
-              const payRes = await window.aiPayment.processPayment(tier);
-              if (payRes.success) {
-                userMsgCount = 0;
-                renderMainChat();
-              }
-            }, () => openSubScreen());
-          }, () => renderMainChat());
-        }
       }
 
       content.addEventListener("click", (e) => {

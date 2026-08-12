@@ -119,7 +119,20 @@
     }
   }
 
+  function downloadAllApps() {
+    if (!window.storeApps) return 0;
+    let installedCount = 0;
+    window.storeApps.forEach(app => {
+      if (!installedAppIds.includes(app.id)) {
+        performActualInstall(app.id);
+        installedCount++;
+      }
+    });
+    return installedCount;
+  }
+
   window.installApp = installApp;
+  window.downloadAllApps = downloadAllApps;
   window.uninstallApp = uninstallApp;
   window.loadInstalledApps = loadInstalledApps;
   window.addAppToDock = addAppToDock;

@@ -1,0 +1,81 @@
+/* === FILE: dev-terminal.css === */
+.dev-term-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 280px;
+  background: #0a0a0a;
+  border-radius: 8px;
+  border: 1px solid rgba(48, 209, 88, 0.3);
+  font-family: "Courier New", Courier, monospace;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.dev-term-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #141414;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #30d158;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.dev-term-badge {
+  background: rgba(48, 209, 88, 0.15);
+  color: #30d158;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 9px;
+  border: 1px solid rgba(48, 209, 88, 0.3);
+}
+
+.dev-term-output {
+  flex: 1;
+  padding: 10px 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #30d158;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.dev-term-line {
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.dev-term-line.cmd { color: #fff; font-weight: bold; }
+.dev-term-line.success { color: #30d158; font-weight: bold; }
+.dev-term-line.error { color: #ff453a; }
+.dev-term-line.info { color: #58a6ff; }
+
+.dev-term-input-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #111;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dev-term-prompt {
+  color: #30d158;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.dev-term-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+}

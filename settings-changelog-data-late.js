@@ -5,41 +5,6 @@
 (function () {
   window.CHANGELOG_LATE = [
     {
-      version: "v0.7.4.1",
-      features: [
-        "New Developer Portal website at www.dev.webos with 5-stage gate",
-        "Stage 1: Dummy login/signup system with field validation",
-        "Stage 2: 5-question WebOS knowledge verification quiz",
-        "Stage 3: Easter egg discovery challenge",
-        "Stage 4: $40 payment via Mbank (4-step transaction)",
-        "Stage 5: Full access with 7 tabs (Home, Docs, Puzzle, Metrics, Secrets, FAQ, Owner)",
-        "Puzzle tab with 4 clues for finding the developer password",
-        "Metrics tab with file counts, line counts, and file groups",
-        "Secrets tab listing all hidden commands and easter eggs",
-        "Owner tab with creator credit and project stats",
-        "Removed all HH1 Architecture mentions from user-visible OS text"
-      ]
-    },
-    {
-      version: "v0.7.4",
-      features: [
-        "AI Chat Knowledge Topics tab for Pro Tier subscribers",
-        "System Metrics updated to 158 total files and 13,542 code lines across 13 file groups",
-        "AI Chat welcome message shows all knowledge categories",
-        "Smart word matching: scans every word in user input for matches",
-        "Priority-based match system (hardware > webos > commands > general > coding)",
-        "Multiple match handling: shows best match + suggests other found topics",
-        "Zero dead ends: unknown input always returns help topics",
-        "Tier-aware help command showing available/locked features",
-        "Free tier: heavy marketing with ads every 2 messages and upgrade prompts",
-        "Plus tier: light Pro marketing, no banner ads",
-        "Pro tier: completely clean, no marketing, all features",
-        "topics, examples, and category browsing commands",
-        "AI typing indicator with tier-based delays",
-        "Message counter with color warnings near limits"
-      ]
-    },
-    {
       version: "v0.7.2.3",
       features: [
         "Tech Chronicle News Portal with 20 realistic WebOS news articles",

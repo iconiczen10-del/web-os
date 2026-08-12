@@ -14,12 +14,12 @@
     const welcomeMsg = window.aiFallback ? window.aiFallback.getWelcomeText(tier) : "Hello! Welcome to AI Chat on WebOS.";
     const statusHTML = window.aiMarketing ? window.aiMarketing.getCounterStatusHTML(tier, msgCount, limit) : `Session Usage: ${msgCount}/${limit}`;
 
+    const accessPct = window.aiKnowledgeBrowser ? window.aiKnowledgeBrowser.getAccessPercentage(tier) : 15;
+
     const navTabsHTML = `
       <div class="aichat-nav-tabs">
         <button class="aichat-tab-btn ${activeTab === "chat" ? "active" : ""}" data-tab="chat">💬 Chat</button>
-        <button class="aichat-tab-btn ${activeTab === "topics" ? "active" : ""}" data-tab="topics">
-          📂 Knowledge Topics ${isPro ? '<span class="aichat-topic-tier-tag">PRO</span>' : '🔒'}
-        </button>
+        <button class="aichat-tab-btn ${activeTab === "topics" ? "active" : ""}" data-tab="topics">📚 Knowledge (${accessPct}%)</button>
       </div>
     `;
 

@@ -47,7 +47,12 @@
     "browser-news-layout.css",
     "browser-news-cards.css",
     "browser-news-modal.css",
-    "uninstall-dialog.css"
+    "uninstall-dialog.css",
+    "aichat-browser.css",
+    "aichat-browser-cards.css",
+    "aichat-maxdb.css",
+    "aichat-maxdb-view.css",
+    "dev-terminal.css"
   ];
 
   cssFiles.forEach((file) => {

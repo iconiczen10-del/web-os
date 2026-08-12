@@ -47,10 +47,10 @@
     return true;
   }
 
-  function depositFunds(amount) {
+  function depositFunds(amount, description = "Added Funds via Top-up") {
     const current = getBalance();
     const newBal = setBalance(current + amount);
-    addTransaction("deposit", amount, "Added Funds via Top-up");
+    addTransaction("deposit", amount, description);
     return newBal;
   }
 

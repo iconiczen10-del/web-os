@@ -1,0 +1,65 @@
+/* === FILE: aichat-maxdb-view.css === */
+.maxdb-main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #0d1117;
+  color: #c9d1d9;
+  position: relative;
+  overflow: hidden;
+}
+
+.maxdb-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: #161b22;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.maxdb-title-area { display: flex; align-items: center; gap: 8px; }
+.maxdb-app-name { font-weight: 800; font-size: 13px; color: #a371f7; }
+.maxdb-sub-name { font-size: 10px; color: #8b949e; }
+
+.maxdb-timer-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-family: monospace;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.maxdb-timer-badge.normal { background: rgba(35, 134, 54, 0.2); color: #30d158; border: 1px solid #30d158; }
+.maxdb-timer-badge.warning { background: rgba(210, 153, 34, 0.2); color: #f2c94c; border: 1px solid #f2c94c; }
+.maxdb-timer-badge.danger { background: rgba(255, 69, 58, 0.3); color: #ff453a; border: 1px solid #ff453a; animation: pulseRed 1s infinite; }
+
+@keyframes pulseRed { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+.maxdb-search-bar { padding: 8px 12px; background: #161b22; }
+.maxdb-search-bar input {
+  width: 100%; background: #0d1117; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 6px 10px; color: #fff; font-size: 11px; outline: none; box-sizing: border-box;
+}
+
+.maxdb-content-body { flex: 1; overflow-y: auto; padding: 10px; display: flex; flex-direction: column; gap: 12px; }
+
+.maxdb-category-block { background: rgba(22, 27, 34, 0.9); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px; }
+.maxdb-cat-header { font-weight: 800; font-size: 12px; color: #a371f7; margin-bottom: 8px; }
+.maxdb-cat-list { display: flex; flex-direction: column; gap: 8px; }
+
+.maxdb-topic-card { background: #161b22; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 10px; }
+.maxdb-topic-title { font-weight: 700; font-size: 12px; color: #38bdf8; margin-bottom: 4px; }
+.maxdb-cat-tag { font-size: 9px; color: #8b949e; background: rgba(255,255,255,0.05); padding: 1px 5px; border-radius: 4px; margin-left: 6px; }
+.maxdb-variants-inline { font-size: 10px; color: #8b949e; margin-bottom: 6px; }
+.maxdb-answer-box { font-size: 11px; color: #e6edf3; background: #0d1117; border-left: 3px solid #a371f7; padding: 6px 8px; border-radius: 4px; line-height: 1.4; }
+
+.maxdb-pulse-overlay {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 69, 58, 0.25); display: flex; align-items: center; justify-content: center; pointer-events: none;
+}
+.maxdb-pulse-box { background: #ff453a; color: #fff; padding: 16px 24px; border-radius: 16px; text-align: center; font-weight: 800; }
+.maxdb-pulse-num { font-size: 36px; }
+
+.maxdb-expired-card { background: rgba(22, 27, 34, 0.95); border: 1px solid rgba(255,69,58,0.4); border-radius: 14px; padding: 20px; text-align: center; margin: auto; max-width: 320px; }
+.maxdb-expired-card h2 { margin: 0 0 8px 0; font-size: 16px; color: #fff; }
+.maxdb-reason-text { font-size: 11px; color: #ff7b72; background: rgba(255,69,58,0.1); padding: 10px; border-radius: 8px; margin-bottom: 12px; text-align: left; line-height: 1.4; }
+.maxdb-next-price { font-size: 12px; color: #c9d1d9; }

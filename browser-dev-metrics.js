@@ -10,7 +10,7 @@
       return;
     }
 
-    let overview = metrics.getOverview ? metrics.getOverview() : { totalFiles: 158, totalLines: 13542, htmlFiles: 1, cssFiles: 43, jsFiles: 114, avgLines: 86, versions: 24, currentVersion: "v0.7.4.1" };
+    let overview = metrics.getOverview ? metrics.getOverview() : { totalFiles: 186, totalLines: 15200, htmlFiles: 1, cssFiles: 44, jsFiles: 141, avgLines: 82, versions: 25, currentVersion: "v0.7.4.3" };
     let groups = metrics.getGroups ? metrics.getGroups() : [];
     let files = metrics.getAllFiles ? metrics.getAllFiles() : [];
 
@@ -41,7 +41,7 @@
 
       containerEl.innerHTML = `
         <div class="dev-metrics-wrap">
-          <h2>📊 WebOS System Metrics (v0.7.4.1)</h2>
+          <h2>📊 WebOS System Metrics (v0.7.4.3)</h2>
           <div class="dev-metrics-cards">
             <div class="dev-mcard"><div class="val">${overview.totalFiles}</div><div class="lbl">Total Files</div></div>
             <div class="dev-mcard"><div class="val">${overview.totalLines.toLocaleString()}</div><div class="lbl">Code Lines</div></div>
