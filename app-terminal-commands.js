@@ -58,7 +58,7 @@
   ╚█████╔╝███████╗██████╔╝╚██████╔╝███████║
    ╚════╝ ╚══════╝╚═════╝  ╚═════╝ ╚══════╝
 
-  OS: WebOS v0.7.4 (64-bit Browser Runtime)
+  OS: WebOS v0.7.4.1 (64-bit Browser Runtime)
   Host: Bolt B350-M
   Kernel: WebOS Kernel 1.0
   CPU: Cyclone 1st Gen X9 (2C/4T) @ 2.7 GHz
@@ -72,6 +72,28 @@
       case "mbank":
         const bal = window.storeWallet ? window.storeWallet.getBalance() : 50.00;
         return `Mbank Account: $${bal.toFixed(2)}`;
+
+      case "owner":
+      case "hanish":
+        return `WebOS — Created & Built by HANISH\n  ██╗  ██╗ █████╗ ███╗   ██╗██╗███████╗██╗  ██╗\n  ██║  ██║██╔══██╗████╗  ██║██║██╔════╝██║  ██║\n  ███████║███████║██╔██╗ ██║██║███████╗███████║\n  ██╔══██║██╔══██║██║╚██╗██║██║╚════██║██╔══██║\n  ██║  ██║██║  ██║██║ ╚████║██║███████║██║  ██║\n  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝`;
+
+      case "clue":
+        return `[Void Whisper]: The fourth digit of the developer password is 0.`;
+
+      case "puzzle":
+        return `The 4 digits unlock Settings → For Developers.\nClues lead to: 1) License, 2) CPU Monitor, 3) Mbank, 4) 'clue' command.`;
+
+      case "digits":
+        return `Digits discovered across WebOS: [9] [6] [1] [0]`;
+
+      case "matrix":
+        return `Wake up, Neo... WebOS has you.\nFollow the white rabbit. 🐇\n01010111 01100101 01100010 01001111 01010011`;
+
+      case "coffee":
+        return `☕ Here is a warm cup of coffee for the tired developer. Keep up the great work!`;
+
+      case "sudo":
+        return `Nice try. This incident will be reported to HANISH.`;
 
       default:
         return `Command not found: ${cmd}. Type 'help' for available commands.`;

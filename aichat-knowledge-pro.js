@@ -5,12 +5,12 @@
 (function () {
   window.AI_KNOWLEDGE_PRO = [
     {
-      keywords: ["webos history", "webos versions list", "webos browser", "webos system monitor", "hh1 architecture", "webos specs"],
+      keywords: ["webos history", "webos versions list", "webos browser", "webos system monitor", "webos architecture", "webos specs"],
       tier: "pro",
       category: "webos",
       responses: [
         "WebOS Evolution: v0.1 (Desktop Shell) → v0.2 (Window Manager) → v0.3 (Finder & Notes) → v0.4 (Monitor & Topbar) → v0.5 (Dock Reorder & Snapping) → v0.6 (App Store & Mbank) → v0.6.6 (Lock Screen & Modular Loaders) → v0.7 (Client-Side State Wipe) → v0.7.1.1 (Multi-Tab System Monitor) → v0.7.1.1.A (Unmerged Changelog Sync) → v0.7.2 (AI Chat & AI Talks Inc.).",
-        "HH1 Architecture Principle: Every component is decoupled into clean files capped at 150 lines, running 100% offline with zero external network dependencies or build tools."
+        "Modular Architecture Principle: Every component is decoupled into clean files capped at 150 lines, running 100% offline with zero external network dependencies or build tools."
       ]
     },
     {

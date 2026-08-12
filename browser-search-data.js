@@ -17,6 +17,12 @@
       keywords: ["buynet", "internet", "isp", "speed", "plan", "wifi", "network", "bandwidth", "subscribe", "download"]
     },
     {
+      title: "WebOS Developer Portal",
+      url: "www.dev.webos",
+      description: "Access system documentation, metrics, hidden terminal commands, and password puzzle clues.",
+      keywords: ["dev", "developer", "portal", "docs", "puzzle", "metrics", "secrets", "owner", "hanish"]
+    },
+    {
       title: "WebOS App Store",
       url: "www.store.webos",
       description: "Discover, download, and purchase games, productivity apps, and utilities designed for WebOS.",

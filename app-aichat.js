@@ -13,9 +13,7 @@
     let userMsgCount = 0;
 
     function renderMainChat() {
-      if (window.aiChatUI) {
-        content.innerHTML = window.aiChatUI.getChatHTML(selectedPersonality, activeTab);
-      }
+      if (window.aiChatUI) content.innerHTML = window.aiChatUI.getChatHTML(selectedPersonality, activeTab);
       attachChatEvents();
     }
 
@@ -49,9 +47,7 @@
         const personaSelect = content.querySelector("#aichat-persona-select");
         const chipsBar = content.querySelector("#aichat-chips-bar");
 
-        if (personaSelect) {
-          personaSelect.addEventListener("change", (e) => { selectedPersonality = e.target.value; });
-        }
+        if (personaSelect) personaSelect.addEventListener("change", (e) => { selectedPersonality = e.target.value; });
 
         if (chipsBar) {
           chipsBar.addEventListener("click", (e) => {
@@ -103,9 +99,7 @@
           const count = window.aiEngine ? window.aiEngine.getMessageCount() : 0;
           const limit = window.aiEngine ? window.aiEngine.getMessageLimit(tier) : 5;
           const statusTxt = content.querySelector("#aichat-status-txt");
-          if (statusTxt && window.aiMarketing) {
-            statusTxt.innerHTML = window.aiMarketing.getCounterStatusHTML(tier, count, limit);
-          }
+          if (statusTxt && window.aiMarketing) statusTxt.innerHTML = window.aiMarketing.getCounterStatusHTML(tier, count, limit);
 
           if (res.isLimit && window.aiMarketing) {
             const cardDiv = document.createElement("div");

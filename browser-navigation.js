@@ -15,6 +15,7 @@
     if (url === "news") return "webos://news";
     if (url === "mbank" || url === "mbank.webos") return "www.mbank.webos";
     if (url === "buynet" || url === "buynet.webos") return "www.buynet.webos";
+    if (url === "dev" || url === "dev.webos") return "www.dev.webos";
     if (url === "store" || url === "store.webos") return "www.store.webos";
 
     if (!url.startsWith("webos://") && !url.startsWith("www.") && !url.startsWith("http")) {

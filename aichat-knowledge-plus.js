@@ -10,7 +10,7 @@
       category: "webos",
       responses: [
         "WebOS features window management, a simulated App Store, Mbank virtual banking, BUYNET high-speed ISP, and real-time System Monitor.",
-        "WebOS architecture follows the HH1 rule: zero external dependencies, offline execution, and strict modularity."
+        "WebOS architecture follows strict rules: zero external dependencies, offline execution, and strict modularity."
       ]
     },
     {

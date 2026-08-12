@@ -58,6 +58,7 @@
       "aichat-math.js", "aichat-personality.js", "aichat-fallback.js", "aichat-commands.js", "aichat-matching.js", "aichat-marketing.js", "aichat-engine.js", "aichat-subscription.js", "aichat-payment.js",
       "aichat-login.js", "aichat-subscription-ui.js", "aichat-topics-view.js", "app-aichat-ui.js", "app-aichat.js",
       "browser-aitalks-pages.js", "browser-aitalks-pages-2.js", "browser-aitalks.js",
+      "browser-dev-login.js", "browser-dev-quiz.js", "browser-dev-egg.js", "browser-dev-pay.js", "browser-dev-tabs.js", "browser-dev-portal.js", "browser-dev-metrics.js", "browser-dev.js",
       "boot-screen-progress.js", "boot-screen.js",
       "desktop.js"
     ];

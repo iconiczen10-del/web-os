@@ -20,7 +20,7 @@
           </div>
           <div class="aitalks-card">
             <div style="font-size: 11px; color: #38bdf8;">June 2026 • Ecosystem</div>
-            <h3 style="margin: 4px 0;">WebOS HH1 Architecture Deep Dive</h3>
+            <h3 style="margin: 4px 0;">WebOS Modular Architecture Deep Dive</h3>
             <p>Exploring how 150-line modular design rules make WebOS applications clean, maintainable, and robust.</p>
           </div>
         </div>

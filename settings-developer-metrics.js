@@ -21,14 +21,14 @@
     ovSection.innerHTML = `
       <div class="dev-section-title">System Overview</div>
       <div class="dev-metrics-grid">
-        <div class="dev-metric-card"><div class="dev-metric-value">${ov.totalFiles || 138}</div><div class="dev-metric-label">Total Files</div></div>
-        <div class="dev-metric-card"><div class="dev-metric-value">${(ov.totalLines || 12042).toLocaleString()}</div><div class="dev-metric-label">Total Code Lines</div></div>
-        <div class="dev-metric-card"><div class="dev-metric-value">${ov.htmlFiles || 3}</div><div class="dev-metric-label">HTML Files</div></div>
-        <div class="dev-metric-card"><div class="dev-metric-value">${ov.cssFiles || 41}</div><div class="dev-metric-label">CSS Files</div></div>
-        <div class="dev-metric-card"><div class="dev-metric-value">${ov.jsFiles || 94}</div><div class="dev-metric-label">JS Files</div></div>
-        <div class="dev-metric-card"><div class="dev-metric-value">${ov.avgLinesPerFile || 87}</div><div class="dev-metric-label">Avg Lines/File</div></div>
-        <div class="dev-metric-card"><div class="dev-metric-value" style="font-size:13px; line-height:1.2;">${ov.largestFile?.name || 'browser-renderer.js'} (${ov.largestFile?.lines || 148}L)</div><div class="dev-metric-label">Largest File</div></div>
-        <div class="dev-metric-card"><div class="dev-metric-value" style="font-size:13px; line-height:1.2;">${ov.smallestFile?.name || 'desktop.js'} (${ov.smallestFile?.lines || 22}L)</div><div class="dev-metric-label">Smallest File</div></div>
+        <div class="dev-metric-card"><div class="dev-metric-value">${ov.totalFiles || 158}</div><div class="dev-metric-label">Total Files</div></div>
+        <div class="dev-metric-card"><div class="dev-metric-value">${(ov.totalLines || 13542).toLocaleString()}</div><div class="dev-metric-label">Total Code Lines</div></div>
+        <div class="dev-metric-card"><div class="dev-metric-value">${ov.htmlFiles || 1}</div><div class="dev-metric-label">HTML Files</div></div>
+        <div class="dev-metric-card"><div class="dev-metric-value">${ov.cssFiles || 43}</div><div class="dev-metric-label">CSS Files</div></div>
+        <div class="dev-metric-card"><div class="dev-metric-value">${ov.jsFiles || 114}</div><div class="dev-metric-label">JS Files</div></div>
+        <div class="dev-metric-card"><div class="dev-metric-value">${ov.avgLinesPerFile || 86}</div><div class="dev-metric-label">Avg Lines/File</div></div>
+        <div class="dev-metric-card"><div class="dev-metric-value" style="font-size:13px; line-height:1.2;">${ov.largestFile?.name || 'app-aichat-topics.css'} (${ov.largestFile?.lines || 165}L)</div><div class="dev-metric-label">Largest File</div></div>
+        <div class="dev-metric-card"><div class="dev-metric-value" style="font-size:13px; line-height:1.2;">${ov.smallestFile?.name || 'settings-changelog.js'} (${ov.smallestFile?.lines || 9}L)</div><div class="dev-metric-label">Smallest File</div></div>
       </div>
     `;
     wrapper.appendChild(ovSection);

@@ -24,6 +24,10 @@
             <div style="font-size: 24px; margin-bottom: 6px;">📡</div>
             <div style="font-size: 12px; font-weight: 600; color: #fff;">BUYNET</div>
           </div>
+          <div class="hp-quick-card" data-url="www.dev.webos" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 14px 10px; cursor: pointer;">
+            <div style="font-size: 24px; margin-bottom: 6px;">🔧</div>
+            <div style="font-size: 12px; font-weight: 600; color: #fff;">Dev Portal</div>
+          </div>
           <div class="hp-quick-card" data-url="www.store.webos" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 14px 10px; cursor: pointer;">
             <div style="font-size: 24px; margin-bottom: 6px;">🛒</div>
             <div style="font-size: 12px; font-weight: 600; color: #fff;">App Store</div>
@@ -63,7 +67,7 @@
     containerEl.innerHTML = `
       <div style="padding: 28px; max-width: 600px; margin: 0 auto; color: #ddd; line-height: 1.6;">
         <h2 style="color: #fff; margin-top: 0;">About WebOS Internet Ecosystem</h2>
-        <p>WebOS v0.7.4 introduces an enhanced simulated internet ecosystem featuring AI Chat Smart Matching, Developer Settings, online banking (Mbank), ISP subscription manager (BUYNET), Tech Chronicle news portal, and custom web browsing.</p>
+        <p>WebOS v0.7.4.1 introduces an enhanced simulated internet ecosystem featuring AI Chat Smart Matching, Developer Portal, Developer Settings, online banking (Mbank), ISP subscription manager (BUYNET), Tech Chronicle news portal, and custom web browsing.</p>
         <p>Operating entirely in client-side runtime without remote API servers, WebOS ensures full offline capability and privacy.</p>
       </div>
     `;
@@ -118,6 +122,12 @@
     } else if (cleanUrl.includes("aitalks.webos")) {
       const path = cleanUrl.replace(/^https?:\/\//, "").replace(/^www\.aitalks\.webos/, "");
       if (typeof renderAITalksPage === "function") renderAITalksPage(containerEl, path, onNavigate);
+    } else if (cleanUrl.includes("dev.webos")) {
+      if (typeof window.renderDevPortalPage === "function") {
+        window.renderDevPortalPage(containerEl, onNavigate);
+      } else {
+        containerEl.innerHTML = `<div style="padding:28px; color:#fff;">Loading Developer Portal...</div>`;
+      }
     } else if (cleanUrl === "www.store.webos") {
       renderStoreInfoPage(containerEl);
     } else {

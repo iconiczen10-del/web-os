@@ -35,7 +35,7 @@
           <div class="monitor-stat-card">
             <div class="monitor-stat-label">System Uptime</div>
             <div class="monitor-stat-value" id="ov-uptime">00:00:00</div>
-            <div class="monitor-stat-sub">WebOS v0.7.4</div>
+            <div class="monitor-stat-sub">WebOS v0.7.4.1</div>
           </div>
         </div>
 

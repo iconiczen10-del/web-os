@@ -38,7 +38,7 @@
         </div>
         <div class="about-os-logo-text">WEB OS</div>
       </div>
-      <div class="about-os-version-badge">v0.7.4</div>
+      <div class="about-os-version-badge">v0.7.4.1</div>
       <div class="about-os-tagline">Designed in the Browser. Built with Vanilla HTML, CSS & JavaScript.</div>
       <div class="about-os-stars">★★★★★<span>5.0 • 1 Review</span></div>
       <div class="about-os-buttons">
