@@ -47,6 +47,39 @@
 .maxdb-gate-status { font-size: 10px; font-weight: 800; }
 .maxdb-field-lbl { display: block; font-size: 10px; color: #8b949e; margin: 6px 0 2px 0; }
 
+.maxdb-mcq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.maxdb-mcq-opt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #0d1117;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 10px;
+  color: #c9d1d9;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.maxdb-mcq-opt:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #58a6ff;
+}
+
+.maxdb-mcq-opt input[type="radio"] {
+  accent-color: #38bdf8;
+  cursor: pointer;
+  margin: 0;
+}
+
 .maxdb-input {
   width: 100%;
   background: #0d1117;

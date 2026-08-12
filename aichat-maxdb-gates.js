@@ -3,40 +3,38 @@
  * Max AI Database - 3 Purchase Verification Gates
  */
 (function () {
+  const G1_QUESTIONS = [
+    { id: "q1", title: "1. Who develops AI Chat?", ans: "AI Talks Inc.", opts: ["AI Talks Inc.", "WebOS Foundation", "OpenAI Labs", "CyberTech Solutions", "NeuralNet Corp", "Bolt Systems Inc."] },
+    { id: "q2", title: "2. What is the company tagline?", ans: "Intelligent Conversation, Accessible to All", opts: ["Empowering Intelligence, One Click at a Time", "Intelligent Conversation, Accessible to All", "Fast, Local, and Cloud-Powered AI", "The Future of Browser Computing", "AI Assistant for Next Generation OS", "Smart Solutions for Modern Web"] },
+    { id: "q3", title: "3. Where is AI Talks Inc. headquartered?", ans: "San Francisco", opts: ["New York", "Seattle", "San Francisco", "Austin", "Boston", "Tokyo"] }
+  ];
+
   function renderGateCheckScreen(containerEl, onGatesPassed, onCancel) {
     if (!containerEl) return;
-
-    let q1Ans = "";
-    let q2Ans = "";
-    let q3Ans = "";
+    let qAns = { q1: "", q2: "", q3: "" };
     let gateErr = "";
 
-    function checkGate1() {
-      const a1 = q1Ans.trim().toLowerCase();
-      const a2 = q2Ans.trim().toLowerCase();
-      const a3 = q3Ans.trim().toLowerCase();
-
-      const pass1 = a1.includes("ai talks") || a1.includes("aitalks");
-      const pass2 = a2.includes("intelligent conversation") || a2.includes("accessible to all");
-      const pass3 = a3.includes("san francisco") || a3.includes("sf");
-
-      return pass1 && pass2 && pass3;
-    }
-
+    function checkGate1() { return G1_QUESTIONS.every(q => qAns[q.id] === q.ans); }
     function checkGate2() {
       const activePlan = window.buynetManager ? window.buynetManager.getActivePlan() : null;
       return activePlan && activePlan.id === "ultimate";
     }
+    function checkGate3() { return window.aitalksTracker ? window.aitalksTracker.hasVisitedAll() : false; }
 
-    function checkGate3() {
-      return window.aitalksTracker ? window.aitalksTracker.hasVisitedAll() : false;
+    function renderQuestion(q) {
+      const optsHtml = q.opts.map(opt => `
+        <label class="maxdb-mcq-opt">
+          <input type="radio" name="${q.id}" value="${opt}" ${qAns[q.id] === opt ? "checked" : ""}>
+          <span>${opt}</span>
+        </label>
+      `).join("");
+      return `<div class="maxdb-mcq-q"><label class="maxdb-field-lbl">${q.title}</label><div class="maxdb-mcq-grid">${optsHtml}</div></div>`;
     }
 
     function draw() {
       const g1Ok = checkGate1();
       const g2Ok = checkGate2();
       const g3Ok = checkGate3();
-
       const currentPlan = window.buynetManager && window.buynetManager.getActivePlan() ? window.buynetManager.getActivePlan().name : "Default (200 KB/s)";
       const missingTabs = window.aitalksTracker ? window.aitalksTracker.getMissingTabs() : ["home", "about", "products", "blog", "contact"];
 
@@ -46,25 +44,15 @@
             <h3>🔒 Max AI Database Verification Gates</h3>
             <p>Complete all 3 security gates to unlock access purchase.</p>
           </div>
-
           ${gateErr ? `<div class="maxdb-gate-err">${gateErr}</div>` : ''}
 
           <!-- GATE 1 -->
           <div class="maxdb-gate-card ${g1Ok ? 'passed' : ''}">
             <div class="maxdb-gate-title">
-              <span>Gate 1: AI Talks Security Questions</span>
+              <span>Gate 1: AI Talks Security Questions (MCQ)</span>
               <span class="maxdb-gate-status">${g1Ok ? '✅ PASSED' : '❌ PENDING'}</span>
             </div>
-            <div class="maxdb-gate-body">
-              <label class="maxdb-field-lbl">1. Who develops AI Chat?</label>
-              <input type="text" id="g1-q1" class="maxdb-input" placeholder="e.g. AI Talks Inc." value="${q1Ans}" />
-
-              <label class="maxdb-field-lbl">2. What is the company tagline?</label>
-              <input type="text" id="g1-q2" class="maxdb-input" placeholder="e.g. Intelligent Conversation, Accessible to All" value="${q2Ans}" />
-
-              <label class="maxdb-field-lbl">3. Where is AI Talks Inc. headquartered?</label>
-              <input type="text" id="g1-q3" class="maxdb-input" placeholder="e.g. San Francisco" value="${q3Ans}" />
-            </div>
+            <div class="maxdb-gate-body">${G1_QUESTIONS.map(renderQuestion).join("")}</div>
           </div>
 
           <!-- GATE 2 -->
@@ -98,13 +86,12 @@
         </div>
       `;
 
-      const q1El = containerEl.querySelector("#g1-q1");
-      const q2El = containerEl.querySelector("#g1-q2");
-      const q3El = containerEl.querySelector("#g1-q3");
-
-      if (q1El) q1El.addEventListener("input", (e) => { q1Ans = e.target.value; });
-      if (q2El) q2El.addEventListener("input", (e) => { q2Ans = e.target.value; });
-      if (q3El) q3El.addEventListener("input", (e) => { q3Ans = e.target.value; });
+      containerEl.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener("change", (e) => {
+          qAns[e.target.name] = e.target.value;
+          draw();
+        });
+      });
 
       const cancelBtn = containerEl.querySelector("#gate-btn-cancel");
       if (cancelBtn) cancelBtn.addEventListener("click", onCancel);
@@ -112,22 +99,9 @@
       const submitBtn = containerEl.querySelector("#gate-btn-submit");
       if (submitBtn) {
         submitBtn.addEventListener("click", () => {
-          if (!checkGate1()) {
-            gateErr = "❌ Gate 1 failed: Incorrect answer(s) to security questions. Check AI Talks site for details.";
-            draw();
-            return;
-          }
-          if (!checkGate2()) {
-            gateErr = `❌ Gate 2 failed: Ultimate 1 Gbps plan required. Current plan: ${currentPlan}.`;
-            draw();
-            return;
-          }
-          if (!checkGate3()) {
-            gateErr = `❌ Gate 3 failed: Explore the full AI Talks website first. Missing tabs: ${missingTabs.join(', ')}.`;
-            draw();
-            return;
-          }
-
+          if (!checkGate1()) { gateErr = "❌ Gate 1 failed: Select correct answers for all 3 security questions."; draw(); return; }
+          if (!checkGate2()) { gateErr = `❌ Gate 2 failed: Ultimate 1 Gbps plan required. Current plan: ${currentPlan}.`; draw(); return; }
+          if (!checkGate3()) { gateErr = `❌ Gate 3 failed: Explore the full AI Talks website first. Missing tabs: ${missingTabs.join(', ')}.`; draw(); return; }
           gateErr = "";
           if (typeof onGatesPassed === "function") onGatesPassed();
         });
@@ -137,7 +111,5 @@
     draw();
   }
 
-  window.maxDBGates = {
-    renderGateCheckScreen
-  };
+  window.maxDBGates = { renderGateCheckScreen };
 })();
