@@ -49,7 +49,7 @@
       "app-store.js", "app-weather.js", "app-terminal-commands.js", "app-terminal.js",
       "app-music.js", "app-paint.js", "app-clock.js", "browser-bookmarks.js",
       "browser-search-data.js", "browser-search.js", "browser-mbank.js", "browser-buynet.js",
-      "browser-news-data-1.js", "browser-news-data-2.js", "browser-news-modal.js", "browser-news-render.js",
+      "browser-news-data-1.js", "browser-news-data-2.js", "browser-news-data-3.js", "browser-news-modal.js", "browser-news-render.js",
       "browser-navigation.js", "browser-renderer.js", "app-browser.js", "app-calendar.js",
       "app-gamecenter.js", "app-videoeditor.js", "wallpapers-data.js", "wallpapers-login.js",
       "wallpapers-subscription.js", "wallpapers-modal.js", "wallpapers-render.js", "app-wallpapers.js",

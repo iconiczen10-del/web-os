@@ -10,7 +10,9 @@
     if (!containerEl) return;
     containerEl.innerHTML = "";
 
-    const newsData = (window.browserNewsData || []).slice(0, 20);
+    const allNews = window.browserNewsData || [];
+    const newsData = allNews;
+    const totalCount = allNews.length;
 
     const wrapper = document.createElement("div");
     wrapper.className = "news-portal-container fading-in";
@@ -23,11 +25,11 @@
         <span class="news-brand-icon">📰</span>
         <div>
           <h2 class="news-brand-title">Tech Chronicle</h2>
-          <div class="news-brand-sub">WebOS Official News, Releases & Ecosystem Daily (20 Articles)</div>
+          <div class="news-brand-sub">WebOS Official News, Releases & Ecosystem Daily (${totalCount} Articles)</div>
         </div>
       </div>
       <div class="news-search-box">
-        <input type="text" class="news-search-input" placeholder="Search 20 news articles..." value="${searchQuery}" />
+        <input type="text" class="news-search-input" placeholder="Search ${totalCount} news articles..." value="${searchQuery}" />
       </div>
     `;
     wrapper.appendChild(header);
