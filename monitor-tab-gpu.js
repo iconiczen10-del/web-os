@@ -46,9 +46,9 @@
           </div>
 
           <div class="mon-section-card">
-            <div class="mon-card-title">Top Processes by GPU</div>
+            <div class="mon-card-title">Top Processes by GPU & VRAM</div>
             <table class="monitor-table mini">
-              <thead><tr><th>Name</th><th>PID</th><th>GPU %</th></tr></thead>
+              <thead><tr><th>Name</th><th>PID</th><th>GPU %</th><th>VRAM</th></tr></thead>
               <tbody id="gpu-top-procs"></tbody>
             </table>
           </div>
@@ -95,7 +95,7 @@
     if (topProcsEl && window.monitorProcess) {
       const topList = window.monitorProcess.getTopProcesses("gpu", 5);
       topProcsEl.innerHTML = topList.map(p => `
-        <tr><td><strong>${p.name}</strong></td><td>${p.pid}</td><td>${p.gpu}%</td></tr>
+        <tr><td><strong>${p.name}</strong></td><td>${p.pid}</td><td>${p.gpu}%</td><td>${p.vram || 0} MB</td></tr>
       `).join("");
     }
   }

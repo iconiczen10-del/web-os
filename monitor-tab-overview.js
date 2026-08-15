@@ -109,7 +109,7 @@
                 <div class="mon-detail-panel">
                   <div><strong>Process:</strong> ${p.name} (${p.appName})</div>
                   <div><strong>PID:</strong> ${p.pid} | <strong>Threads:</strong> ${Math.floor((p.pid % 5) + 2)}</div>
-                  <div><strong>Uptime:</strong> ${runningSecs}s | <strong>RAM:</strong> ${p.ram} MB</div>
+                  <div><strong>Uptime:</strong> ${runningSecs}s | <strong>RAM:</strong> ${p.ram} MB | <strong>VRAM:</strong> ${p.vram || 0} MB</div>
                   <div><button class="mon-btn-small mon-btn-close-detail" data-pid="${p.pid}">Close Details</button></div>
                 </div>
               </td>
