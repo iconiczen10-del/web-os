@@ -1,6 +1,6 @@
 /* === FILE: app-aichat.js === */
 /**
- * WebOS v0.7.4.3 AI Chat System Application Orchestrator
+ * WebOS v0.7.4.5 AI Chat System Application Orchestrator
  */
 (function () {
   function initAIChat(winContainer) {
@@ -139,6 +139,10 @@
     }
 
     renderMainChat();
+
+    if (window.aiChatTeaser && !window.aiChatTeaser.hasShownSplash()) {
+      window.aiChatTeaser.showSplashScreen(content, renderMainChat);
+    }
   }
 
   window.initAIChat = initAIChat;

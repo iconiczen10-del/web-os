@@ -5,6 +5,19 @@
 (function () {
   window.CHANGELOG_V74 = [
     {
+      version: "v0.7.4.5",
+      features: [
+        "AI Chat v2 Immersive Teaser Experience & Animated Splash Screen on first launch",
+        "78% interactive development progress bar with gold shimmer and glowing orb",
+        "Simulated 12-second Teaser Video with 6 feature flashes and progress bar",
+        "3D Flip Cards for WebOS Knowledge & AI Chat v2 Next-Gen Engine with auto-rotation",
+        "Live Countdown Timer to v0.8.0 release in both splash modal and Knowledge Browser footer",
+        "AI Chat Engine v2 query detection with dynamic sneak-peek teaser responses",
+        "Direct navigation actions (Watch Teaser, What's New, Skip to v1)",
+        "Global OS version sync to v0.7.4.5 across all system components"
+      ]
+    },
+    {
       version: "v0.7.4.3",
       features: [
         "Developer Terminal v1 added as 3rd sub-tab in Settings → For Developers (password 9610)",

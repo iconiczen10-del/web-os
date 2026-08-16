@@ -73,6 +73,8 @@
     } else if (cleanInput.startsWith("category")) {
       const cat = cleanInput.replace("category", "").trim();
       responseText = window.aiCommands ? window.aiCommands.getCategoryText(cat, tier) : window.aiFallback.getHelpText(tier);
+    } else if (window.aiChatTeaser && window.aiChatTeaser.isV2Query(cleanInput)) {
+      responseText = window.aiChatTeaser.getTeaserResponse();
     } else if (window.aiMath && window.aiMath.isMathExpression(userInput)) {
       responseText = window.aiMath.solveMath(userInput, tier);
     } else if (hasTimeQuery(userInput)) {

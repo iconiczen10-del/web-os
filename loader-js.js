@@ -59,6 +59,7 @@
       "aichat-login.js", "aichat-subscription-ui.js", "aichat-topics-view.js",
       "aichat-browser-data-1.js", "aichat-browser-data-2.js", "aichat-browser-data-3.js", "aichat-browser-data.js", "aichat-browser-render.js", "aichat-browser.js",
       "aitalks-tracker.js", "aichat-maxdb.js", "aichat-maxdb-gates.js", "aichat-maxdb-pay.js", "aichat-maxdb-view.js",
+      "aichat-teaser-cards.js", "aichat-teaser.js",
       "app-aichat-ui.js", "app-aichat.js",
       "browser-aitalks-pages.js", "browser-aitalks-pages-2.js", "browser-aitalks.js",
       "browser-dev-login.js", "browser-dev-quiz.js", "browser-dev-egg.js", "browser-dev-pay.js", "browser-dev-tabs.js", "browser-dev-portal.js", "browser-dev-metrics.js", "browser-dev.js",

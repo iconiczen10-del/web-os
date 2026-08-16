@@ -43,10 +43,12 @@
 
       containerEl.innerHTML = `
         <div class="kb-container">
+          <div class="kb-teaser-top-slot" id="kb-teaser-top-slot"></div>
           <div class="kb-header-bar">
             <input type="text" id="kb-search-input" class="kb-search-input" placeholder="Search 90 topics and 463+ questions..." value="${searchQuery}" />
           </div>
           <div class="kb-content-list">${catSectionsHtml || '<div class="kb-empty-msg">No matching topics found.</div>'}</div>
+          <div class="kb-teaser-bottom-slot" id="kb-teaser-bottom-slot"></div>
           <div class="kb-access-footer">
             <div class="kb-access-info">
               <span>Overall Knowledge Access: <strong>${accessPct}%</strong> (${currentTier.toUpperCase()})</span>
@@ -56,6 +58,16 @@
           </div>
         </div>
       `;
+
+      const topSlot = containerEl.querySelector("#kb-teaser-top-slot");
+      if (topSlot && window.aiChatTeaserCards) {
+        window.aiChatTeaserCards.renderFlipCards(topSlot);
+      }
+
+      const botSlot = containerEl.querySelector("#kb-teaser-bottom-slot");
+      if (botSlot && window.aiChatTeaserCards) {
+        window.aiChatTeaserCards.startCountdown(botSlot, false);
+      }
 
       const searchInput = containerEl.querySelector("#kb-search-input");
       if (searchInput) {

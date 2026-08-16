@@ -67,7 +67,7 @@
     containerEl.innerHTML = `
       <div style="padding: 28px; max-width: 600px; margin: 0 auto; color: #ddd; line-height: 1.6;">
         <h2 style="color: #fff; margin-top: 0;">About WebOS Internet Ecosystem</h2>
-        <p>WebOS v0.7.4.3 introduces an enhanced simulated internet ecosystem featuring Developer Terminal v1, AI Chat Knowledge Browser, Max AI Database, Developer Portal, Developer Settings, online banking (Mbank), ISP subscription manager (BUYNET), Tech Chronicle news portal, and custom web browsing.</p>
+        <p>WebOS v0.7.4.5 introduces an enhanced simulated internet ecosystem featuring AI Chat v2 Immersive Teaser, Developer Terminal v1, AI Chat Knowledge Browser, Max AI Database, Developer Portal, Developer Settings, online banking (Mbank), ISP subscription manager (BUYNET), Tech Chronicle news portal, and custom web browsing.</p>
         <p>Operating entirely in client-side runtime without remote API servers, WebOS ensures full offline capability and privacy.</p>
       </div>
     `;

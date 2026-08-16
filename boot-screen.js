@@ -77,7 +77,7 @@
           isBooted = true;
           overlay.remove();
           document.body.style.cursor = "";
-          console.log("WebOS v0.7.4.3 booted");
+          console.log("WebOS v0.7.4.5 booted");
           if (typeof onComplete === "function") onComplete();
         }, 400);
       });
@@ -86,7 +86,7 @@
         isBooted = true;
         overlay.remove();
         document.body.style.cursor = "";
-        console.log("WebOS v0.7.4.3 booted (fallback)");
+        console.log("WebOS v0.7.4.5 booted (fallback)");
         if (typeof onComplete === "function") onComplete();
       }, 3200);
     }

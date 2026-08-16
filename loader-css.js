@@ -52,6 +52,8 @@
     "aichat-browser-cards.css",
     "aichat-maxdb.css",
     "aichat-maxdb-view.css",
+    "aichat-teaser.css",
+    "aichat-teaser-animations.css",
     "dev-terminal.css"
   ];
 
