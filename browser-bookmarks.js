@@ -5,13 +5,14 @@
 (function () {
   const DEFAULT_BOOKMARKS = [
     { name: "Home", url: "webos://home", icon: "🏠" },
+    { name: "WebTube", url: "www.webtube.webos", icon: "▶️" },
+    { name: "News", url: "webos://news", icon: "📰" },
     { name: "Mbank", url: "www.mbank.webos", icon: "🏦" },
     { name: "BUYNET", url: "www.buynet.webos", icon: "📡" },
     { name: "Dev Portal", url: "www.dev.webos", icon: "🔧" },
     { name: "Papers For PC", url: "www.papersforpc.webos", icon: "🖼️" },
     { name: "AI Talks", url: "www.aitalks.webos", icon: "🤖" },
-    { name: "Store", url: "www.store.webos", icon: "🛒" },
-    { name: "Search", url: "webos://search", icon: "🔍" }
+    { name: "Store", url: "www.store.webos", icon: "🛒" }
   ];
 
   function getBookmarks() {

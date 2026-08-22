@@ -15,15 +15,15 @@
       { label: "GPU Architecture", value: "Star Kepler, 640 Cores @ 1,354 MHz" },
       { label: "Memory", value: "Black U5000 — 8GB DDR4 @ 5000 MHz" },
       { label: "Memory Config", value: "2 × 4GB Dual Channel, CL16-18-18-38" },
-      { label: "Storage", value: "Bolt NV-256 — 256GB NVMe M.2 SSD" },
-      { label: "Storage Speed", value: "Read: 3,500 MB/s | Write: 2,400 MB/s" },
+      { label: "Storage", value: "Bolt NV-64 — 64GB NVMe M.2 SSD (12GB system)" },
+      { label: "Storage Speed", value: "Read: 2,800 MB/s | Write: 1,800 MB/s" },
       { label: "Motherboard", value: "Bolt B350-M (mATX, LGA 1150)" },
       { label: "PSU", value: "Volt 450W 80+ Bronze" },
       { label: "Cooling", value: "Cyclone Frost Air Cooler" },
       { label: "Display", value: `15.6" WebOS Retina — ${width}×${height} @ 220 PPI` },
       { label: "Audio", value: "Star Audio HD (24-bit / 192 kHz)" },
       { label: "Network", value: "BoltLink Wi-Fi 5 + Bluetooth 4.2" },
-      { label: "OS", value: "WebOS v0.7.4.5 (64-bit Browser Runtime)" }
+      { label: "OS", value: "WebOS v0.8.2 (64-bit Browser Runtime)" }
     ];
   }
 

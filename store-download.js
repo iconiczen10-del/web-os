@@ -101,7 +101,7 @@
           onComplete();
         }
 
-        showToast(`${appData.name} (${appData.size || totalMB + ' MB'}) installed successfully!`);
+        showToast(`${appData.name}.wapp (${appData.size || totalMB + ' MB'}) installed to /Applications!`);
 
         if (typeof window.refreshStoreGrid === "function") {
           window.refreshStoreGrid();

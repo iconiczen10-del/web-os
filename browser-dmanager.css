@@ -1,0 +1,382 @@
+/* === FILE: browser-dmanager.css === */
+/**
+ * WebOS v0.8.2 DriverManager Website Styling
+ */
+.dm-container {
+  padding: 20px;
+  max-width: 820px;
+  margin: 0 auto;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.dm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.dm-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.dm-logo {
+  font-size: 24px;
+}
+
+.dm-brand-name {
+  color: #ffffff;
+}
+
+.dm-brand-tag {
+  font-size: 10px;
+  background: #0a84ff;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.dm-search-wrap input {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 12px;
+  width: 260px;
+  outline: none;
+}
+
+.dm-nav {
+  display: flex;
+  gap: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 8px;
+  margin-bottom: 18px;
+  overflow-x: auto;
+}
+
+.dm-nav-item {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8e8e93;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dm-nav-item:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.dm-nav-item.active {
+  color: #0a84ff;
+  background: rgba(10, 132, 255, 0.15);
+}
+
+.dm-banner-msg {
+  margin-bottom: 12px;
+}
+
+.dm-alert-success {
+  background: rgba(48, 209, 88, 0.15);
+  border: 1px solid #30d158;
+  color: #30d158;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.dm-alert-info {
+  background: rgba(10, 132, 255, 0.15);
+  border: 1px solid #0a84ff;
+  color: #58a6ff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.dm-hero {
+  background: linear-gradient(135deg, rgba(10, 132, 255, 0.18), rgba(88, 166, 255, 0.05));
+  border: 1px solid rgba(88, 166, 255, 0.3);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.dm-hero-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: #ffffff;
+}
+
+.dm-hero-subtitle {
+  font-size: 13px;
+  color: #c9d1d9;
+  margin-bottom: 14px;
+}
+
+.dm-hero-badges {
+  display: flex;
+  gap: 10px;
+  font-size: 11px;
+  color: #30d158;
+  font-weight: 600;
+}
+
+.dm-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 16px 0 10px 0;
+  color: #c9d1d9;
+}
+
+.dm-featured-grid,
+.dm-companies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.dm-driver-card,
+.dm-company-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.dm-driver-top,
+.dm-comp-hdr {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.dm-card-icon,
+.dm-comp-icon {
+  font-size: 20px;
+}
+
+.dm-driver-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #8e8e93;
+  margin-bottom: 10px;
+}
+
+.dm-download-btn,
+.dm-view-comp-btn {
+  width: 100%;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #0a84ff;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.dm-quick-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.dm-quick-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: center;
+}
+
+.dm-quick-box:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dm-filter-bar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.dm-filter-chip {
+  padding: 4px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: #aaa;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.dm-filter-chip.active {
+  background: #0a84ff;
+  border-color: #0a84ff;
+  color: #fff;
+}
+
+.dm-driver-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  margin-bottom: 6px;
+  border-radius: 6px;
+}
+
+.dm-driver-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dm-row-icon {
+  font-size: 20px;
+}
+
+.dm-ver-badge {
+  font-size: 10px;
+  background: rgba(88, 166, 255, 0.2);
+  color: #58a6ff;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.dm-row-sub,
+.dm-comp-desc {
+  font-size: 11px;
+  color: #8e8e93;
+}
+
+.dm-row-action {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dm-row-size {
+  font-size: 11px;
+  color: #8e8e93;
+}
+
+.dm-dl-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.dm-btn-finder {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.dm-dl-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 12px;
+}
+
+.dm-dl-time {
+  font-size: 11px;
+  color: #8e8e93;
+}
+
+.dm-updates-box,
+.dm-about-wrap,
+.dm-support-wrap {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.dm-btn-update-all {
+  margin-top: 14px;
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: none;
+  background: #0a84ff;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dm-faqs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.dm-faq-card {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.dm-faq-q {
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: #58a6ff;
+}
+
+.dm-faq-a {
+  font-size: 11px;
+  color: #aaa;
+}
+
+.dm-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+  text-align: center;
+}
+
+.dm-stat-box {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 12px 6px;
+  border-radius: 6px;
+}
+
+.dm-stat-num {
+  font-size: 18px;
+  font-weight: 800;
+  color: #58a6ff;
+}
+
+.dm-stat-lbl {
+  font-size: 10px;
+  color: #8e8e93;
+}

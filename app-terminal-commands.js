@@ -58,13 +58,13 @@
   ╚█████╔╝███████╗██████╔╝╚██████╔╝███████║
    ╚════╝ ╚══════╝╚═════╝  ╚═════╝ ╚══════╝
 
-  OS: WebOS v0.7.4.5 (64-bit Browser Runtime)
+  OS: WebOS v0.8.2 (64-bit Browser Runtime)
   Host: Bolt B350-M
   Kernel: WebOS Kernel 1.0
   CPU: Cyclone 1st Gen X9 (2C/4T) @ 2.7 GHz
   GPU: Star R Pro — 2GB GDDR5
   Memory: ${memory}
-  Storage: 89 GB / 256 GB (Bolt NV-256)
+  Storage: ${window.storageManager ? window.storageManager.getStorageDetails().formatted : "12.1 GB / 64 GB (Bolt NV-64)"}
   Display: ${width}×${height} @ 220 PPI
   Uptime: ${uptimeStr}
   Shell: WebOS Terminal 1.0`;

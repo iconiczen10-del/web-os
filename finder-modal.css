@@ -1,0 +1,115 @@
+/* === FILE: finder-modal.css === */
+/**
+ * WebOS v0.8.0 Finder Context Menu & Get Info Modal Styles
+ */
+
+.finder-context-menu {
+  position: absolute;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 4px;
+  min-width: 140px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.finder-ctx-item {
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #cbd5e1;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.1s ease;
+}
+
+.finder-ctx-item:hover:not(.disabled) {
+  background: #0284c7;
+  color: #fff;
+}
+
+.finder-ctx-item.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.finder-ctx-sep {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 4px 0;
+}
+
+.finder-info-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(15, 23, 42, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 16px;
+  width: 320px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  z-index: 1010;
+}
+
+.finder-info-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.finder-info-icon {
+  font-size: 36px;
+}
+
+.finder-info-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  word-break: break-all;
+}
+
+.finder-info-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+.finder-info-label {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.finder-info-value {
+  color: #e2e8f0;
+  text-align: right;
+  word-break: break-all;
+}
+
+.finder-info-close-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.finder-info-close-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}

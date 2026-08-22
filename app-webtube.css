@@ -1,0 +1,163 @@
+/* === FILE: app-webtube.css === */
+.webtube-app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #0a0a0a;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.webtube-app-layout.theme-gold { --accent: #ffd700; --accent-glow: rgba(255,215,0,0.2); }
+.webtube-app-layout.theme-red { --accent: #ff2020; --accent-glow: rgba(255,32,32,0.2); }
+
+.webtube-app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: #121214;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.webtube-app-brand { display: flex; align-items: center; gap: 6px; }
+.webtube-logo-icon { color: #ff2020; font-size: 18px; }
+.webtube-logo-text { font-size: 16px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+.webtube-brand-by { font-size: 10px; color: var(--accent); font-weight: 600; text-transform: uppercase; }
+
+.webtube-header-actions { display: flex; gap: 8px; align-items: center; }
+.webtube-badge-tier { border: none; padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 800; color: #000; cursor: pointer; }
+.webtube-btn-theme { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 3px 8px; border-radius: 6px; font-size: 11px; cursor: pointer; }
+
+.webtube-app-nav {
+  display: flex;
+  gap: 4px;
+  padding: 6px 12px;
+  background: #16161a;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.webtube-nav-btn {
+  background: transparent;
+  border: none;
+  color: #8e8e93;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.webtube-nav-btn.active, .webtube-nav-btn:hover { background: rgba(255,255,255,0.08); color: var(--accent); }
+
+.webtube-app-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+}
+
+.webtube-section-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+.webtube-catalog-sub { font-size: 11px; color: #8e8e93; margin-bottom: 12px; }
+
+.webtube-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.webtube-card {
+  background: #141418;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.webtube-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.webtube-card.locked { opacity: 0.7; }
+
+.webtube-card-thumb {
+  height: 100px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.webtube-card-play { font-size: 24px; color: rgba(255,255,255,0.8); }
+.webtube-card-duration { position: absolute; bottom: 6px; right: 6px; background: rgba(0,0,0,0.8); font-size: 10px; padding: 2px 4px; border-radius: 3px; font-weight: 600; }
+.webtube-card-lock { position: absolute; top: 6px; left: 6px; background: rgba(255,32,32,0.85); color: #fff; font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: 700; }
+.webtube-card-early { position: absolute; top: 6px; right: 6px; background: rgba(255,215,0,0.9); color: #000; font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: 800; }
+
+.webtube-card-info { padding: 8px 10px; }
+.webtube-card-title { font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.webtube-card-meta { font-size: 10px; color: #8e8e93; }
+
+/* Player UI */
+.webtube-player-wrapper { background: #000; border-radius: 8px; overflow: hidden; margin-bottom: 12px; }
+.webtube-canvas-container { position: relative; width: 100%; height: 260px; background: #050505; display: flex; align-items: center; justify-content: center; }
+.webtube-canvas { width: 100%; height: 100%; object-fit: contain; }
+.webtube-canvas-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); }
+.webtube-overlay-play { width: 50px; height: 50px; border-radius: 50%; background: #ff2020; border: none; color: #fff; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.webtube-player-ad { position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.8); color: #ffd700; font-size: 10px; padding: 4px 8px; border-radius: 4px; border: 1px solid #ffd700; }
+
+.webtube-controls { background: #111; padding: 6px 10px; }
+.webtube-progress-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.2); cursor: pointer; border-radius: 2px; margin-bottom: 6px; }
+.webtube-progress-fill { height: 100%; background: #ff2020; width: 0%; border-radius: 2px; }
+.webtube-controls-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 11px; }
+.webtube-ctrl-left, .webtube-ctrl-right { display: flex; align-items: center; gap: 8px; }
+.webtube-btn-play { background: none; border: none; color: #fff; font-size: 14px; cursor: pointer; }
+.webtube-badge-speed { background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 10px; }
+.webtube-badge-quality { color: var(--accent); font-weight: 700; }
+
+/* Details & Comments */
+.webtube-btn-back { background: rgba(255,255,255,0.1); border: none; color: #fff; padding: 5px 12px; border-radius: 6px; font-size: 11px; margin-bottom: 10px; cursor: pointer; }
+.webtube-video-details { margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; }
+.webtube-detail-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.webtube-detail-meta { font-size: 11px; color: #8e8e93; margin-bottom: 8px; }
+.webtube-detail-desc { font-size: 12px; color: #ccc; line-height: 1.4; }
+
+.webtube-locked-box { background: #16161a; border: 1px dashed var(--accent); padding: 16px; border-radius: 8px; text-align: center; }
+.webtube-btn-gold { background: #ffd700; color: #000; border: none; font-weight: 700; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 11px; }
+.webtube-comments-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.webtube-premium-badge { background: #ffd700; color: #000; font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 4px; }
+.webtube-comment-input-box { display: flex; gap: 8px; margin-bottom: 14px; }
+.webtube-comment-input-box input { flex: 1; background: #141418; border: 1px solid #333; color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 12px; outline: none; }
+.webtube-btn-primary { background: #ff2020; color: #fff; border: none; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; }
+.webtube-btn-secondary { background: rgba(255,255,255,0.1); color: #fff; border: none; padding: 6px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; }
+
+.webtube-comment-item { display: flex; gap: 10px; margin-bottom: 10px; }
+.webtube-comment-avatar { width: 28px; height: 28px; border-radius: 50%; background: #2a2a30; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 11px; color: var(--accent); }
+.webtube-comment-user { font-size: 11px; font-weight: 700; color: #fff; }
+.webtube-comment-time { font-size: 10px; color: #8e8e93; font-weight: normal; margin-left: 4px; }
+.webtube-comment-text { font-size: 11px; color: #ddd; margin: 2px 0 4px; }
+.webtube-comment-likes { font-size: 10px; color: #8e8e93; }
+
+/* Modal & Payment Flow */
+.webtube-pay-modal { position: absolute; inset: 10px; background: #121216; border: 1px solid var(--accent); border-radius: 10px; display: flex; flex-direction: column; z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+.webtube-pay-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 13px; font-weight: 700; color: var(--accent); }
+.webtube-pay-close { background: none; border: none; color: #8e8e93; font-size: 14px; cursor: pointer; }
+.webtube-pay-body { flex: 1; padding: 14px; overflow-y: auto; }
+.webtube-pay-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 10px 14px; border-top: 1px solid rgba(255,255,255,0.08); }
+
+.webtube-pay-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+.webtube-pay-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+.webtube-tier-card { background: #181820; border: 1px solid #333; border-radius: 6px; padding: 10px; cursor: pointer; text-align: center; }
+.webtube-tier-card.active { border-color: var(--accent); background: var(--accent-glow); }
+.webtube-tier-badge { font-size: 9px; font-weight: 800; color: #000; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 4px; }
+.webtube-tier-name { font-size: 13px; font-weight: 700; color: #fff; }
+.webtube-tier-price { font-size: 14px; font-weight: 800; color: var(--accent); margin: 4px 0 6px; }
+.webtube-tier-perks { font-size: 10px; color: #8e8e93; text-align: left; }
+.webtube-pay-box { background: #181820; padding: 12px; border-radius: 6px; }
+.webtube-pay-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; color: #ccc; }
+
+.webtube-channel-row { display: flex; align-items: center; gap: 10px; background: #141418; padding: 10px; border-radius: 6px; margin-bottom: 8px; }
+.webtube-channel-icon { font-size: 20px; }
+.webtube-channel-info { flex: 1; }
+.webtube-channel-name { font-size: 12px; font-weight: 700; }
+.webtube-channel-subs { font-size: 10px; color: #8e8e93; }
+.webtube-btn-subscribed { background: rgba(255,255,255,0.1); border: none; color: #8e8e93; font-size: 11px; padding: 4px 10px; border-radius: 4px; font-weight: 600; }

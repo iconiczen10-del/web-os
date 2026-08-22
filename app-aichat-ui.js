@@ -86,7 +86,7 @@
 
         ${navTabsHTML}
 
-        <div class="aichat-view-body" id="aichat-view-body" style="flex: 1; display: flex; flex-direction: column; overflow: hidden;">
+        <div class="aichat-view-body" id="aichat-view-body" style="flex: 1; display: flex; flex-direction: column; overflow: hidden; min-height: 0;">
           ${activeTab === "topics" ? topicsBodyHTML : chatBodyHTML}
         </div>
       </div>

@@ -1,7 +1,7 @@
 /* === FILE: app-settings.js === */
 /**
- * WebOS v0.7 Settings Application Manager
- * Sidebar Navigation & Section Manager
+ * WebOS v0.8.2 Settings Application Manager
+ * Sidebar Navigation & Section Manager (6 Tabs)
  */
 (function () {
   function initSettings(windowEl) {
@@ -12,10 +12,11 @@
     contentEl.innerHTML = `
       <div class="settings-layout">
         <div class="settings-sidebar">
-          <div class="settings-nav-item active" data-section="general">General</div>
-          <div class="settings-nav-item" data-section="about-pc">About PC</div>
-          <div class="settings-nav-item" data-section="about-os">About OS</div>
-          <div class="settings-nav-item" data-section="apps">Apps</div>
+          <div class="settings-nav-item active" data-section="general">⚙️ General</div>
+          <div class="settings-nav-item" data-section="about-pc">🖥️ About PC</div>
+          <div class="settings-nav-item" data-section="about-os">💻 About OS</div>
+          <div class="settings-nav-item" data-section="apps">📦 Apps</div>
+          <div class="settings-nav-item" data-section="devices">🔧 Devices</div>
           <div class="settings-nav-item" data-section="developer">🔒 For Developers</div>
         </div>
         <div class="settings-content"></div>
@@ -37,6 +38,8 @@
         window.renderAboutOS(mainContent);
       } else if (sectionName === "apps" && typeof window.renderAppsList === "function") {
         window.renderAppsList(mainContent);
+      } else if (sectionName === "devices" && typeof window.renderDeviceManager === "function") {
+        window.renderDeviceManager(mainContent);
       } else if (sectionName === "developer" && typeof window.renderDeveloperTab === "function") {
         window.renderDeveloperTab(mainContent);
       }

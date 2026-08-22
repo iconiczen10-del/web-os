@@ -1,0 +1,147 @@
+/* === FILE: finder-components.css === */
+/**
+ * WebOS v0.8.0 Finder Components - Grid, List & Storage Bar
+ */
+
+.finder-storage-box {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 8px;
+  margin-top: 10px;
+}
+
+.finder-storage-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.finder-storage-track {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.finder-storage-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.finder-storage-sub {
+  font-size: 9px;
+  color: #64748b;
+  margin-top: 4px;
+  text-align: right;
+}
+
+.finder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+  gap: 12px;
+}
+
+.finder-grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.finder-grid-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.finder-grid-item.selected {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.finder-item-icon {
+  font-size: 32px;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.finder-item-name {
+  font-size: 11px;
+  font-weight: 500;
+  color: #f1f5f9;
+  word-break: break-word;
+  line-height: 1.2;
+  max-width: 100%;
+}
+
+.finder-item-size {
+  font-size: 9px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.finder-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.finder-list-table th {
+  text-align: left;
+  padding: 6px 10px;
+  color: #64748b;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
+
+.finder-list-table th:hover {
+  color: #cbd5e1;
+}
+
+.finder-list-table td {
+  padding: 6px 10px;
+  color: #cbd5e1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.finder-list-row {
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.finder-list-row:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.finder-list-row.selected {
+  background: rgba(56, 189, 248, 0.18);
+  color: #fff;
+}
+
+.finder-list-name-col {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.finder-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #64748b;
+  font-size: 13px;
+  gap: 8px;
+}
+

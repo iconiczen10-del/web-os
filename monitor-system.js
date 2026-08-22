@@ -40,53 +40,40 @@
   }
 
   function getStorageInfo(callback) {
-    let usedGB = "89.0";
-    if (navigator.storage && navigator.storage.estimate) {
-      navigator.storage.estimate().then((estimate) => {
-        const estGB = (estimate.usage / (1024 * 1024 * 1024)).toFixed(1);
-        if (parseFloat(estGB) > 0) usedGB = estGB;
-        const res = {
-          brand: "Bolt",
-          model: "NV-256",
-          type: "NVMe M.2 SSD",
-          totalGB: 256,
-          readSpeed: "3,500 MB/s",
-          writeSpeed: "2,400 MB/s",
-          usedGB: usedGB,
-          formatted: `${usedGB} GB / 256 GB (Bolt NV-256)`,
-          short: `${usedGB} GB / 256 GB`
-        };
-        if (callback) callback(res);
-      }).catch(() => {
-        const res = {
-          brand: "Bolt",
-          model: "NV-256",
-          type: "NVMe M.2 SSD",
-          totalGB: 256,
-          readSpeed: "3,500 MB/s",
-          writeSpeed: "2,400 MB/s",
-          usedGB: "89.0",
-          formatted: "89 GB / 256 GB (Bolt NV-256)",
-          short: "89 GB / 256 GB"
-        };
-        if (callback) callback(res);
-      });
-      return { formatted: "89 GB / 256 GB (Bolt NV-256)", short: "89 GB / 256 GB" };
+    if (window.storageManager) {
+      const details = window.storageManager.getStorageDetails();
+      const res = {
+        brand: details.brand,
+        model: details.model,
+        type: details.type,
+        totalGB: details.totalGB,
+        systemGB: details.systemGB,
+        readSpeed: "2,800 MB/s",
+        writeSpeed: "1,800 MB/s",
+        usedGB: details.usedGB.toFixed(1),
+        freeGB: details.freeGB.toFixed(1),
+        formatted: details.formatted,
+        short: details.short
+      };
+      if (callback) callback(res);
+      return res;
     }
 
-    const res = {
+    const fallbackRes = {
       brand: "Bolt",
-      model: "NV-256",
+      model: "NV-64",
       type: "NVMe M.2 SSD",
-      totalGB: 256,
-      readSpeed: "3,500 MB/s",
-      writeSpeed: "2,400 MB/s",
-      usedGB: "89.0",
-      formatted: "89 GB / 256 GB (Bolt NV-256)",
-      short: "89 GB / 256 GB"
+      totalGB: 64,
+      systemGB: 12,
+      readSpeed: "2,800 MB/s",
+      writeSpeed: "1,800 MB/s",
+      usedGB: "12.1",
+      freeGB: "51.9",
+      formatted: "12.1 GB / 64 GB (Bolt NV-64)",
+      short: "12.1 GB / 64 GB"
     };
-    if (callback) callback(res);
-    return res;
+    if (callback) callback(fallbackRes);
+    return fallbackRes;
   }
 
   function getNetworkInfo() {

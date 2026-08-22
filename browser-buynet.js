@@ -1,10 +1,10 @@
 /* === FILE: browser-buynet.js === */
 /**
- * WebOS v0.7 BUYNET Internet ISP Website & Manager
+ * WebOS v0.8.2 BUYNET Internet ISP Website & Manager
  * Default Speed: 200 KB/s (1.6 Mbps) when no plan is active.
  */
 (function () {
-  const DEFAULT_SPEED_MBPS = 1.6; // 200 KB/s equivalent
+  const DEFAULT_SPEED_MBPS = 1.6;
   let activePlan = null;
 
   const PLANS = [
@@ -20,6 +20,7 @@
   }
 
   function getInternetSpeed() {
+    if (window._wifiDisabled) return 0;
     return activePlan && activePlan.speedMbps ? activePlan.speedMbps : DEFAULT_SPEED_MBPS;
   }
 
@@ -28,6 +29,20 @@
     let messageHtml = "";
 
     function renderContent() {
+      if (window._wifiDisabled) {
+        containerEl.innerHTML = `
+          <div class="buynet-page" style="text-align: center; padding: 40px 20px;">
+            <div style="font-size: 40px; margin-bottom: 8px;">📡❌</div>
+            <div style="font-size: 20px; font-weight: 700; color: #ff453a; margin-bottom: 6px;">Connection Lost</div>
+            <div style="font-size: 13px; color: #8e8e93; margin-bottom: 16px;">BoltLink Wi-Fi 5 adapter is disabled in Device Manager.</div>
+            <button id="buynet-fix-btn" style="padding: 8px 16px; border-radius: 6px; border: none; background: #0a84ff; color: #fff; font-weight: 600; cursor: pointer;">Open Device Manager</button>
+          </div>
+        `;
+        const fBtn = containerEl.querySelector("#buynet-fix-btn");
+        if (fBtn) fBtn.onclick = () => { if (typeof window.openApp === "function") window.openApp("settings"); };
+        return;
+      }
+
       const currentActive = getActivePlan();
       const cardsHtml = PLANS.map((p) => {
         const isActive = currentActive && currentActive.id === p.id;

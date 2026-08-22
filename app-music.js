@@ -1,6 +1,6 @@
 /* === FILE: app-music.js === */
 /**
- * WebOS v0.6 Music Player
+ * WebOS v0.8.2 Music Player (with Audio Device Check)
  */
 (function () {
   const PLAYLIST = [
@@ -33,6 +33,20 @@
     }
 
     function render() {
+      if (window._audioDisabled) {
+        contentEl.innerHTML = `
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #ff453a; padding: 20px;">
+            <div style="font-size: 40px; margin-bottom: 8px;">🔇</div>
+            <div style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">No audio device detected</div>
+            <div style="font-size: 12px; color: #8e8e93; margin-bottom: 14px;">woosh Audio HD is disabled in Device Manager.</div>
+            <button id="music-dev-btn" style="padding: 6px 14px; border-radius: 6px; border: none; background: #0a84ff; color: #fff; font-weight: 600; cursor: pointer;">Open Settings → Devices</button>
+          </div>
+        `;
+        const btn = contentEl.querySelector("#music-dev-btn");
+        if (btn) btn.onclick = () => { if (typeof window.openApp === "function") window.openApp("settings"); };
+        return;
+      }
+
       const track = PLAYLIST[currentTrackIdx];
       const pct = (currentTime / track.duration) * 100;
 
@@ -88,6 +102,7 @@
     }
 
     function togglePlay() {
+      if (window._audioDisabled) return;
       isPlaying = !isPlaying;
       if (isPlaying) startTimer();
       else stopTimer();
@@ -97,6 +112,7 @@
     function startTimer() {
       stopTimer();
       timer = setInterval(() => {
+        if (window._audioDisabled) { stopTimer(); isPlaying = false; render(); return; }
         currentTime++;
         if (currentTime >= PLAYLIST[currentTrackIdx].duration) {
           nextTrack();

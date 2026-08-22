@@ -20,7 +20,8 @@
     gamecenter: "initGameCenter",
     videoeditor: "initVideoEditor",
     wallpapers: "initWallpapers",
-    aichat: "initAIChat"
+    aichat: "initAIChat",
+    webtube: "initWebTube"
   };
 
   function dispatchAppInit(appName, winContainer) {

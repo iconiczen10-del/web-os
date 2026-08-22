@@ -1,6 +1,6 @@
 /* === FILE: loader-css.js === */
 /**
- * WebOS v0.7 CSS Dynamic Loader
+ * WebOS v0.8.2 CSS Dynamic Loader
  */
 (function () {
   const cssFiles = [
@@ -8,6 +8,10 @@
     "window.css",
     "window-states.css",
     "app-finder.css",
+    "finder-layout.css",
+    "finder-sidebar.css",
+    "finder-components.css",
+    "finder-modal.css",
     "app-calculator.css",
     "app-settings-layout.css",
     "app-settings-about.css",
@@ -17,6 +21,7 @@
     "settings-developer-components.css",
     "settings-about-os-layout.css",
     "settings-about-os-components.css",
+    "device-manager.css",
     "app-monitor.css",
     "app-monitor-tabs.css",
     "app-monitor-details.css",
@@ -32,6 +37,7 @@
     "browser-mbank-card.css",
     "browser-buynet.css",
     "browser-buynet-cards.css",
+    "browser-dmanager.css",
     "app-wallpapers.css",
     "app-wallpapers-modal.css",
     "browser-papersforpc.css",
@@ -54,7 +60,11 @@
     "aichat-maxdb-view.css",
     "aichat-teaser.css",
     "aichat-teaser-animations.css",
-    "dev-terminal.css"
+    "dev-terminal.css",
+    "community-layout.css",
+    "community-components.css",
+    "app-webtube.css",
+    "browser-webtube.css"
   ];
 
   cssFiles.forEach((file) => {

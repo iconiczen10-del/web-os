@@ -1,0 +1,180 @@
+/* === FILE: community-layout.css === */
+/* WebOS v0.8.1 CommunityPCS Layout Styling */
+
+.community-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: #0d1117;
+  color: #c9d1d9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.community-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: #161b22;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.community-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.community-logo {
+  font-size: 32px;
+}
+
+.community-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #58a6ff;
+  letter-spacing: -0.3px;
+}
+
+.community-tagline {
+  font-size: 11px;
+  color: #8b949e;
+}
+
+.community-online-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(46, 160, 67, 0.15);
+  border: 1px solid rgba(46, 160, 67, 0.4);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #3fb950;
+  font-weight: 600;
+}
+
+.community-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: #3fb950;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #3fb950;
+}
+
+.community-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 24px;
+  background: #0d1117;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  overflow-x: auto;
+}
+
+.community-nav-item {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #8b949e;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.community-nav-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #c9d1d9;
+}
+
+.community-nav-item.active {
+  background: #1f6feb;
+  color: #ffffff;
+  border-color: #388bfd;
+}
+
+.community-main-viewport {
+  flex: 1;
+  padding: 20px 24px;
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.community-banner {
+  background: linear-gradient(135deg, rgba(31, 111, 235, 0.25) 0%, rgba(13, 17, 23, 0.9) 100%);
+  border: 1px solid rgba(56, 139, 253, 0.3);
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 16px;
+}
+
+.community-banner-text h2 {
+  margin: 0 0 6px 0;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.community-banner-text p {
+  margin: 0;
+  font-size: 13px;
+  color: #8b949e;
+  line-height: 1.4;
+}
+
+.community-cta-btn {
+  background: #238636;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.community-cta-btn:hover {
+  background: #2ea043;
+}
+
+.community-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.community-stat-card {
+  background: #161b22;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+}
+
+.community-sc-icon { font-size: 20px; margin-bottom: 4px; }
+.community-sc-val { font-size: 18px; font-weight: 700; color: #58a6ff; margin-bottom: 2px; }
+.community-sc-lbl { font-size: 11px; color: #8b949e; }
+
+.community-footer {
+  margin-top: 32px;
+  padding: 16px 24px;
+  background: #161b22;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #8b949e;
+}

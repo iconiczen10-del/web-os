@@ -1,0 +1,89 @@
+/* === FILE: browser-webtube.css === */
+.webtube-web-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #0d0d10;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-y: auto;
+  position: relative;
+}
+
+.webtube-web-top-ad {
+  background: linear-gradient(90deg, #ff2020, #990000);
+  color: #fff;
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.webtube-web-ad-btn {
+  background: #ffd700;
+  color: #000;
+  border: none;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.webtube-web-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 14px;
+  background: #141418;
+  border-bottom: 1px solid #222;
+}
+
+.webtube-web-brand { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.webtube-web-free-tag { background: rgba(255,255,255,0.1); color: #8e8e93; font-size: 9px; padding: 2px 6px; border-radius: 3px; font-weight: 700; }
+.webtube-web-btn-gold { background: #ffd700; color: #000; border: none; font-weight: 700; padding: 4px 10px; border-radius: 6px; font-size: 11px; cursor: pointer; }
+.webtube-web-btn-primary { background: #ff2020; color: #fff; border: none; font-weight: 700; padding: 5px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; }
+
+.webtube-web-content {
+  display: flex;
+  flex: 1;
+  padding: 12px;
+  gap: 14px;
+}
+
+.webtube-web-main { flex: 1; min-width: 0; }
+.webtube-web-side { width: 190px; }
+
+.webtube-web-info { margin: 10px 0; }
+.webtube-web-video-title { font-size: 15px; font-weight: 700; }
+.webtube-web-video-meta { font-size: 11px; color: #8e8e93; margin: 3px 0 6px; }
+.webtube-web-video-desc { font-size: 11px; color: #ccc; line-height: 1.4; }
+
+.webtube-web-locked-banner { background: #181820; border: 1px dashed #ffd700; padding: 10px; border-radius: 6px; margin: 12px 0; }
+
+.webtube-web-grid-title { font-size: 12px; font-weight: 700; margin: 10px 0 8px; color: #ffd700; }
+.webtube-web-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+.webtube-web-card { background: #181820; border-radius: 6px; overflow: hidden; cursor: pointer; border: 1px solid transparent; }
+.webtube-web-card.active { border-color: #ffd700; }
+.webtube-web-thumb { height: 75px; position: relative; display: flex; align-items: center; justify-content: center; }
+.webtube-web-play { font-size: 18px; color: rgba(255,255,255,0.8); }
+.webtube-web-dur { position: absolute; bottom: 4px; right: 4px; background: rgba(0,0,0,0.8); font-size: 9px; padding: 1px 3px; border-radius: 2px; }
+.webtube-web-card-title { padding: 6px; font-size: 10px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.webtube-web-sidebar-ads { display: flex; flex-direction: column; gap: 10px; }
+.webtube-web-ad-box { background: #181820; border: 1px solid #333; border-radius: 6px; padding: 10px; }
+.webtube-web-ad-label { font-size: 8px; font-weight: 800; color: #8e8e93; letter-spacing: 0.5px; margin-bottom: 4px; }
+
+.webtube-web-floating-ad {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(18, 18, 22, 0.95);
+  border: 1px solid #ffd700;
+  border-radius: 6px;
+  padding: 8px 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+  z-index: 50;
+}

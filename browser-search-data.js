@@ -1,9 +1,21 @@
 /* === FILE: browser-search-data.js === */
 /**
- * WebOS v0.7 Search Index Data
+ * WebOS v0.8.2 Search Index Data
  */
 (function () {
   const SEARCH_DATABASE = [
+    {
+      title: "DriverManager — Official WebOS Hardware Driver Hub",
+      url: "www.dmanager.webos",
+      description: "Download certified WHQL drivers, firmware packages, and updates for 14 hardware partners across 15 devices.",
+      keywords: ["driver", "drivers", "dmanager", "hardware driver", "device manager", "whql", "firmware", "cyclone", "star r pro", "woosh", "boltlink"]
+    },
+    {
+      title: "CommunityPCS — The Official WebOS Community & Forums",
+      url: "www.communitypcs.webos",
+      description: "Join over 2,847+ members across 41 discussion threads, live active user counters, bug troubleshooting, customization showcases, and tech tips.",
+      keywords: ["community", "forum", "communitypcs", "forums", "threads", "members", "discussions", "bugs", "tips", "tricks", "hardware", "cyclone", "star r pro", "bolt", "customization"]
+    },
     {
       title: "Mbank Virtual Banking",
       url: "www.mbank.webos",
@@ -31,7 +43,7 @@
     {
       title: "About WebOS Ecosystem",
       url: "webos://about",
-      description: "Learn about the architecture of WebOS v0.7 — an offline-first modular operating system running entirely in your browser.",
+      description: "Learn about the architecture of WebOS v0.8.2 — an offline-first modular operating system running entirely in your browser.",
       keywords: ["about", "webos", "system", "os", "architecture", "version", "offline"]
     },
     {
@@ -69,6 +81,12 @@
       url: "www.store.webos#aichat",
       description: "Your intelligent AI assistant for WebOS. Answers questions, tells jokes, writes code, and solves math problems.",
       keywords: ["ai", "chat", "assistant", "bot", "coding", "math", "jokes", "aichat", "productivity"]
+    },
+    {
+      title: "WebTube by WorldPlay — Online Video Platform",
+      url: "www.webtube.webos",
+      description: "Stream animated videos, check trending creator channels, and enjoy online video entertainment on WebOS.",
+      keywords: ["webtube", "video", "videos", "youtube", "worldplay", "stream", "streaming", "channels", "animation", "watch"]
     }
   ];
 
