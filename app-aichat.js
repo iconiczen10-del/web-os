@@ -8,6 +8,18 @@
     const content = winContainer.querySelector(".window-content");
     if (!content) return;
 
+    winContainer.style.width = "520px";
+    winContainer.style.height = "620px";
+    winContainer.style.maxWidth = "calc(100vw - 32px)";
+    winContainer.style.maxHeight = "calc(100vh - 75px)";
+    content.style.padding = "0";
+    content.style.overflow = "hidden";
+    content.style.display = "flex";
+    content.style.flexDirection = "column";
+    content.style.flex = "1 1 0%";
+    content.style.height = "calc(100% - 40px)";
+    content.style.minHeight = "0";
+
     let selectedPersonality = "Friendly";
     let activeTab = "chat";
     let userMsgCount = 0;
@@ -39,10 +51,7 @@
 
     function attachChatEvents() {
       content.querySelectorAll(".aichat-tab-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          activeTab = btn.getAttribute("data-tab");
-          renderMainChat();
-        });
+        btn.addEventListener("click", () => { activeTab = btn.getAttribute("data-tab"); renderMainChat(); });
       });
 
       if (activeTab === "topics") {
@@ -53,11 +62,7 @@
             activeTab = "chat";
             renderMainChat();
             const input = content.querySelector("#aichat-text-input");
-            if (input) {
-              input.value = promptText;
-              const sendBtn = content.querySelector("#aichat-send-btn");
-              if (sendBtn) sendBtn.click();
-            }
+            if (input) { input.value = promptText; const sendBtn = content.querySelector("#aichat-send-btn"); if (sendBtn) sendBtn.click(); }
           }, openSubScreen);
         }
       } else {
@@ -68,13 +73,10 @@
         const chipsBar = content.querySelector("#aichat-chips-bar");
 
         if (personaSelect) personaSelect.addEventListener("change", (e) => { selectedPersonality = e.target.value; });
-
-        if (chipsBar) {
-          chipsBar.addEventListener("click", (e) => {
-            const chip = e.target.closest(".aichat-chip");
-            if (chip && input) { input.value = chip.getAttribute("data-cmd") || ""; handleSend(); }
-          });
-        }
+        if (chipsBar) chipsBar.addEventListener("click", (e) => {
+          const chip = e.target.closest(".aichat-chip");
+          if (chip && input) { input.value = chip.getAttribute("data-cmd") || ""; handleSend(); }
+        });
 
         function appendBubble(text, sender) {
           if (!msgList) return;
@@ -103,7 +105,7 @@
           typingBubble.remove();
           appendBubble(res.text, "ai");
 
-          if (tier === "free" && userMsgCount % 2 === 0 && !res.isLimit) {
+          if (tier === "free" && userMsgCount % 2 === 0 && !res.isLimit && window.aiMarketing) {
             const adDiv = document.createElement("div");
             adDiv.innerHTML = window.aiMarketing.getAdBannerHTML();
             msgList.appendChild(adDiv.firstElementChild);
@@ -139,10 +141,7 @@
     }
 
     renderMainChat();
-
-    if (window.aiChatTeaser && !window.aiChatTeaser.hasShownSplash()) {
-      window.aiChatTeaser.showSplashScreen(content, renderMainChat);
-    }
+    if (window.aiChatTeaser && !window.aiChatTeaser.hasShownSplash()) window.aiChatTeaser.showSplashScreen(content, renderMainChat);
   }
 
   window.initAIChat = initAIChat;

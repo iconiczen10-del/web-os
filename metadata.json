@@ -1,6 +1,6 @@
 {
   "name": "WebOS",
-  "description": "macOS-style WebOS in the browser v0.8.3 — WebTube by WorldPlay Video Platform",
+  "description": "macOS-style WebOS in the browser v0.8.3.1 — AI Chat Scrolling Fix & WebTube Video Platform",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

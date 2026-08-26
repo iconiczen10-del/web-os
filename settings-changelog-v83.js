@@ -1,15 +1,27 @@
 /* === FILE: settings-changelog-v83.js === */
 /**
- * WebOS v0.8.3 Changelog Data
+ * WebOS v0.8.3 & v0.8.3.1 Changelog Data
  */
 (function () {
   window.CHANGELOG_V83 = [
+    {
+      version: "v0.8.3.1",
+      date: "2026-08-21",
+      title: "AI Chat Knowledge & Max Database Scrolling Fix",
+      badge: "Patch",
+      features: [
+        "Fixed Knowledge Browser tab scrolling with proper overflow-y auto and max-height constraints.",
+        "Fixed Max AI Database scrolling across all category blocks and raw knowledge answers.",
+        "Stabilized Max Database real-time timer DOM rendering to prevent scroll-position resets.",
+        "Enhanced smooth touch scrolling and visible custom scrollbars for all AI Chat modules."
+      ]
+    },
     {
       version: "v0.8.3",
       date: "2026-08-16",
       title: "WebTube by WorldPlay — Full Video Platform Release",
       badge: "Major",
-      changes: [
+      features: [
         "Introduced WebTube video platform with free website (www.webtube.webos) and premium App.",
         "Canvas-powered video playback with 20 real-time animated scene types at up to 60 FPS.",
         "10 unique video titles and 10 creator channels with persistent metadata and tiered comment sections.",

@@ -39,31 +39,38 @@
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
+  height: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
   background: #0d1117;
   min-height: 0;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.25) rgba(0, 0, 0, 0.2);
+  scrollbar-color: #007aff rgba(22, 27, 34, 0.85);
 }
 
 .aichat-topics-container::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 .aichat-topics-container::-webkit-scrollbar-track {
-  background: rgba(13, 17, 23, 0.6);
-  border-radius: 4px;
+  background: rgba(22, 27, 34, 0.85);
+  border-radius: 6px;
 }
 
 .aichat-topics-container::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #007aff;
+  border-radius: 6px;
+  border: 2px solid #0d1117;
 }
 
 .aichat-topics-container::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: #0a84ff;
+}
+
+.aichat-topics-container::-webkit-scrollbar-thumb:active {
+  background: #388bfd;
 }
 
 .aichat-topics-locked {
@@ -83,6 +90,7 @@
   gap: 10px;
   background: #161b22;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
 }
 
 .aichat-topics-cats {

@@ -5,6 +5,7 @@
 (function () {
   let collapsedCategories = {};
   let searchQuery = "";
+  let selectedCategory = "all";
 
   function getAccessPercentage(tier) {
     const t = (tier || "free").toLowerCase();
@@ -29,6 +30,8 @@
 
     function draw() {
       const filtered = allTopics.filter(topic => {
+        const catMatch = selectedCategory === "all" || topic.catId === selectedCategory;
+        if (!catMatch) return false;
         if (!searchQuery) return true;
         const q = searchQuery.toLowerCase();
         return topic.name.toLowerCase().includes(q) ||
@@ -36,21 +39,53 @@
           topic.catName.toLowerCase().includes(q);
       });
 
-      const catSectionsHtml = categories.map(cat => {
+      const activeCategories = selectedCategory === "all"
+        ? categories
+        : categories.filter(c => c.id === selectedCategory);
+
+      const catSectionsHtml = activeCategories.map(cat => {
         const isCollapsed = collapsedCategories[cat.id] === true;
         return window.aiBrowserRender ? window.aiBrowserRender.generateCategoryHTML(cat, filtered, allTopics, currentTier, isCollapsed) : "";
-      }).join("");
+      }).filter(Boolean).join("");
+
+      const categoryPillsHtml = [
+        { id: "all", name: `All (${allTopics.length})`, icon: "🌐" },
+        ...categories.map(c => {
+          const count = allTopics.filter(t => t.catId === c.id).length;
+          return { id: c.id, name: `${c.name} (${count})`, icon: c.icon };
+        })
+      ].map(c => `
+        <button class="kb-filter-pill ${selectedCategory === c.id ? 'active' : ''}" data-cat="${c.id}">
+          <span>${c.icon}</span> <span>${c.name}</span>
+        </button>
+      `).join("");
 
       containerEl.innerHTML = `
         <div class="kb-container">
           <div class="kb-header-bar">
-            <input type="text" id="kb-search-input" class="kb-search-input" placeholder="Search 90 topics and 463+ questions..." value="${searchQuery}" />
+            <div class="kb-search-row">
+              <input type="text" id="kb-search-input" class="kb-search-input" placeholder="🔍 Search all 90 topics and 463+ questions..." value="${searchQuery}" />
+              ${searchQuery ? `<button id="kb-clear-search" class="kb-clear-btn" title="Clear Search">✕</button>` : ''}
+            </div>
+            <div class="kb-pills-bar">
+              ${categoryPillsHtml}
+            </div>
+            <div class="kb-sub-toolbar">
+              <div class="kb-topics-stat">
+                📚 Showing <strong>${filtered.length}</strong> of <strong>${allTopics.length}</strong> Topics
+              </div>
+              <div class="kb-toggle-tools">
+                <button id="kb-expand-all" class="kb-tool-btn">Expand All</button>
+                <button id="kb-collapse-all" class="kb-tool-btn">Collapse All</button>
+              </div>
+            </div>
           </div>
-          <div class="kb-content-list">
-            <div class="kb-teaser-top-slot" id="kb-teaser-top-slot"></div>
-            ${catSectionsHtml || '<div class="kb-empty-msg">No matching topics found.</div>'}
+
+          <div class="kb-content-list" id="kb-content-list">
+            ${catSectionsHtml || '<div class="kb-empty-msg">No matching topics found for your search.</div>'}
             <div class="kb-teaser-bottom-slot" id="kb-teaser-bottom-slot"></div>
           </div>
+
           <div class="kb-access-footer">
             <div class="kb-access-info">
               <span>Overall Knowledge Access: <strong>${accessPct}%</strong> (${currentTier.toUpperCase()})</span>
@@ -61,13 +96,9 @@
         </div>
       `;
 
-      const topSlot = containerEl.querySelector("#kb-teaser-top-slot");
-      if (topSlot && window.aiChatTeaserCards) {
-        window.aiChatTeaserCards.renderFlipCards(topSlot);
-      }
-
       const botSlot = containerEl.querySelector("#kb-teaser-bottom-slot");
       if (botSlot && window.aiChatTeaserCards) {
+        window.aiChatTeaserCards.renderFlipCards(botSlot);
         window.aiChatTeaserCards.startCountdown(botSlot, false);
       }
 
@@ -77,7 +108,41 @@
           searchQuery = e.target.value;
           draw();
           const newInput = containerEl.querySelector("#kb-search-input");
-          if (newInput) { newInput.focus(); newInput.setSelectionRange(searchQuery.length, searchQuery.length); }
+          if (newInput) {
+            newInput.focus();
+            newInput.setSelectionRange(searchQuery.length, searchQuery.length);
+          }
+        });
+      }
+
+      const clearBtn = containerEl.querySelector("#kb-clear-search");
+      if (clearBtn) {
+        clearBtn.addEventListener("click", () => {
+          searchQuery = "";
+          draw();
+        });
+      }
+
+      containerEl.querySelectorAll(".kb-filter-pill").forEach(pill => {
+        pill.addEventListener("click", () => {
+          selectedCategory = pill.getAttribute("data-cat");
+          draw();
+        });
+      });
+
+      const expandBtn = containerEl.querySelector("#kb-expand-all");
+      if (expandBtn) {
+        expandBtn.addEventListener("click", () => {
+          collapsedCategories = {};
+          draw();
+        });
+      }
+
+      const collapseBtn = containerEl.querySelector("#kb-collapse-all");
+      if (collapseBtn) {
+        collapseBtn.addEventListener("click", () => {
+          categories.forEach(c => { collapsedCategories[c.id] = true; });
+          draw();
         });
       }
 
@@ -93,13 +158,20 @@
         item.addEventListener("click", () => {
           const qText = item.getAttribute("data-question");
           const isLocked = item.getAttribute("data-locked") === "true";
-          if (isLocked) { if (typeof onUpgradeClick === "function") onUpgradeClick(); }
-          else { if (typeof onAskQuestion === "function") onAskQuestion(qText); }
+          if (isLocked) {
+            if (typeof onUpgradeClick === "function") onUpgradeClick();
+          } else {
+            if (typeof onAskQuestion === "function") onAskQuestion(qText);
+          }
         });
       });
 
       const upgBtn = containerEl.querySelector("#kb-upgrade-btn");
-      if (upgBtn) upgBtn.addEventListener("click", () => { if (typeof onUpgradeClick === "function") onUpgradeClick(); });
+      if (upgBtn) {
+        upgBtn.addEventListener("click", () => {
+          if (typeof onUpgradeClick === "function") onUpgradeClick();
+        });
+      }
     }
 
     draw();
