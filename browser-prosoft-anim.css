@@ -1,0 +1,216 @@
+/* === FILE: browser-prosoft-anim.css === */
+/**
+ * WebOS v0.9.0 ProSoft Animations & Interactive Components CSS
+ */
+.ps-home-hero {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 16px;
+  background: radial-gradient(circle at 50% 30%, #0a1428 0%, #050a14 100%);
+  overflow: hidden;
+}
+
+.ps-particles-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ps-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.ps-v3d-badge-pulse {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #00bfff;
+  background: rgba(0, 191, 255, 0.1);
+  border: 1px solid #00bfff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  animation: psBadgePulse 2s infinite ease-in-out;
+}
+
+@keyframes psBadgePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 8px rgba(0, 191, 255, 0.3); }
+  50% { transform: scale(1.05); box-shadow: 0 0 16px rgba(0, 191, 255, 0.6); }
+}
+
+.ps-hero-title {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #00bfff;
+  margin: 0 0 8px 0;
+  text-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
+}
+
+.ps-hero-tagline {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #e6f7ff;
+  min-height: 24px;
+  margin-bottom: 20px;
+}
+
+.ps-typing-cursor {
+  display: inline-block;
+  color: #00bfff;
+  animation: psBlink 0.7s infinite;
+}
+
+@keyframes psBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.ps-typed-glow {
+  text-shadow: 0 0 12px rgba(0, 191, 255, 0.5);
+}
+
+.ps-progress-box {
+  background: #0f1a30;
+  border: 1px solid #1a2a45;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+}
+.ps-progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #aaccee;
+  margin-bottom: 6px;
+}
+.ps-progress-bar {
+  height: 8px;
+  background: #050a14;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.ps-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0066cc, #00bfff);
+  box-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
+}
+
+.ps-countdown-box {
+  background: rgba(15, 26, 48, 0.85);
+  border: 1px solid #1a2a45;
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 24px;
+}
+.ps-cd-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #00bfff;
+  margin-bottom: 10px;
+}
+.ps-cd-grid {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+.ps-cd-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #050a14;
+  border: 1px solid #1a2a45;
+  border-radius: 6px;
+  padding: 8px 12px;
+  min-width: 48px;
+}
+.ps-cd-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: #33ccff;
+}
+.ps-cd-lbl {
+  font-size: 9px;
+  font-weight: 600;
+  color: #6688aa;
+}
+
+.ps-teaser-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(5, 10, 20, 0.95);
+  backdrop-filter: blur(12px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ps-teaser-box {
+  background: #0a1428;
+  border: 1px solid #00bfff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 0 30px rgba(0, 191, 255, 0.4);
+  overflow: hidden;
+}
+.ps-teaser-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: #0f1a30;
+  font-size: 12px;
+  font-weight: 700;
+  color: #00bfff;
+}
+.ps-teaser-skip {
+  background: transparent; border: none; color: #aaccee; cursor: pointer;
+}
+.ps-teaser-screen {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+}
+.ps-teaser-scene { display: none; }
+.ps-teaser-scene.active { display: block; animation: psFadeIn 0.3s ease; }
+@keyframes psFadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+.ps-scene-title { font-size: 28px; font-weight: 900; color: #00bfff; margin: 8px 0; }
+.ps-teaser-progress-bar { height: 4px; background: #050a14; }
+.ps-teaser-progress-fill { height: 100%; background: #00bfff; width: 0%; }
+
+.ps-modal-backdrop {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(5, 10, 20, 0.85); backdrop-filter: blur(8px);
+  z-index: 1000; display: flex; align-items: center; justify-content: center;
+}
+.ps-modal-box {
+  background: #0a1428; border: 1px solid #1a2a45; border-radius: 12px;
+  width: 90%; max-width: 440px; padding: 20px; box-shadow: 0 0 24px rgba(0, 191, 255, 0.25);
+}
+.ps-modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.ps-modal-close { background: transparent; border: none; color: #aaccee; font-size: 16px; cursor: pointer; }
+.ps-spinner {
+  width: 32px; height: 32px; border: 3px solid #1a2a45;
+  border-top-color: #00bfff; border-radius: 50%;
+  animation: psSpin 0.8s linear infinite; margin: 16px auto;
+}
+@keyframes psSpin { to { transform: rotate(360deg); } }
+.ps-scroll-fade { opacity: 0; transform: translateY(16px); transition: all 0.4s ease; }
+.ps-scrolled-in { opacity: 1; transform: translateY(0); }

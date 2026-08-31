@@ -23,6 +23,10 @@
   function minimizeWindow(windowEl) {
     if (!windowEl || windowEl.style.display === "none") return;
 
+    if (window.windowPin && typeof window.windowPin.unpinWindow === "function") {
+      window.windowPin.unpinWindow(windowEl);
+    }
+
     windowEl.classList.add("minimizing");
     const appName = windowEl.getAttribute("data-app");
 

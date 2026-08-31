@@ -101,4 +101,8 @@
   }
 
   window.initCalendar = initCalendar;
+  window.getCalendarEvents = getEvents;
+  window.setCalendarEvents = function (evts) {
+    sessionEvents = evts && typeof evts === "object" ? JSON.parse(JSON.stringify(evts)) : {};
+  };
 })();

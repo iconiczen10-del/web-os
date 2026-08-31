@@ -3,9 +3,12 @@
  * AI Chat Knowledge Browser - Orchestrator & Controller
  */
 (function () {
-  let collapsedCategories = {};
-  let searchQuery = "";
-  let selectedCategory = "all";
+  let state = {
+    collapsedCategories: {},
+    searchQuery: "",
+    selectedCategory: "all",
+    lastScrollTop: 0
+  };
 
   function getAccessPercentage(tier) {
     const t = (tier || "free").toLowerCase();
@@ -28,23 +31,28 @@
     const currentTier = (tier || "free").toLowerCase();
     const accessPct = getAccessPercentage(currentTier);
 
-    function draw() {
+    function draw(preserveScroll = true) {
+      const oldList = containerEl.querySelector("#kb-content-list");
+      if (oldList && preserveScroll) {
+        state.lastScrollTop = oldList.scrollTop;
+      }
+
       const filtered = allTopics.filter(topic => {
-        const catMatch = selectedCategory === "all" || topic.catId === selectedCategory;
+        const catMatch = state.selectedCategory === "all" || topic.catId === state.selectedCategory;
         if (!catMatch) return false;
-        if (!searchQuery) return true;
-        const q = searchQuery.toLowerCase();
+        if (!state.searchQuery) return true;
+        const q = state.searchQuery.toLowerCase();
         return topic.name.toLowerCase().includes(q) ||
           topic.variants.some(v => v.toLowerCase().includes(q)) ||
           topic.catName.toLowerCase().includes(q);
       });
 
-      const activeCategories = selectedCategory === "all"
+      const activeCategories = state.selectedCategory === "all"
         ? categories
-        : categories.filter(c => c.id === selectedCategory);
+        : categories.filter(c => c.id === state.selectedCategory);
 
       const catSectionsHtml = activeCategories.map(cat => {
-        const isCollapsed = collapsedCategories[cat.id] === true;
+        const isCollapsed = state.collapsedCategories[cat.id] === true;
         return window.aiBrowserRender ? window.aiBrowserRender.generateCategoryHTML(cat, filtered, allTopics, currentTier, isCollapsed) : "";
       }).filter(Boolean).join("");
 
@@ -55,7 +63,7 @@
           return { id: c.id, name: `${c.name} (${count})`, icon: c.icon };
         })
       ].map(c => `
-        <button class="kb-filter-pill ${selectedCategory === c.id ? 'active' : ''}" data-cat="${c.id}">
+        <button class="kb-filter-pill ${state.selectedCategory === c.id ? 'active' : ''}" data-cat="${c.id}">
           <span>${c.icon}</span> <span>${c.name}</span>
         </button>
       `).join("");
@@ -64,8 +72,8 @@
         <div class="kb-container">
           <div class="kb-header-bar">
             <div class="kb-search-row">
-              <input type="text" id="kb-search-input" class="kb-search-input" placeholder="🔍 Search all 90 topics and 463+ questions..." value="${searchQuery}" />
-              ${searchQuery ? `<button id="kb-clear-search" class="kb-clear-btn" title="Clear Search">✕</button>` : ''}
+              <input type="text" id="kb-search-input" class="kb-search-input" placeholder="🔍 Search all 90 topics and 463+ questions..." value="${state.searchQuery}" />
+              ${state.searchQuery ? `<button id="kb-clear-search" class="kb-clear-btn" title="Clear Search">✕</button>` : ''}
             </div>
             <div class="kb-pills-bar">
               ${categoryPillsHtml}
@@ -96,85 +104,32 @@
         </div>
       `;
 
+      const newList = containerEl.querySelector("#kb-content-list");
+      if (newList) {
+        newList.addEventListener("scroll", () => {
+          state.lastScrollTop = newList.scrollTop;
+        });
+        if (preserveScroll && state.lastScrollTop > 0) {
+          newList.scrollTop = state.lastScrollTop;
+        }
+      }
+
       const botSlot = containerEl.querySelector("#kb-teaser-bottom-slot");
       if (botSlot && window.aiChatTeaserCards) {
         window.aiChatTeaserCards.renderFlipCards(botSlot);
         window.aiChatTeaserCards.startCountdown(botSlot, false);
       }
 
-      const searchInput = containerEl.querySelector("#kb-search-input");
-      if (searchInput) {
-        searchInput.addEventListener("input", (e) => {
-          searchQuery = e.target.value;
-          draw();
-          const newInput = containerEl.querySelector("#kb-search-input");
-          if (newInput) {
-            newInput.focus();
-            newInput.setSelectionRange(searchQuery.length, searchQuery.length);
-          }
-        });
-      }
-
-      const clearBtn = containerEl.querySelector("#kb-clear-search");
-      if (clearBtn) {
-        clearBtn.addEventListener("click", () => {
-          searchQuery = "";
-          draw();
-        });
-      }
-
-      containerEl.querySelectorAll(".kb-filter-pill").forEach(pill => {
-        pill.addEventListener("click", () => {
-          selectedCategory = pill.getAttribute("data-cat");
-          draw();
-        });
-      });
-
-      const expandBtn = containerEl.querySelector("#kb-expand-all");
-      if (expandBtn) {
-        expandBtn.addEventListener("click", () => {
-          collapsedCategories = {};
-          draw();
-        });
-      }
-
-      const collapseBtn = containerEl.querySelector("#kb-collapse-all");
-      if (collapseBtn) {
-        collapseBtn.addEventListener("click", () => {
-          categories.forEach(c => { collapsedCategories[c.id] = true; });
-          draw();
-        });
-      }
-
-      containerEl.querySelectorAll(".kb-category-header").forEach(hdr => {
-        hdr.addEventListener("click", () => {
-          const catId = hdr.getAttribute("data-cat");
-          collapsedCategories[catId] = !collapsedCategories[catId];
-          draw();
-        });
-      });
-
-      containerEl.querySelectorAll(".kb-question-item").forEach(item => {
-        item.addEventListener("click", () => {
-          const qText = item.getAttribute("data-question");
-          const isLocked = item.getAttribute("data-locked") === "true";
-          if (isLocked) {
-            if (typeof onUpgradeClick === "function") onUpgradeClick();
-          } else {
-            if (typeof onAskQuestion === "function") onAskQuestion(qText);
-          }
-        });
-      });
-
-      const upgBtn = containerEl.querySelector("#kb-upgrade-btn");
-      if (upgBtn) {
-        upgBtn.addEventListener("click", () => {
-          if (typeof onUpgradeClick === "function") onUpgradeClick();
+      if (window.aiBrowserEvents) {
+        window.aiBrowserEvents.bindBrowserEvents(containerEl, state, {
+          onDraw: draw,
+          onAskQuestion,
+          onUpgradeClick
         });
       }
     }
 
-    draw();
+    draw(true);
   }
 
   window.aiKnowledgeBrowser = { renderKnowledgeBrowser, getAccessPercentage, isTopicLocked };

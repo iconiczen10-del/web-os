@@ -17,10 +17,10 @@
         <button id="br-back" style="background: none; border: none; color: #555; cursor: pointer; font-size: 13px;" title="Back">◀</button>
         <button id="br-forward" style="background: none; border: none; color: #555; cursor: pointer; font-size: 13px;" title="Forward">▶</button>
         <button id="br-refresh" style="background: none; border: none; color: #fff; cursor: pointer; font-size: 13px;" title="Refresh">🔄</button>
+        <button id="br-home" style="background: none; border: none; color: #fff; cursor: pointer; font-size: 13px;" title="Home">🏠</button>
         <input type="text" id="br-url" style="flex: 1; padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.12); background: rgba(0,0,0,0.3); color: #fff; font-size: 12px; outline: none;" />
         <button id="br-go" style="background: #0a84ff; border: none; color: #fff; border-radius: 6px; padding: 5px 10px; font-weight: 600; cursor: pointer; font-size: 12px;">Go</button>
       </div>
-      <div id="br-bookmarks-container"></div>
       <div style="flex: 1; overflow-y: auto;" id="br-viewport"></div>
       <div id="br-statusbar" style="padding: 4px 12px; background: rgba(0,0,0,0.4); border-top: 1px solid rgba(255,255,255,0.06); font-size: 11px; color: #8e8e93; display: flex; justify-content: space-between; align-items: center;">
         <span id="br-sb-plan">ISP: BUYNET Starter (10 Mbps)</span>
@@ -31,9 +31,9 @@
     const backBtn = contentEl.querySelector("#br-back");
     const forwardBtn = contentEl.querySelector("#br-forward");
     const refreshBtn = contentEl.querySelector("#br-refresh");
+    const homeBtn = contentEl.querySelector("#br-home");
     const urlInput = contentEl.querySelector("#br-url");
     const goBtn = contentEl.querySelector("#br-go");
-    const bmContainer = contentEl.querySelector("#br-bookmarks-container");
     const viewportEl = contentEl.querySelector("#br-viewport");
     const planSb = contentEl.querySelector("#br-sb-plan");
 
@@ -47,7 +47,8 @@
 
     function navigateTo(rawUrl) {
       const nav = window.browserNavigation;
-      const url = nav ? nav.navigate(rawUrl) : rawUrl;
+      const url不易 = nav ? nav.navigate(rawUrl) : rawUrl;
+      const url = typeof url不易 === "string" ? url不易 : (rawUrl || "webos://home");
 
       if (urlInput) urlInput.value = url;
 
@@ -60,8 +61,10 @@
       updateStatusBar();
     }
 
-    if (window.browserBookmarks && bmContainer) {
-      window.browserBookmarks.renderBookmarksBar(bmContainer, navigateTo);
+    if (homeBtn) {
+      homeBtn.addEventListener("click", () => {
+        navigateTo("webos://home");
+      });
     }
 
     if (backBtn) {

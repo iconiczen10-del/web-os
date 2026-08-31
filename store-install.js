@@ -15,6 +15,9 @@
         if (window.storageManager) {
           window.storageManager.installApp(app.name, app.sizeMB || 50, app.icon || "📦");
         }
+        if (window.notificationBus) {
+          window.notificationBus.notify("App Installed", `${app.name} installed successfully`, app.icon || "📦", "App Store", appId);
+        }
       }
     }
 

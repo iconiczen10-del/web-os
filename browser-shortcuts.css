@@ -1,0 +1,41 @@
+/* === FILE: browser-shortcuts.css === */
+.hp-sc-card {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.hp-sc-card:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.sc-cat-chip {
+  transition: all 0.15s ease;
+}
+
+.sc-cat-chip:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.sc-del-btn {
+  transition: all 0.15s ease;
+}
+
+.sc-del-btn:hover {
+  background: rgba(255, 69, 58, 0.4) !important;
+  color: #ffffff !important;
+  transform: scale(1.1);
+}
+
+#hp-sc-new-card {
+  transition: all 0.2s ease;
+}
+
+#hp-sc-new-card:hover {
+  background: rgba(10, 132, 255, 0.08) !important;
+  border-color: rgba(10, 132, 255, 0.45) !important;
+  transform: translateY(-2px);
+}

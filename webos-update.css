@@ -1,0 +1,225 @@
+/* === FILE: webos-update.css === */
+/* Settings WebOS Update Tab Styling */
+
+.webos-update-container {
+  padding: 20px;
+  color: #e2e8f0;
+  font-family: system-ui, -apple-system, sans-serif;
+  max-width: 600px;
+}
+
+.update-header {
+  margin-bottom: 20px;
+}
+
+.update-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.update-subtitle {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.update-section {
+  margin-bottom: 24px;
+}
+
+.update-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.update-card {
+  background: rgba(26, 42, 69, 0.6);
+  border: 1px solid rgba(0, 191, 255, 0.2);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+}
+
+.update-card.active, .update-card.ready {
+  border-color: #00bfff;
+  box-shadow: 0 0 16px rgba(0, 191, 255, 0.15);
+}
+
+.update-card.installed {
+  border-color: rgba(34, 197, 94, 0.4);
+  background: rgba(16, 40, 28, 0.4);
+}
+
+.update-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.update-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.update-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.update-badge.available {
+  background: rgba(0, 191, 255, 0.2);
+  color: #00bfff;
+}
+
+.update-badge.downloading, .update-badge.installing {
+  background: rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+}
+
+.update-badge.ready {
+  background: rgba(0, 229, 255, 0.2);
+  color: #00e5ff;
+}
+
+.update-badge.installed {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.update-meta {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+
+.update-details {
+  font-size: 13px;
+  color: #cbd5e1;
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+
+.update-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.update-btn {
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s ease;
+}
+
+.update-btn.primary {
+  background: #00bfff;
+  color: #0f172a;
+}
+
+.update-btn.primary:hover {
+  background: #33ccff;
+}
+
+.update-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.update-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.update-btn.cancel {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.update-btn.cancel:hover {
+  background: rgba(239, 68, 68, 0.3);
+}
+
+.update-progress-track {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.update-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0088cc, #00bfff);
+  border-radius: 4px;
+  transition: width 0.15s ease;
+}
+
+.update-progress-fill.installing {
+  background: linear-gradient(90deg, #00bfff, #ffd700);
+}
+
+.update-status-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 10px;
+}
+
+.update-history-box {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.update-empty-history {
+  font-size: 13px;
+  color: #64748b;
+  text-align: center;
+  padding: 8px;
+}
+
+.update-history-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.update-history-item:last-child {
+  border-bottom: none;
+}
+
+.update-hist-name {
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+.update-hist-meta {
+  color: #94a3b8;
+}
+
+.update-restart-overlay {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  z-index: 100000;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: all;
+}

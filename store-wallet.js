@@ -40,10 +40,18 @@
   }
 
   function deductFunds(amount, description) {
-    if (!canAfford(amount)) return false;
+    if (!canAfford(amount)) {
+      if (window.notificationBus) {
+        window.notificationBus.notify("Payment Failed", "Insufficient funds in Mbank wallet", "❌", "Mbank", "browser");
+      }
+      return false;
+    }
     const current = getBalance();
     setBalance(current - amount);
     addTransaction("purchase", amount, description);
+    if (window.notificationBus) {
+      window.notificationBus.notify("Payment Success", `Payment -$${amount.toFixed(2)} to ${description}`, "💰", "Mbank", "browser");
+    }
     return true;
   }
 
@@ -54,6 +62,16 @@
     return newBal;
   }
 
+  function exportWalletState() {
+    return { balance: getBalance(), transactions: [...transactions] };
+  }
+
+  function importWalletState(data) {
+    if (!data) return;
+    if (typeof data.balance === "number") setBalance(data.balance);
+    if (Array.isArray(data.transactions)) transactions = [...data.transactions];
+  }
+
   window.storeWallet = {
     getBalance,
     setBalance,
@@ -61,6 +79,8 @@
     deductFunds,
     depositFunds,
     getTransactions,
-    addTransaction
+    addTransaction,
+    exportWalletState,
+    importWalletState
   };
 })();

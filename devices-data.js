@@ -284,7 +284,13 @@
     getDevice: (id) => devices.find((d) => d.id === id),
     updateDevice: (id, updates) => {
       const dev = devices.find((d) => d.id === id);
-      if (dev) Object.assign(dev, updates);
+      if (dev) {
+        const oldVer = dev.driverVersion;
+        Object.assign(dev, updates);
+        if (updates.driverVersion && updates.driverVersion !== oldVer && window.notificationBus) {
+          window.notificationBus.notify("Driver Updated", `${dev.name} driver updated to v${updates.driverVersion}`, "🔧", "Device Manager", "settings");
+        }
+      }
       return dev;
     },
     resetAll: () => {

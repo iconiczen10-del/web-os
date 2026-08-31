@@ -1,0 +1,200 @@
+/* === FILE: browser-prosoft.css === */
+/**
+ * WebOS v0.9.0 ProSoft Inc. Theme & Layout (Pure Blue Palette)
+ */
+.ps-wrapper {
+  background: #050a14;
+  color: #e6f7ff;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+.ps-nav-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 20, 40, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #1a2a45;
+}
+
+.ps-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 12px;
+}
+
+.ps-brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+.ps-brand-text {
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #00bfff;
+  text-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
+}
+.ps-brand-badge {
+  background: #0066cc;
+  color: #e6f7ff;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.ps-nav-tabs {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ps-nav-tabs::-webkit-scrollbar { display: none; }
+
+.ps-nav-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #aaccee;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ps-nav-btn:hover {
+  background: rgba(0, 191, 255, 0.1);
+  color: #33ccff;
+  border-color: #1a2a45;
+}
+.ps-nav-btn.active {
+  background: #0f1a30;
+  color: #00bfff;
+  border-color: #00bfff;
+  font-weight: 600;
+  box-shadow: 0 0 8px rgba(0, 191, 255, 0.25);
+}
+
+.ps-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ps-page-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ps-section-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.ps-section-badge {
+  font-size: 10px;
+  font-weight: 800;
+  color: #00bfff;
+  letter-spacing: 1.5px;
+}
+.ps-section-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #e6f7ff;
+  margin: 6px 0;
+  text-shadow: 0 0 12px rgba(0, 191, 255, 0.2);
+}
+.ps-section-sub {
+  font-size: 13px;
+  color: #aaccee;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.ps-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+.ps-btn-primary {
+  background: #0066cc;
+  color: #ffffff;
+  border-color: #00bfff;
+  box-shadow: 0 0 12px rgba(0, 191, 255, 0.3);
+}
+.ps-btn-primary:hover {
+  background: #00bfff;
+  color: #050a14;
+  box-shadow: 0 0 16px rgba(0, 191, 255, 0.6);
+}
+.ps-btn-secondary {
+  background: #0f1a30;
+  color: #aaccee;
+  border-color: #1a2a45;
+}
+.ps-btn-secondary:hover {
+  background: #1a2a45;
+  color: #e6f7ff;
+}
+.ps-btn-accent {
+  background: linear-gradient(135deg, #0066cc, #00bfff);
+  color: #ffffff;
+}
+
+.ps-features-grid, .ps-gallery-grid, .ps-products-grid, .ps-team-grid, .ps-jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.ps-feat-card, .ps-scene-card, .ps-prod-card, .ps-team-card, .ps-job-card {
+  background: #0f1a30;
+  border: 1px solid #1a2a45;
+  border-radius: 10px;
+  padding: 16px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.ps-feat-card:hover, .ps-scene-card:hover, .ps-prod-card:hover, .ps-team-card:hover, .ps-job-card:hover {
+  transform: translateY(-2px);
+  border-color: #00bfff;
+  box-shadow: 0 4px 16px rgba(0, 191, 255, 0.2);
+}
+
+.ps-footer {
+  border-top: 1px solid #1a2a45;
+  background: #0a1428;
+  padding: 16px;
+  margin-top: auto;
+  font-size: 11px;
+  color: #6688aa;
+}
+.ps-footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}

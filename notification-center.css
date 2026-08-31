@@ -1,0 +1,172 @@
+/* === FILE: notification-center.css === */
+/**
+ * WebOS v0.9.1 iOS-Style Notification Center Stylesheet
+ */
+.ios-panel {
+  position: fixed;
+  top: 28px;
+  width: 380px;
+  max-height: calc(100vh - 40px);
+  background: rgba(10, 14, 40, 0.88);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(0, 191, 255, 0.2);
+  border-top: none;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  z-index: 10000;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 191, 255, 0.15);
+  transform: translateY(-120%);
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.15), opacity 0.25s ease;
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  color: #e6f7ff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  user-select: none;
+}
+
+.ios-panel.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nc-panel {
+  left: 16px;
+}
+
+.nc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px 10px 16px;
+  border-bottom: 1px solid rgba(0, 191, 255, 0.12);
+}
+
+.nc-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #00bfff;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nc-clear-all-btn {
+  background: transparent;
+  border: none;
+  color: #00bfff;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+}
+.nc-clear-all-btn:hover {
+  background: rgba(0, 191, 255, 0.15);
+}
+
+.nc-scroll-area {
+  padding: 12px 14px;
+  overflow-y: auto;
+  max-height: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.nc-scroll-area::-webkit-scrollbar { width: 4px; }
+.nc-scroll-area::-webkit-scrollbar-thumb { background: rgba(0, 191, 255, 0.3); border-radius: 4px; }
+
+.nc-group-card {
+  background: rgba(15, 26, 48, 0.9);
+  border: 1px solid rgba(0, 191, 255, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.nc-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(10, 20, 36, 0.6);
+  border-bottom: 1px solid rgba(0, 191, 255, 0.08);
+}
+
+.nc-group-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nc-group-icon { font-size: 13px; }
+.nc-group-title { font-size: 11px; font-weight: 700; color: #aaccee; }
+
+.nc-group-close-btn {
+  background: transparent;
+  border: none;
+  color: #6688aa;
+  font-size: 11px;
+  cursor: pointer;
+}
+.nc-group-close-btn:hover { color: #ff453a; }
+
+.nc-group-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.nc-item {
+  padding: 8px 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background 0.15s ease;
+}
+.nc-item:last-child { border-bottom: none; }
+.nc-item:hover { background: rgba(0, 191, 255, 0.08); }
+
+.nc-unread-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00bfff;
+  margin-top: 5px;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px #00bfff;
+}
+
+.nc-item-main { flex: 1; min-width: 0; }
+.nc-item-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+.nc-item-title { font-size: 12px; font-weight: 600; color: #e6f7ff; }
+.nc-item-time { font-size: 10px; color: #6688aa; }
+.nc-item-desc { font-size: 11px; color: #99b8db; line-height: 1.35; }
+
+.nc-empty-state {
+  text-align: center;
+  padding: 30px 16px;
+  color: #6688aa;
+}
+.nc-empty-icon { font-size: 32px; margin-bottom: 6px; }
+.nc-empty-title { font-size: 13px; font-weight: 700; color: #aaccee; }
+.nc-empty-desc { font-size: 11px; }
+
+.nc-bottom-widget {
+  padding: 10px 16px;
+  border-top: 1px solid rgba(0, 191, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(10, 20, 36, 0.5);
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+.nc-cal-icon { font-size: 14px; }
+.nc-cal-date { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: #00bfff; }
+.nc-fade-out { opacity: 0.2; transition: opacity 0.2s ease; }

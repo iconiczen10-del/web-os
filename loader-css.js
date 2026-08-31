@@ -55,6 +55,7 @@
     "browser-news-modal.css",
     "uninstall-dialog.css",
     "aichat-browser.css",
+    "aichat-browser-scroll.css",
     "aichat-browser-cards.css",
     "aichat-maxdb.css",
     "aichat-maxdb-view.css",
@@ -64,7 +65,18 @@
     "community-layout.css",
     "community-components.css",
     "app-webtube.css",
-    "browser-webtube.css"
+    "browser-webtube.css",
+    "browser-prosoft.css",
+    "browser-prosoft-anim.css",
+    "notification-center.css",
+    "control-center.css",
+    "webos-update.css",
+    "vt-optimizer.css",
+    "dero.css",
+    "app-pose.css",
+    "eta-ui.css",
+    "browser-tyfon.css",
+    "browser-shortcuts.css"
   ];
 
   cssFiles.forEach((file) => {

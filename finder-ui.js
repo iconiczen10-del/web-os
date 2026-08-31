@@ -1,6 +1,6 @@
 /* === FILE: finder-ui.js === */
 /**
- * WebOS v0.8.0 Finder User Interface Component
+ * WebOS v0.9.2.1.2 Finder UI Component (Nested Subfolders & Real System Navigation)
  */
 (function () {
   function renderFinderUI(containerEl) {
@@ -29,7 +29,7 @@
     const sidebarItems = containerEl.querySelectorAll(".finder-sidebar-item");
 
     function refreshUI() {
-      if (crumbText) crumbText.textContent = state.currentPath.replace(/^\//, "");
+      if (crumbText) crumbText.textContent = state.currentPath.replace(/^\//, "") || "Root";
       if (searchInput) searchInput.placeholder = `Search in ${state.currentPath}...`;
       if (btnBack) btnBack.disabled = state.historyIndex <= 0;
       if (btnFwd) btnFwd.disabled = state.historyIndex >= state.history.length - 1;
@@ -51,7 +51,15 @@
         if (freeEl) freeEl.textContent = `${stats.freeGB.toFixed(1)} GB available`;
       }
 
-      let items = window.webosFS ? window.webosFS.getFiles(state.currentPath) : [];
+      const subfolders = window.webosFS ? window.webosFS.getSubfolders(state.currentPath) : [];
+      const subItems = subfolders.map(sub => ({
+        id: sub.id, name: sub.name, path: sub.path, ext: ".wfolder",
+        type: "Folder", sizeMB: 0, sizeLabel: "--", icon: sub.icon || "📁",
+        isFolder: true, created: sub.created || "2026-01-01", modified: sub.created || "2026-01-01"
+      }));
+      const rawFiles = window.webosFS ? window.webosFS.getFiles(state.currentPath) : [];
+      let items = [...subItems, ...rawFiles];
+
       if (state.searchQuery.trim()) {
         const q = state.searchQuery.toLowerCase();
         items = items.filter(it => it.name.toLowerCase().includes(q));
@@ -60,13 +68,12 @@
       const countEl = containerEl.querySelector("#f-status-items");
       if (countEl) countEl.textContent = `${items.length} item${items.length === 1 ? "" : "s"}`;
 
+      const onSelect = (item) => { state.selectedId = item.id; refreshUI(); };
+      const onOpen = (item) => handleOpen(item);
+      const onCtx = (e, item) => window.finderOperations.showContextMenu(e, item, state.currentPath, containerEl, refreshUI);
+
       if (state.viewMode === "grid") {
-        window.finderRender.renderGrid(
-          contentView, items, state.selectedId,
-          (item) => { state.selectedId = item.id; refreshUI(); },
-          (item) => handleOpen(item),
-          (e, item) => window.finderOperations.showContextMenu(e, item, state.currentPath, containerEl, refreshUI)
-        );
+        window.finderRender.renderGrid(contentView, items, state.selectedId, onSelect, onOpen, onCtx);
       } else {
         window.finderRender.renderList(
           contentView, items, state.selectedId, state.sortCol, state.sortAsc,
@@ -74,10 +81,7 @@
             if (state.sortCol === col) state.sortAsc = !state.sortAsc;
             else { state.sortCol = col; state.sortAsc = true; }
             refreshUI();
-          },
-          (item) => { state.selectedId = item.id; refreshUI(); },
-          (item) => handleOpen(item),
-          (e, item) => window.finderOperations.showContextMenu(e, item, state.currentPath, containerEl, refreshUI)
+          }, onSelect, onOpen, onCtx
         );
       }
     }
@@ -95,7 +99,9 @@
     }
 
     function handleOpen(item) {
-      if (item.ext === ".wapp" || item.name.endsWith(".wapp")) {
+      if (item.isFolder || item.ext === ".wfolder" || item.path) {
+        navigateTo(item.path || `${state.currentPath.replace(/\/$/, "")}/${item.name}`);
+      } else if (item.ext === ".wapp" || item.name.endsWith(".wapp")) {
         const appId = item.name.replace(".wapp", "").toLowerCase().replace(/-/g, "");
         if (window.windowManager) window.windowManager.openWindow(appId);
       } else if (window.showFinderGetInfo) {

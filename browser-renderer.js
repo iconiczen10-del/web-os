@@ -5,50 +5,17 @@
 (function () {
   function renderHomePage(containerEl, onNavigate) {
     containerEl.innerHTML = `
-      <div style="text-align: center; padding: 24px 20px; max-width: 680px; margin: 0 auto; color: #ffffff;">
-        <div style="font-size: 44px; margin-bottom: 6px;">🌐</div>
-        <div style="font-size: 24px; font-weight: 800; margin-bottom: 4px;">WebOS WebSearch</div>
-        <div style="font-size: 12px; color: #8e8e93; margin-bottom: 18px;">Explore simulated websites, driver manager, community forums, and ISP plans.</div>
+      <div style="text-align: center; padding: 24px 20px; max-width: 760px; margin: 0 auto; color: #ffffff;">
+        <div style="font-size: 40px; margin-bottom: 4px;">🌐</div>
+        <div style="font-size: 22px; font-weight: 800; margin-bottom: 4px;">WebOS WebSearch</div>
+        <div style="font-size: 12px; color: #8e8e93; margin-bottom: 18px;">Explore websites, company portals, hardware driver hub, and ISP plans.</div>
         
-        <div style="display: flex; gap: 8px; margin-bottom: 20px;">
-          <input type="text" id="hp-search-input" placeholder="Search the web, drivers, or type a URL..." style="flex: 1; padding: 10px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.08); color: #fff; font-size: 13px; outline: none;" />
+        <div style="display: flex; gap: 8px; margin-bottom: 16px; max-width: 580px; margin-left: auto; margin-right: auto;">
+          <input type="text" id="hp-search-input" placeholder="Search WebOS ecosystem, drivers, apps, or enter URL..." style="flex: 1; padding: 10px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.08); color: #fff; font-size: 13px; outline: none;" />
           <button id="hp-search-btn" style="padding: 10px 18px; border-radius: 20px; border: none; background: #0a84ff; color: #fff; font-weight: 600; cursor: pointer; font-size: 13px;">Search</button>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(95px, 1fr)); gap: 8px;">
-          <div class="hp-quick-card" data-url="www.dmanager.webos" style="background: rgba(10,132,255,0.15); border: 1px solid rgba(10,132,255,0.4); border-radius: 10px; padding: 10px 6px; cursor: pointer;">
-            <div style="font-size: 20px; margin-bottom: 2px;">⚡</div>
-            <div style="font-size: 11px; font-weight: 700; color: #58a6ff;">DriverManager</div>
-          </div>
-          <div class="hp-quick-card" data-url="www.communitypcs.webos" style="background: rgba(88,166,255,0.12); border: 1px solid rgba(88,166,255,0.3); border-radius: 10px; padding: 10px 6px; cursor: pointer;">
-            <div style="font-size: 20px; margin-bottom: 2px;">👥</div>
-            <div style="font-size: 11px; font-weight: 600; color: #58a6ff;">CommunityPCS</div>
-          </div>
-          <div class="hp-quick-card" data-url="www.mbank.webos" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 6px; cursor: pointer;">
-            <div style="font-size: 20px; margin-bottom: 2px;">🏦</div>
-            <div style="font-size: 11px; font-weight: 600; color: #fff;">Mbank</div>
-          </div>
-          <div class="hp-quick-card" data-url="www.buynet.webos" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 6px; cursor: pointer;">
-            <div style="font-size: 20px; margin-bottom: 2px;">📡</div>
-            <div style="font-size: 11px; font-weight: 600; color: #fff;">BUYNET</div>
-          </div>
-          <div class="hp-quick-card" data-url="www.dev.webos" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 6px; cursor: pointer;">
-            <div style="font-size: 20px; margin-bottom: 2px;">🔧</div>
-            <div style="font-size: 11px; font-weight: 600; color: #fff;">Dev Portal</div>
-          </div>
-          <div class="hp-quick-card" data-url="www.store.webos" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 6px; cursor: pointer;">
-            <div style="font-size: 20px; margin-bottom: 2px;">🛒</div>
-            <div style="font-size: 11px; font-weight: 600; color: #fff;">App Store</div>
-          </div>
-          <div class="hp-quick-card" data-url="www.webtube.webos" style="background: rgba(255,32,32,0.15); border: 1px solid rgba(255,32,32,0.4); border-radius: 10px; padding: 10px 6px; cursor: pointer;">
-            <div style="font-size: 20px; margin-bottom: 2px;">▶️</div>
-            <div style="font-size: 11px; font-weight: 700; color: #ff453a;">WebTube</div>
-          </div>
-          <div class="hp-quick-card" data-url="webos://news" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 10px 6px; cursor: pointer;">
-            <div style="font-size: 20px; margin-bottom: 2px;">📰</div>
-            <div style="font-size: 11px; font-weight: 600; color: #fff;">News</div>
-          </div>
-        </div>
+        <div id="hp-shortcuts-section"></div>
       </div>
     `;
 
@@ -56,16 +23,22 @@
     const btn = containerEl.querySelector("#hp-search-btn");
     function doSearch() {
       const q = input.value.trim();
-      if (typeof onNavigate === "function") onNavigate("webos://search?q=" + encodeURIComponent(q));
+      if (!q) return;
+      if (typeof onNavigate === "function") {
+        if (q.includes(".") || q.startsWith("www.") || q.startsWith("webos://")) {
+          onNavigate(q);
+        } else {
+          onNavigate("webos://search?q=" + encodeURIComponent(q));
+        }
+      }
     }
     if (btn) btn.addEventListener("click", doSearch);
     if (input) input.addEventListener("keydown", (e) => { if (e.key === "Enter") doSearch(); });
-    containerEl.querySelectorAll(".hp-quick-card").forEach((card) => {
-      card.addEventListener("click", () => {
-        const url = card.getAttribute("data-url");
-        if (typeof onNavigate === "function") onNavigate(url);
-      });
-    });
+
+    const scContainer = containerEl.querySelector("#hp-shortcuts-section");
+    if (scContainer && window.browserShortcutsRender) {
+      window.browserShortcutsRender.renderShortcutsGrid(scContainer, onNavigate);
+    }
   }
 
   function renderPage(containerEl, url, onNavigate) {
@@ -86,8 +59,14 @@
       return;
     }
 
+    window._browserNavigate = onNavigate;
     if (cleanUrl === "webos://home") {
       renderHomePage(containerEl, onNavigate);
+    } else if (cleanUrl.includes("tyfon.webos")) {
+      if (typeof window.renderTyfonWebsite === "function") window.renderTyfonWebsite(containerEl, onNavigate);
+    } else if (cleanUrl.includes("prosoft.webos")) {
+      const tab = cleanUrl.includes("#") ? cleanUrl.split("#")[1] : "home";
+      if (typeof window.renderProSoftPage === "function") window.renderProSoftPage(containerEl, tab, onNavigate);
     } else if (cleanUrl.includes("dmanager.webos")) {
       const tab = cleanUrl.includes("#") ? cleanUrl.split("#")[1] : "home";
       if (typeof window.renderDManagerPage === "function") window.renderDManagerPage(containerEl, tab, onNavigate);
@@ -113,11 +92,8 @@
       if (typeof window.renderWebTubeWebsite === "function") window.renderWebTubeWebsite(containerEl, onNavigate);
     } else if (cleanUrl.includes("news") || cleanUrl === "webos://news") {
       if (typeof window.renderNewsPage === "function") window.renderNewsPage(containerEl, onNavigate);
-    } else if (cleanUrl.includes("store.webos")) {
-      if (typeof window.openApp === "function") window.openApp("store");
-      renderHomePage(containerEl, onNavigate);
-    } else if (cleanUrl === "webos://about") {
-      if (typeof window.openApp === "function") window.openApp("settings");
+    } else if (cleanUrl.includes("store.webos") || cleanUrl === "webos://about") {
+      if (typeof window.openApp === "function") window.openApp(cleanUrl.includes("store") ? "store" : "settings");
       renderHomePage(containerEl, onNavigate);
     } else {
       containerEl.innerHTML = `

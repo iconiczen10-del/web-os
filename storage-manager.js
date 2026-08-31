@@ -73,6 +73,9 @@
         sizeMB,
         appIcon
       );
+      if (getFreeSpace() < 5.0 && window.notificationBus) {
+        window.notificationBus.notify("Storage Warning", `Storage below 5 GB (${getFreeSpace().toFixed(1)} GB left)`, "⚠️", "Storage", "settings");
+      }
       return { success: true, file: created };
     }
     return { success: true };

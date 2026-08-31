@@ -72,6 +72,44 @@
 }
 
 /* Window Header Title */
+.window-pin-container {
+  display: flex;
+  align-items: center;
+  margin-right: 6px;
+}
+
+.window-pin-btn {
+  font-size: 11px;
+  cursor: pointer;
+  opacity: 0.5;
+  filter: grayscale(1);
+  transition: all 0.2s ease;
+  user-select: none;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.window-pin-btn:hover {
+  opacity: 1;
+}
+
+.window-pin-btn.pinned {
+  opacity: 1;
+  filter: grayscale(0) drop-shadow(0 0 6px rgba(0, 191, 255, 0.8));
+  color: #00bfff;
+  background: rgba(0, 191, 255, 0.15);
+}
+
+.window-container.pinned {
+  border: 1px solid #00bfff !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 12px rgba(0, 191, 255, 0.3) !important;
+}
+
+.window-container.pinned .window-titlebar {
+  background: rgba(0, 191, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 191, 255, 0.2);
+}
+
 .window-title {
   color: #dddddd;
   font-family: system-ui, -apple-system, sans-serif;

@@ -1,0 +1,87 @@
+/* === FILE: aichat-browser-scroll.css === */
+.kb-content-list {
+  flex: 1 1 0%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  max-height: 100%;
+  padding: 10px 12px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #00bfff33 transparent;
+}
+
+.kb-content-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.kb-content-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.kb-content-list::-webkit-scrollbar-thumb {
+  background: #00bfff33;
+  border-radius: 3px;
+}
+
+.kb-content-list::-webkit-scrollbar-thumb:hover {
+  background: #00bfff66;
+}
+
+.kb-category-box {
+  background: rgba(22, 27, 34, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.kb-category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  user-select: none;
+}
+
+.kb-category-header:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.kb-progress-bar-wrap {
+  width: 50px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.kb-progress-bar-fill {
+  height: 100%;
+  background: #238636;
+  border-radius: 3px;
+}
+
+.kb-category-body {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.kb-empty-msg {
+  text-align: center;
+  padding: 24px;
+  color: #8b949e;
+  font-size: 12px;
+}

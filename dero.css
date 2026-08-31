@@ -1,0 +1,243 @@
+/* === FILE: dero.css === */
+@keyframes window-jitter {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(calc(var(--shake-intensity, 4px) * -1), var(--shake-intensity, 4px)) rotate(-0.5deg); }
+  50% { transform: translate(var(--shake-intensity, 4px), calc(var(--shake-intensity, 4px) * -1)) rotate(0.5deg); }
+  75% { transform: translate(calc(var(--shake-intensity, 4px) * -0.5), calc(var(--shake-intensity, 4px) * 0.5)) rotate(-0.2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.window-shaking {
+  animation: window-jitter 0.12s infinite ease-in-out !important;
+}
+
+.dero-screen-glitch {
+  position: fixed;
+  inset: 0;
+  z-index: 999998;
+  pointer-events: none;
+  background: rgba(255, 0, 80, 0.15);
+  mix-blend-mode: color-dodge;
+  filter: contrast(180%) hue-rotate(90deg);
+}
+
+.dero-glitch-banner {
+  background: #dc2626;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 4px 8px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  animation: pulse 1s infinite;
+}
+
+.dero-error-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999990;
+}
+
+.dero-error-modal {
+  width: 380px;
+  background: #1e1e24;
+  border: 1px solid #ef4444;
+  border-radius: 10px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(239, 68, 68, 0.3);
+  padding: 18px;
+  color: #f1f5f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.dero-error-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.dero-error-body {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #cbd5e1;
+  margin-bottom: 16px;
+}
+
+.dero-error-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.dero-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  background: #334155;
+  color: #fff;
+  border: 1px solid #475569;
+}
+
+.dero-btn.primary {
+  background: #ef4444;
+  border-color: #dc2626;
+}
+
+.dero-bsod-screen {
+  position: fixed;
+  inset: 0;
+  background: #0078d7;
+  color: #fff;
+  font-family: "Segoe UI", sans-serif;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  user-select: none;
+}
+
+.bsod-content {
+  max-width: 650px;
+}
+
+.bsod-face {
+  font-size: 80px;
+  line-height: 1;
+  margin-bottom: 24px;
+}
+
+.bsod-heading {
+  font-size: 24px;
+  font-weight: 300;
+  margin-bottom: 12px;
+}
+
+.bsod-desc {
+  font-size: 15px;
+  opacity: 0.9;
+  margin-bottom: 24px;
+}
+
+.bsod-progress {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.bsod-meta {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.bsod-qr {
+  font-size: 64px;
+  background: #fff;
+  color: #0078d7;
+  padding: 4px;
+  line-height: 1;
+}
+
+.bsod-details {
+  font-size: 12px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.dero-death-screen {
+  position: fixed;
+  inset: 0;
+  background: #09090b;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.death-card {
+  width: 440px;
+  background: #18181b;
+  border: 1px solid #ef4444;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  color: #fff;
+}
+
+.death-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f87171;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.death-subtitle {
+  font-size: 12px;
+  color: #a1a1aa;
+  margin-bottom: 20px;
+}
+
+.death-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.death-stat-box {
+  background: #27272a;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.death-stat-box .lbl {
+  font-size: 11px;
+  color: #71717a;
+  text-transform: uppercase;
+}
+
+.death-stat-box .val {
+  font-size: 15px;
+  font-weight: 600;
+  color: #e4e4e7;
+}
+
+.death-reboot-btn {
+  width: 100%;
+  padding: 10px;
+  background: #2563eb;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.update-card.corrupt-card {
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.update-badge.warning {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.danger-install {
+  background: #dc2626 !important;
+}

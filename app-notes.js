@@ -39,4 +39,12 @@
 
     setTimeout(() => textarea.focus(), 50);
   };
+
+  window.getNotesContent = function () {
+    return sessionNotes;
+  };
+
+  window.setNotesContent = function (text) {
+    sessionNotes = typeof text === "string" ? text : "";
+  };
 })();

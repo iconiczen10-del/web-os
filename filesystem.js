@@ -1,17 +1,16 @@
 /* === FILE: filesystem.js === */
 /**
- * WebOS v0.8.0 Core File System Engine & CRUD API
+ * WebOS v0.9.2.1.2 Core File System Engine & CRUD API (Unprotected / Real Deletion)
  */
 (function () {
   const TOTAL_STORAGE = 64;
-  const SYSTEM_SIZE = 12;
   let folders = [];
   let files = [];
 
   function initFileSystem() {
     if (window.fsData) {
-      folders = JSON.parse(JSON.stringify(window.fsData.folders));
-      files = JSON.parse(JSON.stringify(window.fsData.files));
+      folders = window.fsData.getInitialFolders ? window.fsData.getInitialFolders() : [];
+      files = window.fsData.getInitialFiles ? window.fsData.getInitialFiles() : [];
     }
   }
   initFileSystem();
@@ -26,6 +25,10 @@
     return folders.find(f => f.path.toLowerCase() === (path || "").toLowerCase()) || null;
   }
   function getFolders() { return folders; }
+  function getSubfolders(parentPath) {
+    const p = (parentPath || "").toLowerCase();
+    return folders.filter(f => (f.parentPath || "").toLowerCase() === p);
+  }
   function getFiles(folderPath) {
     return files.filter(f => f.folder.toLowerCase() === (folderPath || "").toLowerCase());
   }
@@ -35,13 +38,13 @@
   function getFreeSpaceGB() { return Math.max(0, TOTAL_STORAGE - getUsedSpaceGB()); }
   function getFreeSpaceMB() { return getFreeSpaceGB() * 1024; }
 
-  function createFolder(parentPath, name) {
+  function createFolder(parentPath, name, icon = "📁") {
     let folderName = (name || "New Folder").trim();
-    if (!folderName.endsWith(".wfolder")) folderName += ".wfolder";
-    const cleanPath = `${parentPath.replace(/\/$/, "")}/${folderName}`;
+    const cleanParent = parentPath.replace(/\/$/, "");
+    const cleanPath = `${cleanParent}/${folderName}`;
     const newF = {
       id: "fld-" + Date.now() + "-" + Math.random().toString(36).substr(2, 4),
-      name: folderName, path: cleanPath, parentPath: parentPath, icon: "📁",
+      name: folderName, path: cleanPath, parentPath: cleanParent, icon: icon,
       protected: false, created: new Date().toISOString().split("T")[0]
     };
     folders.push(newF);
@@ -65,22 +68,37 @@
     const fileIndex = files.findIndex(f => f.id === fileId || f.name === fileId);
     if (fileIndex === -1) return { success: false, reason: "File not found" };
     const f = files[fileIndex];
-    if (f.protected || f.folder === "/System") return { success: false, reason: "Protected file cannot be deleted" };
     files.splice(fileIndex, 1);
+
+    if (window.systemFilesEffects && window.systemFilesEffects.applyDeletionEffect) {
+      window.systemFilesEffects.applyDeletionEffect(f);
+    }
+    if (window.deroFiles && window.deroFiles.handleDERFileDelete) {
+      window.deroFiles.handleDERFileDelete(f);
+    }
     return { success: true, file: f, isApp: f.ext === ".wapp" };
   }
 
   function deleteFolder(folderPath) {
     const fld = getFolder(folderPath);
-    if (!fld || fld.protected) return { success: false, reason: "Cannot delete folder" };
-    files = files.filter(f => f.folder !== folderPath);
-    folders = folders.filter(f => f.path !== folderPath);
+    if (!fld) return { success: false, reason: "Folder not found" };
+    const deletedFiles = files.filter(f => f.folder.toLowerCase().startsWith(folderPath.toLowerCase()));
+    deletedFiles.forEach(f => {
+      if (window.systemFilesEffects && window.systemFilesEffects.applyDeletionEffect) {
+        window.systemFilesEffects.applyDeletionEffect(f);
+      }
+      if (window.deroFiles && window.deroFiles.handleDERFileDelete) {
+        window.deroFiles.handleDERFileDelete(f);
+      }
+    });
+    files = files.filter(f => !f.folder.toLowerCase().startsWith(folderPath.toLowerCase()));
+    folders = folders.filter(f => !f.path.toLowerCase().startsWith(folderPath.toLowerCase()));
     return { success: true };
   }
 
   function renameFile(fileId, newName) {
     const file = files.find(f => f.id === fileId);
-    if (!file || file.protected) return { success: false, reason: "Cannot rename file" };
+    if (!file) return { success: false, reason: "Cannot rename file" };
     file.name = newName.trim();
     if (file.name.includes(".")) file.ext = "." + file.name.split(".").pop();
     file.modified = new Date().toISOString().split("T")[0];
@@ -89,7 +107,7 @@
 
   function moveFile(fileId, destFolderPath) {
     const file = files.find(f => f.id === fileId);
-    if (!file || (file.protected && destFolderPath !== "/System")) return { success: false, reason: "Cannot move file" };
+    if (!file) return { success: false, reason: "Cannot move file" };
     file.folder = destFolderPath;
     file.modified = new Date().toISOString().split("T")[0];
     return { success: true, file };
@@ -102,10 +120,21 @@
     return { success: true, file: createFile(file.folder, `${baseName} copy${file.ext}`, file.type, file.sizeMB, file.icon) };
   }
 
+  function exportFSState() {
+    return { folders: JSON.parse(JSON.stringify(folders)), files: JSON.parse(JSON.stringify(files)) };
+  }
+
+  function importFSState(state) {
+    if (!state) return;
+    if (Array.isArray(state.folders)) folders = JSON.parse(JSON.stringify(state.folders));
+    if (Array.isArray(state.files)) files = JSON.parse(JSON.stringify(state.files));
+  }
+
   window.webosFS = {
-    TOTAL_STORAGE, SYSTEM_SIZE, getFolder, getFolders, getFiles,
+    TOTAL_STORAGE, getFolder, getFolders, getSubfolders, getFiles,
     getUsedSpaceMB, getUsedSpaceGB, getFreeSpaceGB, getFreeSpaceMB,
     formatSize, createFolder, createFile, deleteFile, deleteFolder,
-    renameFile, moveFile, duplicateFile, initFileSystem
+    renameFile, moveFile, duplicateFile, initFileSystem,
+    exportFSState, importFSState
   };
 })();

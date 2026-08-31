@@ -1,6 +1,6 @@
 /* === FILE: finder-operations.js === */
 /**
- * WebOS v0.8.0 Finder File Operations & Context Menu Handler
+ * WebOS v0.9.2.1.2 Finder File Operations & Context Menu Handler (Unprotected)
  */
 (function () {
   let clipboardFile = null;
@@ -12,7 +12,6 @@
     const menu = document.createElement("div");
     menu.className = "finder-context-menu";
 
-    const isSystem = targetItem && (targetItem.protected || targetItem.folder === "/System");
     const isApp = targetItem && (targetItem.ext === ".wapp" || targetItem.name.endsWith(".wapp"));
     const isFolder = targetItem && (targetItem.path || targetItem.ext === ".wfolder");
 
@@ -22,12 +21,6 @@
         <div class="finder-ctx-item" id="ctx-new-folder">📁 New Folder</div>
         <div class="finder-ctx-item" id="ctx-new-file">📝 New Text Document</div>
         ${clipboardFile ? `<div class="finder-ctx-item" id="ctx-paste">📋 Paste File</div>` : ""}
-      `;
-    } else if (isSystem) {
-      menuHTML = `
-        <div class="finder-ctx-item" id="ctx-get-info">ℹ️ Get Info</div>
-        <div class="finder-ctx-sep"></div>
-        <div class="finder-ctx-item disabled">🔒 System File (Protected)</div>
       `;
     } else if (isApp) {
       menuHTML = `
@@ -48,7 +41,7 @@
       `;
     } else {
       menuHTML = `
-        <div class="finder-ctx-item" id="ctx-open">📄 Open</div>
+        <div class="finder-ctx-item" id="ctx-open">📄 Open / Execute</div>
         <div class="finder-ctx-item" id="ctx-rename">✏️ Rename</div>
         <div class="finder-ctx-item" id="ctx-copy">📋 Copy</div>
         <div class="finder-ctx-item" id="ctx-duplicate">📑 Duplicate</div>
@@ -77,100 +70,75 @@
     }
     setTimeout(() => document.addEventListener("click", removeMenu), 10);
 
+    bindMenuActions(menu, targetItem, currentPath, containerEl, onRefresh);
+  }
+
+  function bindMenuActions(menu, targetItem, currentPath, containerEl, onRefresh) {
     const btnNewFolder = menu.querySelector("#ctx-new-folder");
-    if (btnNewFolder) btnNewFolder.addEventListener("click", () => promptNewFolder(currentPath, onRefresh));
+    if (btnNewFolder && window.finderPrompts) btnNewFolder.onclick = () => window.finderPrompts.promptNewFolder(currentPath, onRefresh);
 
     const btnNewFile = menu.querySelector("#ctx-new-file");
-    if (btnNewFile) btnNewFile.addEventListener("click", () => promptNewFile(currentPath, onRefresh));
+    if (btnNewFile && window.finderPrompts) btnNewFile.onclick = () => window.finderPrompts.promptNewFile(currentPath, onRefresh);
 
     const btnPaste = menu.querySelector("#ctx-paste");
-    if (btnPaste && clipboardFile) {
-      btnPaste.addEventListener("click", () => {
-        if (window.webosFS) {
-          window.webosFS.createFile(currentPath, `Copy-of-${clipboardFile.name}`, clipboardFile.type, clipboardFile.sizeMB, clipboardFile.icon);
-          onRefresh();
-        }
-      });
+    if (btnPaste && clipboardFile && window.webosFS) {
+      btnPaste.onclick = () => {
+        window.webosFS.createFile(currentPath, `Copy-of-${clipboardFile.name}`, clipboardFile.type, clipboardFile.sizeMB, clipboardFile.icon);
+        onRefresh();
+      };
     }
 
     const btnRename = menu.querySelector("#ctx-rename");
-    if (btnRename && targetItem) btnRename.addEventListener("click", () => promptRename(targetItem, onRefresh));
+    if (btnRename && targetItem && window.finderPrompts) btnRename.onclick = () => window.finderPrompts.promptRename(targetItem, onRefresh);
 
     const btnCopy = menu.querySelector("#ctx-copy");
-    if (btnCopy && targetItem) btnCopy.addEventListener("click", () => { clipboardFile = targetItem; });
+    if (btnCopy && targetItem) btnCopy.onclick = () => { clipboardFile = targetItem; };
 
     const btnDuplicate = menu.querySelector("#ctx-duplicate");
-    if (btnDuplicate && targetItem) {
-      btnDuplicate.addEventListener("click", () => {
-        if (window.webosFS) {
-          window.webosFS.duplicateFile(targetItem.id);
-          onRefresh();
-        }
-      });
+    if (btnDuplicate && targetItem && window.webosFS) {
+      btnDuplicate.onclick = () => {
+        window.webosFS.duplicateFile(targetItem.id);
+        onRefresh();
+      };
     }
 
     const btnDelete = menu.querySelector("#ctx-delete");
-    if (btnDelete && targetItem) {
-      btnDelete.addEventListener("click", () => {
-        if (window.webosFS) {
-          window.webosFS.deleteFile(targetItem.id);
-          onRefresh();
-        }
-      });
+    if (btnDelete && targetItem && window.webosFS) {
+      btnDelete.onclick = () => {
+        if (targetItem.path) window.webosFS.deleteFolder(targetItem.path);
+        else window.webosFS.deleteFile(targetItem.id);
+        onRefresh();
+      };
     }
 
     const btnLaunch = menu.querySelector("#ctx-launch-app");
     if (btnLaunch && targetItem) {
-      btnLaunch.addEventListener("click", () => {
+      btnLaunch.onclick = () => {
         const appName = targetItem.name.replace(".wapp", "").toLowerCase().replace(/-/g, "");
         if (window.windowManager) window.windowManager.openWindow(appName);
-      });
+      };
     }
 
     const btnUninstall = menu.querySelector("#ctx-uninstall-app");
     if (btnUninstall && targetItem) {
-      btnUninstall.addEventListener("click", () => {
+      btnUninstall.onclick = () => {
         const appId = targetItem.name.replace(".wapp", "").toLowerCase();
         if (window.uninstallApp) window.uninstallApp(appId);
         if (window.storageManager) window.storageManager.uninstallApp(targetItem.name);
         onRefresh();
-      });
+      };
     }
 
     const btnGetInfo = menu.querySelector("#ctx-get-info");
     if (btnGetInfo && targetItem && window.showFinderGetInfo) {
-      btnGetInfo.addEventListener("click", () => window.showFinderGetInfo(targetItem, containerEl));
-    }
-  }
-
-  function promptNewFolder(parentPath, onRefresh) {
-    const name = prompt("Enter folder name:", "New Folder");
-    if (name && window.webosFS) {
-      window.webosFS.createFolder(parentPath, name);
-      onRefresh();
-    }
-  }
-
-  function promptNewFile(parentPath, onRefresh) {
-    const name = prompt("Enter document name (with .wtext extension):", "Untitled.wtext");
-    if (name && window.webosFS) {
-      window.webosFS.createFile(parentPath, name, "WebOS text document", 0.005, "📝");
-      onRefresh();
-    }
-  }
-
-  function promptRename(targetItem, onRefresh) {
-    const newName = prompt("Rename item:", targetItem.name);
-    if (newName && window.webosFS) {
-      window.webosFS.renameFile(targetItem.id, newName);
-      onRefresh();
+      btnGetInfo.onclick = () => window.showFinderGetInfo(targetItem, containerEl);
     }
   }
 
   window.finderOperations = {
     showContextMenu,
-    promptNewFolder,
-    promptNewFile,
-    promptRename
+    promptNewFolder: (p, r) => window.finderPrompts && window.finderPrompts.promptNewFolder(p, r),
+    promptNewFile: (p, r) => window.finderPrompts && window.finderPrompts.promptNewFile(p, r),
+    promptRename: (t, r) => window.finderPrompts && window.finderPrompts.promptRename(t, r)
   };
 })();

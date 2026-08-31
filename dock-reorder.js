@@ -105,5 +105,27 @@
     dock.addEventListener("touchstart", onMouseDown, { passive: false });
   }
 
+  function getDockOrder() {
+    const dock = document.getElementById("dock");
+    if (!dock) return sessionDockOrder;
+    return Array.from(dock.querySelectorAll(".dock-icon[data-app]"))
+      .map(icon => icon.getAttribute("data-app"))
+      .filter(id => id !== "trash");
+  }
+
+  function applyDockOrder(appIds) {
+    if (!Array.isArray(appIds) || appIds.length === 0) return;
+    const dock = document.getElementById("dock");
+    if (!dock) return;
+    const trash = dock.querySelector('.dock-icon[data-app="trash"]');
+    const separator = dock.querySelector(".dock-separator");
+    appIds.forEach(id => {
+      const icon = dock.querySelector(`.dock-icon[data-app="${id}"]`);
+      if (icon) dock.insertBefore(icon, separator || trash);
+    });
+  }
+
   window.initDockReorder = initDockReorder;
+  window.getDockOrder = getDockOrder;
+  window.applyDockOrder = applyDockOrder;
 })();

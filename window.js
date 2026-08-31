@@ -36,10 +36,16 @@ class WindowManager {
           <div class="traffic-light tl-minimize" title="Minimize"></div>
           <div class="traffic-light tl-maximize" title="Maximize"></div>
         </div>
+        <div class="window-pin-container"></div>
         <div class="window-title">${formattedTitle}</div>
       </div>
       <div class="window-content"></div>
     `;
+
+    const pinContainer = win.querySelector(".window-pin-container");
+    if (pinContainer && window.windowPin && typeof window.windowPin.createPinButton === "function") {
+      pinContainer.appendChild(window.windowPin.createPinButton(win));
+    }
 
     const topbarOffset = window.topbarManager ? window.topbarManager.getTopbarHeight() : 28;
     const offset = (this.openWindows.length % 5) * 30;
@@ -82,6 +88,9 @@ class WindowManager {
       clearInterval(winEl._monitorInterval);
       winEl._monitorInterval = null;
     }
+    if (window.windowPin && typeof window.windowPin.unpinWindow === "function") {
+      window.windowPin.unpinWindow(winEl);
+    }
     const appName = winEl.getAttribute("data-app");
     if (typeof window.hideDockDot === "function") window.hideDockDot(appName);
     winEl.remove();
@@ -93,6 +102,9 @@ class WindowManager {
       clearInterval(winEl._monitorInterval);
       winEl._monitorInterval = null;
     }
+    if (window.windowPin && typeof window.windowPin.unpinWindow === "function") {
+      window.windowPin.unpinWindow(winEl);
+    }
     const appName = winEl.getAttribute("data-app");
     if (typeof window.hideDockDot === "function") window.hideDockDot(appName);
     winEl.remove();
@@ -100,8 +112,12 @@ class WindowManager {
   }
 
   bringToFront(winEl) {
-    this.highestZIndex++;
-    winEl.style.zIndex = this.highestZIndex;
+    if (window.windowPin && window.windowPin.isPinned(winEl)) {
+      window.windowPin.updateZIndex(winEl);
+    } else {
+      this.highestZIndex++;
+      winEl.style.zIndex = this.highestZIndex;
+    }
 
     this.openWindows.forEach(w => {
       if (w === winEl) {

@@ -1,0 +1,180 @@
+/* === FILE: app-pose.css === */
+.pose-app-container {
+  padding: 16px;
+  background: #0e1117;
+  color: #f0f6fc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pose-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+}
+
+.pose-branding {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pose-logo {
+  font-size: 28px;
+}
+
+.pose-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #58a6ff;
+}
+
+.pose-subtitle {
+  font-size: 11px;
+  color: #8b949e;
+}
+
+.pose-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.pose-status-pill.active {
+  background: rgba(0, 255, 170, 0.12);
+  color: #00ffaa;
+  border: 1px solid rgba(0, 255, 170, 0.3);
+}
+
+.pose-status-pill.inactive {
+  background: rgba(255, 255, 255, 0.05);
+  color: #8e8e93;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pose-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.pose-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.pose-metric-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.pose-metric-label {
+  font-size: 10px;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.pose-metric-val {
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.pose-actions-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pose-btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.pose-btn.primary {
+  background: #238636;
+  color: #ffffff;
+}
+.pose-btn.primary:hover { background: #2ea043; }
+
+.pose-btn.secondary {
+  background: #1f6feb;
+  color: #ffffff;
+}
+.pose-btn.secondary:hover { background: #388bfd; }
+
+.pose-btn.danger {
+  background: rgba(218, 54, 51, 0.2);
+  border: 1px solid rgba(218, 54, 51, 0.5);
+  color: #f85149;
+}
+.pose-btn.danger:hover { background: rgba(218, 54, 51, 0.35); }
+
+.pose-btn.outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #c9d1d9;
+}
+.pose-btn.outline:hover { background: rgba(255, 255, 255, 0.06); }
+
+.pose-checklist-section {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.pose-section-heading {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8b949e;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.pose-checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.pose-check-item {
+  font-size: 11px;
+  color: #c9d1d9;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pose-check-item span {
+  color: #238636;
+  font-weight: bold;
+}
+
+.pose-feedback-bar {
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+}

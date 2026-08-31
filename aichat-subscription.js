@@ -69,7 +69,14 @@
   };
 
   function getCurrentTier() { return activeTier; }
-  function setTier(tier) { if (TIERS[tier]) activeTier = tier; }
+  function setTier(tier) {
+    if (TIERS[tier]) {
+      activeTier = tier;
+      if (window.notificationBus) {
+        window.notificationBus.notify("Subscription Updated", `You're now on ${TIERS[tier].name}`, "⭐", "AI Chat", "aichat");
+      }
+    }
+  }
   function getTierInfo(tier) {
     const t = TIERS[tier] || TIERS.free;
     if (tier === "maxdb" && window.maxDB) {

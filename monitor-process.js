@@ -25,6 +25,15 @@
 
   const winMetaMap = new WeakMap();
   let globalPidCounter = 1000;
+  let cpuOptimized = false;
+
+  function setCPUOptimized(val) {
+    cpuOptimized = !!val;
+  }
+
+  function isCPUOptimized() {
+    return cpuOptimized;
+  }
 
   function getProcessMeta(winEl) {
     if (!winMetaMap.has(winEl)) {
@@ -41,8 +50,12 @@
     const key = (appName || "").toLowerCase();
     const config = APP_RESOURCES[key] || { cpu: [1, 3], ram: [60, 100], gpu: [2, 5], vram: [30, 60] };
     const rand = (min, max) => min + Math.random() * (max - min);
+    let cpuVal = parseFloat((rand(config.cpu[0], config.cpu[1])).toFixed(1));
+    if (cpuOptimized) {
+      cpuVal = Math.max(0, parseFloat((cpuVal - 5).toFixed(1)));
+    }
     return {
-      cpu: parseFloat((rand(config.cpu[0], config.cpu[1])).toFixed(1)),
+      cpu: cpuVal,
       ram: Math.round(rand(config.ram[0], config.ram[1])),
       gpu: parseFloat((rand(config.gpu[0], config.gpu[1])).toFixed(1)),
       vram: config.vram ? Math.round(rand(config.vram[0], config.vram[1])) : Math.round(rand(30, 60))
@@ -101,6 +114,8 @@
     getProcessList,
     getTotals,
     getTopProcesses,
-    getAppUsage
+    getAppUsage,
+    setCPUOptimized,
+    isCPUOptimized
   };
 })();

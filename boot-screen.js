@@ -11,7 +11,11 @@
     return false;
   }
 
-  function initBootScreen(onComplete) {
+  function initBootScreen(onComplete, forceReplay = false) {
+    if (forceReplay) {
+      isBooted = false;
+    }
+
     if (isBooted) {
       if (typeof onComplete === "function") onComplete();
       return;

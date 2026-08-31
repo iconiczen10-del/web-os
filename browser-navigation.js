@@ -13,6 +13,8 @@
     if (url === "home") return "webos://home";
     if (url === "about") return "webos://about";
     if (url === "news" || url === "news.webos" || url === "www.news.webos") return "webos://news";
+    if (url === "tyfon" || url === "tyfon.webos" || url === "pose") return "www.tyfon.webos";
+    if (url === "prosoft" || url === "prosoft.webos" || url === "v3d") return "www.prosoft.webos";
     if (url === "mbank" || url === "mbank.webos") return "www.mbank.webos";
     if (url === "buynet" || url === "buynet.webos") return "www.buynet.webos";
     if (url === "dev" || url === "dev.webos") return "www.dev.webos";
@@ -72,6 +74,17 @@
     return historyIdx < historyStack.length - 1;
   }
 
+  function getHistoryStack() {
+    return { historyStack: [...historyStack], historyIdx };
+  }
+
+  function setHistoryStack(data) {
+    if (data && Array.isArray(data.historyStack)) {
+      historyStack = [...data.historyStack];
+      historyIdx = typeof data.historyIdx === "number" ? data.historyIdx : historyStack.length - 1;
+    }
+  }
+
   window.browserNavigation = {
     normalizeUrl,
     navigate,
@@ -79,6 +92,8 @@
     goForward,
     getCurrentUrl,
     canGoBack,
-    canGoForward
+    canGoForward,
+    getHistoryStack,
+    setHistoryStack
   };
 })();

@@ -21,7 +21,8 @@
     videoeditor: "initVideoEditor",
     wallpapers: "initWallpapers",
     aichat: "initAIChat",
-    webtube: "initWebTube"
+    webtube: "initWebTube",
+    pose: "initPose"
   };
 
   function dispatchAppInit(appName, winContainer) {

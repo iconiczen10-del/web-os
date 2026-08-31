@@ -17,7 +17,7 @@ function initDesktop() {
   if (window._desktopInitialized) return;
   window._desktopInitialized = true;
 
-  console.log("WebOS v0.8.3 booted — Fresh start");
+  console.log("WebOS v0.9.2.1 booted — Fresh start");
 
   // Initialize Top Bar and Context Menu
   if (window.topbarManager && typeof window.topbarManager.initTopbar === "function") {
@@ -46,6 +46,15 @@ function initDesktop() {
 
   // Always apply default Sequoia wallpaper on fresh boot
   applyDesktopWallpaper(DEFAULT_WALLPAPER);
+
+  // POSE v0.10.0 Boot Session Check (Restores state if active)
+  if (window.poseBootCheck && typeof window.poseBootCheck.checkBootSession === "function") {
+    window.poseBootCheck.checkBootSession((result) => {
+      if (result && result.restored) {
+        console.log("WebOS v0.10.0 — Restored persistent session via POSE");
+      }
+    });
+  }
 
   // Dock icon click triggers window manager / restore
   const dock = document.getElementById("dock");

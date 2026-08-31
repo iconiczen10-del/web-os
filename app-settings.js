@@ -17,6 +17,7 @@
           <div class="settings-nav-item" data-section="about-os">💻 About OS</div>
           <div class="settings-nav-item" data-section="apps">📦 Apps</div>
           <div class="settings-nav-item" data-section="devices">🔧 Devices</div>
+          <div class="settings-nav-item" data-section="update">🔄 WebOS Update</div>
           <div class="settings-nav-item" data-section="developer">🔒 For Developers</div>
         </div>
         <div class="settings-content"></div>
@@ -40,6 +41,8 @@
         window.renderAppsList(mainContent);
       } else if (sectionName === "devices" && typeof window.renderDeviceManager === "function") {
         window.renderDeviceManager(mainContent);
+      } else if (sectionName === "update" && typeof window.renderUpdateTab === "function") {
+        window.renderUpdateTab(mainContent);
       } else if (sectionName === "developer" && typeof window.renderDeveloperTab === "function") {
         window.renderDeveloperTab(mainContent);
       }

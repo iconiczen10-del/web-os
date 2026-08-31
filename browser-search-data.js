@@ -5,6 +5,12 @@
 (function () {
   const SEARCH_DATABASE = [
     {
+      title: "Tyfon Inc. — Persistent Operating System Ecosystems (POSE)",
+      url: "www.tyfon.webos",
+      description: "Official portal of Tyfon Inc. creators of POSE manual session persistence powered by webosdb IndexedDB.",
+      keywords: ["tyfon", "tyfon inc", "pose", "session", "persistence", "webosdb", "restore", "save", "ecosystem", "operating system"]
+    },
+    {
       title: "DriverManager — Official WebOS Hardware Driver Hub",
       url: "www.dmanager.webos",
       description: "Download certified WHQL drivers, firmware packages, and updates for 14 hardware partners across 15 devices.",
@@ -87,6 +93,12 @@
       url: "www.webtube.webos",
       description: "Stream animated videos, check trending creator channels, and enjoy online video entertainment on WebOS.",
       keywords: ["webtube", "video", "videos", "youtube", "worldplay", "stream", "streaming", "channels", "animation", "watch"]
+    },
+    {
+      title: "ProSoft Inc. — V3D Graphics Engine Announcement",
+      url: "www.prosoft.webos",
+      description: "Official pre-launch website of ProSoft Inc. announcing V3D v1 — next-gen 3D graphics, VIP waitlist, and early access.",
+      keywords: ["prosoft", "prosoft inc", "v3d", "graphics", "3d engine", "3d", "engine", "waitlist", "early access", "founder", "shaders"]
     }
   ];
 
